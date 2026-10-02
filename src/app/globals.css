@@ -1,0 +1,146 @@
+/* Scan only application source — the project folder also holds design-skill data files. */
+@import "tailwindcss" source("../");
+
+/*
+ * CFM house style — see house-style-cfm.md.
+ * Single hue (H≈68°) sampled from the CFMPL wordmark: #636555.
+ * No other hue is permitted.
+ */
+@theme {
+  --color-brand: #636555;
+  --color-brand-light: #9a9c86;
+  --color-brand-deep: #454736;
+  --color-white: #ffffff;
+  --color-warm: #f9f8f6;
+  --color-paper: #f5f3ed;
+  --color-ink: #202020;
+  --color-deep: #14150f;
+  --color-grey: #666666;
+  --color-grey-light: #767676;
+  --color-line: rgb(32 32 32 / 0.12);
+  --color-line-dark: rgb(249 248 246 / 0.16);
+
+  --font-display: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-spline), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-house: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--color-ink);
+    background: var(--color-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: var(--color-warm);
+  }
+}
+
+@layer components {
+  .container-house {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-house {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-house {
+      padding-inline: 3.75rem;
+    }
+  }
+
+
+  /* Paper grain. A faint tooth on the dark grounds so large fields of near-black
+     read as printed stock rather than flat ink. Static, decorative, ~3% opacity. */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+  }
+
+  .lede {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .prose-house p + p {
+    margin-top: 1.1rem;
+  }
+  .prose-house p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Scroll reveal. Content is visible by default; motion only applies when JS
+   has marked the document ready and the visitor has not asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-motion="ready"] [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition:
+      opacity 700ms var(--ease-house),
+      transform 700ms var(--ease-house);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  html[data-motion="ready"] [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
