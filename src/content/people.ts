@@ -131,4 +131,3 @@ export const advisors: readonly Person[] = [
 export const management: readonly Person[] = [president];
 
 export const allPeople = [...board, ...management, ...advisors];
-export const featuredPeople = [board[0], board[1], board[2], president];

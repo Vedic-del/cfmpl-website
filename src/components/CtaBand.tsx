@@ -4,8 +4,8 @@ import { primaryAction } from "@/content/navigation";
 
 /** Closing band on most pages. States how to get in touch — no promises about terms or timing. */
 export function CtaBand({
-  title = "Talk to Us",
-  body = "Write to us or call our Mumbai office, and tell us a little about your company and what it needs.",
+  title = "Have a mandate in mind?",
+  body = "Call our Mumbai office or write to us.",
 }: {
   title?: string;
   body?: string;
@@ -14,8 +14,8 @@ export function CtaBand({
     <section className="bg-brand text-warm">
       <div className="container-house grid gap-10 py-18 md:grid-cols-[1.3fr_1fr] md:items-end md:py-22">
         <div data-reveal>
-          <h2 className="display text-warm">{title}</h2>
-          <p className="lede mt-6 max-w-[52ch] text-warm/95">{body}</p>
+          <h2 className="display-lg max-w-[16ch] text-warm">{title}</h2>
+          <p className="lede mt-5 max-w-[52ch] text-warm/90">{body}</p>
         </div>
         <div className="flex flex-col items-start gap-4 md:items-end" data-reveal>
           <Link

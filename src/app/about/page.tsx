@@ -3,7 +3,7 @@ import { ArrowLink } from "@/components/ArrowLink";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
-import { SectionHeading } from "@/components/SectionHeading";
+import { Muted, SectionHeading } from "@/components/SectionHeading";
 import { Timeline } from "@/components/Timeline";
 import { approach, clientTypes, firm, founderMessage, history, timeline } from "@/content/firm";
 import { imagery } from "@/content/imagery";
@@ -11,27 +11,45 @@ import { imagery } from "@/content/imagery";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "CFM began in 1991 in Kolkata, arranging loans. Today it is a Mumbai-based financial advisory and merchant banking firm with offices in four cities.",
+    "CFM began in 1991 in Kolkata, arranging loans. Today it is a Mumbai-based financial advisory firm and SEBI Category I Merchant Banker with offices in four cities.",
   alternates: { canonical: "/about/" },
 };
 
 export default function AboutPage() {
+  // The opening sentence is set large; the rest of the note follows it.
+  const [opening, ...rest] = founderMessage.paragraphs;
+  const cut = opening.indexOf(". ") + 1;
+  const quote = opening.slice(0, cut);
+  const note = [opening.slice(cut).trim(), ...rest].filter(Boolean);
+
   return (
     <>
       <PageHero
-        title="About CFM"
-        lede="A Mumbai-based financial advisory and merchant banking firm, advising Indian companies since 1991."
-        photo={imagery.about}
+        eyebrow="About Us"
+        title={
+          <>
+            From one office in Kolkata <Muted dark>to four cities.</Muted>
+          </>
+        }
+        lede="A Mumbai-based financial advisory firm and SEBI Category I Merchant Banker, advising Indian companies since 1991."
+        photo={imagery.history}
       />
 
       <Section tone="light" labelledBy="history-h">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <SectionHeading id="history-h" title="Our History" />
-          <div className="prose-house max-w-[64ch] text-grey" data-reveal>
-            {history.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-          </div>
+        <SectionHeading
+          id="history-h"
+          eyebrow="Our History"
+          size="lg"
+          title={
+            <>
+              Thirty-five years, <Muted>one way of working.</Muted>
+            </>
+          }
+        />
+        <div className="prose-house mt-12 gap-14 text-grey md:columns-2 lg:columns-3 [&>p]:mt-0 [&>p]:mb-5 [&>p]:break-inside-avoid lg:[&>p]:text-[1.0625rem]" data-reveal>
+          {history.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
         </div>
       </Section>
 
@@ -41,73 +59,76 @@ export default function AboutPage() {
       </Section>
 
       <Section tone="paper" labelledBy="founder-h">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <SectionHeading id="founder-h" title="A Note from Our Founder" />
-          <figure data-reveal>
-            <blockquote className="prose-house max-w-[64ch] text-ink">
-              {founderMessage.paragraphs.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </blockquote>
-            <figcaption className="mt-8 border-t border-line pt-5">
-              <span className="block font-display text-[1.1rem] font-medium">{founderMessage.name}</span>
-              <span className="mt-1 block text-[14px] text-grey">{founderMessage.title}</span>
-            </figcaption>
-          </figure>
-        </div>
+        <h2 id="founder-h" className="eyebrow text-brand">
+          A Note from Our Founder
+        </h2>
+        <figure className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-x-20 lg:gap-y-8" data-reveal>
+          <blockquote className="lg:row-span-2">
+            <p className="display-lg max-w-[14ch] text-ink">
+              <span aria-hidden="true" className="text-brand">
+                &ldquo;
+              </span>
+              {quote}
+              <span aria-hidden="true" className="text-brand">
+                &rdquo;
+              </span>
+            </p>
+          </blockquote>
+          <div className="prose-house self-end text-ink">
+            {note.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+          <figcaption className="border-t border-line pt-5 lg:col-start-2">
+            <span className="block font-display text-[1.1rem] font-medium">{founderMessage.name}</span>
+            <span className="mt-1 block text-[14px] text-grey">{founderMessage.title}</span>
+          </figcaption>
+        </figure>
       </Section>
 
       <Section tone="light" labelledBy="approach-h">
-        <SectionHeading
-          id="approach-h"
-          title="How We Work with Clients"
-          lede="What clients can expect when they work with us."
-        />
-        <div className="mt-12 grid gap-px bg-line md:grid-cols-2">
+        <SectionHeading id="approach-h" eyebrow="How We Work" title="What clients can count on." />
+        <div className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
           {approach.map((a, i) => (
             <article
               key={a.title}
               data-reveal
               style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
-              className="bg-white px-7 py-9 md:px-9 md:py-10"
+              className="bg-white py-9 sm:px-7 lg:px-8 lg:first:pl-0"
             >
-              <h3 className="text-[1.3rem] font-medium">{a.title}</h3>
-              <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.75] text-grey">{a.body}</p>
+              <span aria-hidden="true" className="block h-2 w-2 rotate-45 bg-brand" />
+              <h3 className="mt-6 text-[1.3rem] font-medium leading-snug">{a.title}</h3>
+              <p className="mt-3 text-[15px] leading-[1.75] text-grey">{a.body}</p>
             </article>
           ))}
         </div>
-        <ArrowLink href="/how-we-work" className="mt-10">
-          The steps of a typical mandate
-        </ArrowLink>
       </Section>
 
       <Section tone="paper" labelledBy="clients-h">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <SectionHeading
-            id="clients-h"
-            title="Who We Work With"
-            lede="We are sector agnostic. Our clients have included government undertakings, large and mid-size companies, manufacturers, banks and SMEs."
-          />
-          <ul className="grid grid-cols-2 gap-px self-start bg-line" data-reveal>
-            {clientTypes.map((c) => (
-              <li key={c} className="bg-paper px-5 py-5 font-display text-[15px]">
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="mt-14 grid gap-6 border-t border-line pt-8 md:grid-cols-2" data-reveal>
-          <p className="max-w-[56ch] text-[15px] leading-[1.8] text-grey">
-            CFMPL is the sponsor of {firm.arc.name}, a separate company registered with the Reserve Bank of India,
-            which acquires and resolves stressed financial assets.
+        <SectionHeading
+          id="clients-h"
+          eyebrow="Our Clients"
+          title={
+            <>
+              Sector agnostic, <Muted>from SMEs to government undertakings.</Muted>
+            </>
+          }
+        />
+        <ul className="mt-12 grid grid-cols-2 gap-px bg-line md:grid-cols-3 lg:grid-cols-6" data-reveal>
+          {clientTypes.map((c) => (
+            <li key={c} className="bg-paper px-5 py-6 font-display text-[15.5px]">
+              {c}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-14 flex flex-col gap-5 border-t border-line pt-8 md:flex-row md:items-center md:justify-between" data-reveal>
+          <p className="max-w-[80ch] text-[15px] leading-[1.8] text-grey">
+            CFMPL is the sponsor of {firm.arc.name}, a separate RBI-registered company that acquires and resolves
+            stressed financial assets.
           </p>
-          <div className="flex flex-col gap-4 md:items-end">
-            <ArrowLink href="/services">Our services</ArrowLink>
-            <ArrowLink href="/leadership">Our board and management</ArrowLink>
-            <ArrowLink href={firm.arc.url} external>
-              Visit {firm.arc.display}
-            </ArrowLink>
-          </div>
+          <ArrowLink href={firm.arc.url} external className="shrink-0">
+            {firm.arc.display}
+          </ArrowLink>
         </div>
       </Section>
 

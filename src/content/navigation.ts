@@ -8,9 +8,8 @@ export type NavItem = { href: string; label: string };
 export const primaryNav: readonly NavItem[] = [
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
-  { href: "/how-we-work", label: "How We Work" },
   { href: "/leadership", label: "Leadership & Governance" },
-  { href: "/careers", label: "Careers" },
+  { href: "/life-at-cfm", label: "Life at CFM" },
 ];
 
 export const primaryAction: NavItem = { href: "/contact", label: "Contact Us" };
@@ -20,9 +19,9 @@ export const footerNav = {
     { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
     { href: "/services#transactions", label: "Selected Transactions" },
-    { href: "/how-we-work", label: "How We Work" },
     { href: "/leadership", label: "Leadership & Governance" },
-    { href: "/careers", label: "Careers" },
+    { href: "/life-at-cfm", label: "Life at CFM" },
+    { href: "/life-at-cfm#careers", label: "Careers" },
     { href: "/contact", label: "Contact Us" },
   ],
   regulatory: [

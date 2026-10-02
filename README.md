@@ -8,7 +8,7 @@ cfmarc.in — same type system, same section grammar, same voice, one different 
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm run build   # static site written to ./out — 20 routes
+npm run build   # static site written to ./out
 npm run lint
 npm run typecheck
 ```
@@ -33,14 +33,19 @@ people on webmail.
 - `src/content/` — **all copy and every fact.** Pages never hard-code text. If a number, name or
   address is wrong, it is wrong in exactly one file here.
 - `src/components/` — one job each. `Section` + `SectionHeading` give every section the same shape:
-  a plain heading that names the section, an optional short lede, then the content.
+  a small label that names the section, a short statement heading, then the content.
 - `src/app/` — one folder per route, all pre-rendered at build time.
 
 ## The rules this build follows
 
 - **Type:** Figtree (display) over Spline Sans 300 (body). No serif.
 - **Colour:** one hue, `#636555`, sampled from the wordmark, plus tints and shades. Nothing else.
-- **Mandala:** the logo, the home hero, the process diagram and the favicon. Nowhere else.
+- **Mandala:** the logo, the home hero and the favicon. Nowhere else.
+- **Photography:** symbolic images (public domain / CC0) are printed in the house hue with `Plate`;
+  photographs of the team stay in natural colour. Local images live in `public/images` as
+  `name-640/1080/1920.webp` — see `src/content/imagery.ts`.
+- **Moved addresses** (`/careers`, `/how-we-work`, `/services/<practice>`) serve small forwarding pages,
+  because GitHub Pages cannot send redirects.
 - **Numbers:** always carry their basis and period.
 - **CFMPL advises** on stressed-asset resolution. CFM ARC resolves. Never collapse the two.
 

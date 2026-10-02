@@ -11,51 +11,47 @@ export type Offering = {
   body: string;
   role: string;
   points?: readonly string[];
-  pointsLabel?: string;
 };
 
 export type Practice = {
+  /** Also the anchor of the practice's section on the Services page. */
   slug: string;
   name: string;
-  /** Page title and meta title. */
-  seoTitle: string;
-  /** One-line summary used on cards and in meta descriptions. */
+  /** One-word label shown above the name. */
+  tag: string;
+  /** One line, used on the home page cards. */
   summary: string;
-  /** Who the service is for — used on the service page. */
+  /** Who the service is for. */
   forWhom: string;
   intro: string;
   regulated: boolean;
   offerings: readonly Offering[];
-  cardLinks: readonly string[];
 };
 
 export const practices: readonly Practice[] = [
   {
     slug: "investment-banking",
+    tag: "Equity",
     name: "Investment Banking",
-    seoTitle: "Investment Banking & Equity Capital Markets",
-    summary:
-      "Raising equity through public issues and other capital markets transactions, and private equity advisory for companies and investors.",
-    forWhom: "Large and mid-size companies, SMEs and entrepreneurs raising equity, and private equity investors.",
+    summary: "Public issues, capital markets transactions and private equity.",
+    forWhom: "Large and mid-size companies, SMEs, entrepreneurs and private equity investors.",
     intro:
-      "We help companies raise equity, either from the public through the capital markets or privately from investors. Our merchant banking work is carried out under our SEBI Category I registration, and we carry out our own due diligence on a company before we take on a mandate.",
+      "We raise equity for companies, from the public markets or from private investors. Our merchant banking work is carried out under our SEBI Category I registration, and we complete our own due diligence before we take on a mandate.",
     regulated: true,
     offerings: [
       {
         title: "Merchant Banking and Equity Capital Markets",
-        body:
-          "Equity capital markets are where companies raise money by issuing shares to the public or to institutions. We advise companies on these transactions and manage them through the regulatory process.",
-        role: "We act as lead manager or book running lead manager on public issues, and as adviser on other capital markets transactions.",
-        pointsLabel: "Transactions we handle",
+        body: "We advise on public issues and other capital markets transactions and manage them through the regulatory process.",
+        role: "Lead manager or book running lead manager on public issues; adviser on other transactions.",
         points: [
-          "Initial and follow-on public offers (IPOs and FPOs), including offers for sale",
+          "IPOs and FPOs, including offers for sale",
           "SME IPOs and FPOs",
           "Rights issues",
-          "Qualified institutional placements (QIPs)",
+          "Qualified institutional placements",
           "Preferential issues",
-          "Buybacks of securities",
+          "Buybacks",
           "Delisting of equity shares",
-          "Substantial acquisitions of shares and takeovers",
+          "Substantial acquisitions and takeovers",
           "Public issues of debt securities",
           "Private placements of non-convertible securities",
           "Non-convertible redeemable preference shares",
@@ -63,80 +59,63 @@ export const practices: readonly Practice[] = [
       },
       {
         title: "Private Equity Advisory",
-        body:
-          "Private equity is investment in a company by a fund or private investor, usually in exchange for a share of ownership. We bring together companies — large, mid-size and SME — with institutional and individual investors.",
-        role: "We advise on the whole investment: finding and assessing opportunities, completing the investment and, later, the investor's exit.",
-        pointsLabel: "What we cover",
-        points: ["Finding investment opportunities", "Assessing them", "Completing the investment", "Planning and completing the exit"],
+        body: "We bring together companies, large, mid-size and SME, with institutional and individual investors.",
+        role: "Adviser across the whole investment: sourcing, assessment, completion and exit.",
+        points: ["Sourcing opportunities", "Assessment", "Completing the investment", "Planning and completing the exit"],
       },
     ],
-    cardLinks: ["Merchant banking and capital markets", "Private equity advisory"],
   },
   {
     slug: "corporate-advisory",
+    tag: "Debt",
     name: "Corporate Advisory",
-    seoTitle: "Corporate Advisory, Debt Syndication & Restructuring",
-    summary:
-      "Arranging loans and other debt from banks, NBFCs and financial institutions, and restructuring existing debt.",
-    forWhom: "Large and mid-size Indian companies that need debt finance or need to restructure their borrowings.",
+    summary: "Debt syndication from banks, NBFCs and institutions, and debt restructuring.",
+    forWhom: "Large and mid-size Indian companies raising debt or restructuring it.",
     intro:
-      "Debt has been part of our work since 1991, when the firm began by arranging loans. We help large and mid-size Indian companies raise loans and other debt from Indian and international banks, NBFCs and other financial institutions, and we help companies restructure debt they already have.",
+      "Debt is where the firm began in 1991. We raise loans and other debt from Indian and international banks, NBFCs and financial institutions, and restructure debt that no longer fits the business.",
     regulated: false,
     offerings: [
       {
         title: "Debt Syndication",
-        body:
-          "Debt syndication means arranging finance from one or more lenders for a single company or project. We work out the right type and structure of debt for the company's needs, and then approach the lenders most likely to provide it.",
-        role: "We structure the financing, prepare the information lenders need, approach suitable lenders and support the company through to sanction and disbursal.",
-        pointsLabel: "Types of finance we arrange",
+        body: "We work out the right type and structure of debt, then take it to the lenders most likely to provide it.",
+        role: "We structure the financing, prepare the lender materials, approach lenders and stay with the company to sanction and disbursal.",
         points: [
-          "Project finance for new (greenfield) and expansion (brownfield) projects",
-          "Corporate loans and rupee term loans",
-          "Working capital finance",
+          "Project finance, greenfield and brownfield",
+          "Corporate and rupee term loans",
+          "Working capital",
           "Corporate bonds",
-          "External commercial borrowings (ECBs) — loans from overseas lenders",
-          "Foreign currency convertible bonds (FCCBs) — bonds issued abroad that can convert into shares",
-          "Export credit agency (ECA) backed finance — loans supported by an overseas government's export credit agency",
+          "External commercial borrowings (ECBs)",
+          "Foreign currency convertible bonds (FCCBs)",
+          "Export credit agency (ECA) backed finance",
         ],
       },
       {
         title: "Debt Restructuring",
-        body:
-          "When a company's existing debt no longer fits its cash flows, the answer is often to change the terms of the debt or the structure of the balance sheet, rather than to borrow more.",
-        role: "We advise the company on restructuring its debt and balance sheet, and on related corporate finance transactions.",
-        pointsLabel: "What we cover",
+        body: "When debt no longer fits a company's cash flows, the answer is often to change its terms or the balance sheet, not to borrow more.",
+        role: "Adviser to the company on restructuring its debt and balance sheet, and on related transactions.",
         points: ["Business advisory", "Corporate debt restructuring", "Balance-sheet restructuring", "Related corporate finance transactions"],
       },
     ],
-    cardLinks: ["Debt syndication", "Debt restructuring"],
   },
   {
     slug: "stressed-asset-resolution-advisory",
+    tag: "Stressed Assets",
     name: "Stressed Asset Resolution Advisory",
-    seoTitle: "Stressed Asset Resolution Advisory",
-    summary:
-      "Advice to companies and lenders on loans that have become stressed or non-performing, and how to resolve them.",
-    forWhom: "Companies with stressed borrowings, and the banks and financial institutions that have lent to them.",
+    summary: "Advice to companies and lenders on resolving stressed and non-performing loans.",
+    forWhom: "Companies with stressed borrowings, and the banks and institutions that lent to them.",
     intro:
-      "A loan becomes stressed when a company struggles to repay it — because of changes inside the business or a wider economic slowdown. We advise companies and lenders on how such loans can be resolved.",
+      "We advise companies and lenders on loans that have become stressed: what the business behind the loan can still support, and which resolution serves the lenders, the company and its other stakeholders.",
     regulated: false,
     offerings: [
       {
         title: "Resolution Advisory",
-        body:
-          "We assess the stressed loan and the business behind it, test whether the business can recover, and advise on the resolution that works best for the lenders, the company and its other stakeholders.",
-        role: "We act as adviser. CFMPL does not buy stressed loans. Acquiring and resolving stressed assets is the business of CFM Asset Reconstruction, a separate company.",
-        pointsLabel: "What the advice covers",
-        points: ["Assessment of the stressed loan", "Review of the business and its ability to recover", "Resolution options", "Structuring the resolution"],
+        body: "We assess the loan and the business behind it, test whether the business can recover, and advise on the resolution.",
+        role: "Adviser only. CFMPL does not buy stressed loans; acquiring and resolving them is the business of CFM Asset Reconstruction, a separate company.",
+        points: ["Assessment of the stressed loan", "Review of the business and its prospects", "Resolution options", "Structuring the resolution"],
       },
     ],
-    cardLinks: ["Resolution advisory", "Our relationship with CFM ARC"],
   },
 ] as const;
-
-export function getPractice(slug: string) {
-  return practices.find((p) => p.slug === slug);
-}
 
 /** Disclosure of which activities are, and are not, regulated by SEBI. */
 export const regulatoryNote =
@@ -144,17 +123,3 @@ export const regulatoryNote =
 
 export const sponsorNote =
   "CFMPL is the sponsor of CFM Asset Reconstruction Private Limited, a separate company registered with the Reserve Bank of India as an asset reconstruction company under the SARFAESI Act, 2002. CFM ARC acquires and resolves stressed financial assets; CFMPL does not.";
-
-/**
- * Situations in which companies typically approach the firm. Each is drawn
- * from work described on cfml.in — the HAM financings, the credit rating
- * presentation, the Tier II raise and the restructuring practice.
- */
-export const whenToCall = [
-  "You have won a project and need to arrange the finance for it.",
-  "Your credit rating is making it harder to borrow.",
-  "Lenders have turned down your proposal and you want to understand why before you approach them again.",
-  "Your existing debt needs restructuring before the business can take on more.",
-  "You are planning to raise equity, publicly or privately.",
-  "A loan has become stressed and you need advice on how to resolve it.",
-] as const;

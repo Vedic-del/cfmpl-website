@@ -2,8 +2,8 @@
  * Selected transactions, from the "Past Work" case studies on cfml.in.
  * Client names are not disclosed on the current site; they stay undisclosed.
  *
- * The two case studies cover three financings. Each transaction is described
- * once: tiles on the home page, full write-ups on the Services page.
+ * The two case studies cover three financings: tiles on the home page, full
+ * write-ups on the Services page.
  */
 
 export type Tombstone = {
@@ -11,8 +11,6 @@ export type Tombstone = {
   client: string;
   value: string;
   instrument: string;
-  /** Which service page this transaction belongs on. */
-  practice: string;
   /** Anchor of the full write-up on the Services page. */
   caseSlug: string;
 };
@@ -23,7 +21,6 @@ export const tombstones: readonly Tombstone[] = [
     client: "Road construction company — Delhi–Mumbai Expressway corridor",
     value: "₹710 crore",
     instrument: "Project finance for a Hybrid Annuity Model highway project",
-    practice: "corporate-advisory",
     caseSlug: "highway-projects",
   },
   {
@@ -31,7 +28,6 @@ export const tombstones: readonly Tombstone[] = [
     client: "Road construction company — second NHAI project",
     value: "₹480 crore",
     instrument: "Project finance for a Hybrid Annuity Model highway project",
-    practice: "corporate-advisory",
     caseSlug: "highway-projects",
   },
   {
@@ -39,7 +35,6 @@ export const tombstones: readonly Tombstone[] = [
     client: "Indian private-sector bank focused on infrastructure finance",
     value: "₹1,000 crore",
     instrument: "Basel III-compliant Tier II bonds",
-    practice: "corporate-advisory",
     caseSlug: "tier-ii-bonds",
   },
 ] as const;
@@ -68,7 +63,7 @@ export const caseStudies: readonly CaseStudy[] = [
     client:
       "A road construction company operating since 2005. It had built state road projects for the PWD and MSRDC in Gujarat and Maharashtra, and had then won its first National Highway projects from NHAI, on the Delhi–Mumbai Expressway corridor.",
     explainer:
-      "Under the Hybrid Annuity Model (HAM), NHAI pays part of a highway's construction cost during building and the rest, with interest, as annual payments after completion. The contractor must raise debt for its share.",
+      "Under NHAI's Hybrid Annuity Model (HAM), the contractor raises debt for its share of the construction cost and is repaid in annuities after completion.",
     challenges: [
       "The projects were much larger than any the company had built before.",
       "It had a limited track record with NHAI.",
@@ -92,8 +87,6 @@ export const caseStudies: readonly CaseStudy[] = [
     value: "₹1,000 crore",
     valueNote: "Basel III-compliant Tier II bonds",
     client: "An Indian private-sector bank, operating since 2014, focused on infrastructure finance under RBI guidelines.",
-    explainer:
-      "Tier II bonds are a form of long-term borrowing that banks can count towards their regulatory capital under the Basel III rules, which set how much capital banks must hold.",
     challenges: ["The funding was raised during the recovery period after COVID-19."],
     role: [
       "Structured ₹1,000 crore of funding through Basel III-compliant Tier II bonds.",

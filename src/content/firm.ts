@@ -62,10 +62,9 @@ export const metrics = [
  * The firm's history, told chronologically.
  */
 export const history = [
-  "CFM began in 1991, in a small office in Kolkata. Its first business was arranging loans for companies, and its founding commitment was a simple one: to be available to clients whenever they needed us, even at short notice.",
-  "As clients' needs grew, so did the work. Arranging individual loans led to debt syndication — bringing several banks and financial institutions together to fund a single company or project — and from there to broader financial advisory.",
-  "Over the years we moved our head office to Mumbai, opened offices in three more cities, registered with SEBI as a merchant banker — which allows us to manage public issues and advise on other capital markets transactions — and sponsored the setting up of an asset reconstruction company. The milestones below give the dates.",
-  "The firm is larger and does more than it did in 1991. The way we work with clients has not changed: we stay available, we stay with a mandate until it is complete, and we treat relationships as the foundation of the business.",
+  "CFM began in 1991 in a small office in Kolkata, arranging loans for companies. Its founding commitment was simple: be available to clients whenever they need us, even at short notice.",
+  "Arranging single loans led to syndicating them across banks and institutions, and from there to wider financial advisory. The head office moved to Mumbai, offices opened in three more cities, the firm registered with SEBI as a Category I Merchant Banker, and it sponsored an asset reconstruction company.",
+  "The firm is larger than it was in 1991. The way it works has not changed: we stay available, we stay with a mandate until it is done, and we treat relationships as the foundation of the business.",
 ] as const;
 
 export const timeline = [

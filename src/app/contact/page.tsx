@@ -5,7 +5,6 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { firm } from "@/content/firm";
-import { imagery } from "@/content/imagery";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -20,9 +19,9 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        title="Contact Us"
-        lede="Write to us or call our Mumbai office. Tell us a little about your company and what it needs, and we will put you in touch with the right person."
-        photo={imagery.about}
+        eyebrow="Contact Us"
+        title="Talk to us."
+        lede="Call our Mumbai office or write to us, and we will put you in touch with the right person."
       />
 
       <Section tone="light" labelledBy="direct-h">
@@ -108,13 +107,10 @@ export default function ContactPage() {
             <div key={b.city} className="bg-deep px-7 py-9">
               <p className="font-display text-[13px] text-brand-light">{b.role}</p>
               <h3 className="mt-3 font-display text-[1.4rem]">{b.city}</h3>
-              {/* Branch addresses can be added in src/content/firm.ts. */}
-              <p className="mt-4 text-[14.5px] leading-7 text-warm/70">
-                For this office, please contact our head office in Mumbai.
-              </p>
             </div>
           ))}
         </div>
+        <p className="mt-6 text-[14px] text-warm/60">Enquiries for every office go through the head office in Mumbai.</p>
       </Section>
     </>
   );

@@ -1,95 +1,139 @@
+import Image from "next/image";
 import { ArrowLink } from "@/components/ArrowLink";
 import { CtaBand } from "@/components/CtaBand";
 import { Hero } from "@/components/Hero";
 import { MetricsBand } from "@/components/MetricsBand";
-import { PersonCard } from "@/components/PersonCard";
+import { Plate } from "@/components/Plate";
 import { PracticeGrid } from "@/components/PracticeGrid";
 import { Section } from "@/components/Section";
-import { SectionHeading } from "@/components/SectionHeading";
+import { Muted, SectionHeading } from "@/components/SectionHeading";
 import { TombstoneGrid } from "@/components/TombstoneGrid";
 import { metrics } from "@/content/firm";
-import { featuredPeople } from "@/content/people";
+import { imagery } from "@/content/imagery";
 import { practices } from "@/content/services";
 import { tombstones } from "@/content/transactions";
 
-/**
- * Home: a short introduction that hands off to the inner pages. Each section
- * says what it needs to and links on; nothing here is repeated in full
- * elsewhere on the page.
- */
+const plates = {
+  "investment-banking": imagery.investmentBanking,
+  "corporate-advisory": imagery.corporateAdvisory,
+  "stressed-asset-resolution-advisory": imagery.stressedAssets,
+};
+
 export default function HomePage() {
   return (
     <>
       <Hero
-        lines={["Financial Advisory and", "Merchant Banking, Since 1991"]}
-        lede="We help Indian companies raise debt and equity, restructure their borrowings and resolve stressed loans. CFM is a SEBI-registered Category I Merchant Banker with its head office in Mumbai."
+        lines={["Merchant bankers to", "Indian companies, since 1991."]}
+        lede="Equity, debt, restructuring and stressed-asset advice, from a SEBI Category I Merchant Banker headquartered in Mumbai."
       />
 
       <MetricsBand metrics={metrics} />
 
       <Section tone="light" labelledBy="services-h">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading
-            id="services-h"
-            title="Our Services"
-            lede="Our work falls into three areas. Each is explained in more detail on its own page."
-          />
-          <ArrowLink href="/services" className="shrink-0 self-start md:self-end">
-            All services
-          </ArrowLink>
-        </div>
-        <PracticeGrid practices={practices} />
+        <SectionHeading
+          id="services-h"
+          eyebrow="Our Services"
+          size="lg"
+          title={
+            <>
+              We raise capital, restructure debt <Muted>and advise on stressed assets.</Muted>
+            </>
+          }
+          className="mb-14 md:mb-18"
+        />
+        <PracticeGrid practices={practices} plates={plates} />
       </Section>
 
-      <Section tone="paper" labelledBy="transactions-h">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading
-            id="transactions-h"
-            title="Selected Transactions"
-            lede="Examples of financing we have arranged. Client names are not disclosed."
-          />
-          <ArrowLink href="/services#transactions" className="shrink-0 self-start md:self-end">
-            Transaction details
-          </ArrowLink>
-        </div>
-        <TombstoneGrid items={tombstones} />
-      </Section>
-
-      <Section tone="dark" labelledBy="history-h">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-20">
-          <SectionHeading id="history-h" dark title="Our History" />
-          <div data-reveal>
-            <p className="lede text-warm/80">
-              CFM began in 1991 in a small office in Kolkata, arranging loans for companies. Its founding commitment was
-              to be available to clients whenever they needed us, even at short notice.
-            </p>
-            <p className="lede mt-5 text-warm/80">
-              Over three decades the firm has grown into debt syndication, merchant banking and broader financial
-              advisory, with offices in four cities. That commitment to clients has not changed.
-            </p>
-            <ArrowLink href="/about" dark className="mt-8">
-              Read our history
+      <section aria-labelledby="transactions-h" className="relative isolate overflow-hidden bg-deep text-warm">
+        <Plate photo={imagery.transactions} decorative sizes="100vw" className="absolute inset-0 -z-10" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-deep/80 via-deep/70 to-deep/90" />
+        <div className="container-house py-22 md:py-32">
+          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+            <SectionHeading
+              id="transactions-h"
+              eyebrow="Selected Transactions"
+              dark
+              size="lg"
+              title={
+                <>
+                  ₹2,190 crore, <Muted dark>structured across three financings.</Muted>
+                </>
+              }
+            />
+            <ArrowLink href="/services#transactions" dark className="shrink-0 self-start lg:self-end">
+              The case studies
             </ArrowLink>
           </div>
+          <div className="mt-14">
+            <TombstoneGrid items={tombstones} dark />
+          </div>
+          <p className="mt-5 text-[13px] text-warm/60">Client names are not disclosed.</p>
         </div>
-      </Section>
+      </section>
 
-      <Section tone="light" labelledBy="people-h">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <section aria-labelledby="history-h" className="bg-paper lg:grid lg:grid-cols-2">
+        <Plate
+          photo={imagery.history}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="aspect-[4/3] lg:aspect-auto lg:min-h-[680px]"
+        />
+        <div className="flex flex-col justify-center px-6 py-18 md:px-10 md:py-24 lg:px-16 xl:px-24">
           <SectionHeading
-            id="people-h"
-            title="Leadership & Governance"
-            lede="CFM is overseen by a board of directors with long experience in banking, finance and public policy, and run by its management team."
+            id="history-h"
+            eyebrow="Our History"
+            title={
+              <>
+                Founded in 1991 on one promise: <Muted>be there when the client calls.</Muted>
+              </>
+            }
           />
-          <ArrowLink href="/leadership" className="shrink-0 self-start md:self-end">
-            Meet the board and management
+          <p className="lede mt-8 max-w-[52ch] text-grey" data-reveal>
+            CFM began in a small office in Kolkata, arranging loans. Debt syndication followed, then merchant banking and
+            wider advisory, and offices in four cities.
+          </p>
+          <ArrowLink href="/about" className="mt-10 self-start">
+            Our history
           </ArrowLink>
         </div>
-        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4">
-          {featuredPeople.map((p, i) => (
-            <PersonCard key={p.slug} person={p} index={i} />
-          ))}
+      </section>
+
+      <Section tone="light" labelledBy="people-h">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-20">
+          <SectionHeading
+            id="people-h"
+            eyebrow="Our People"
+            size="lg"
+            title={
+              <>
+                Bankers, policymakers <Muted>and a team across four cities.</Muted>
+              </>
+            }
+          />
+          <div data-reveal>
+            <p className="lede text-grey">
+              Our board brings together the firm&apos;s founder, a former chief executive of IFCI, a former Finance Minister of
+              Jammu &amp; Kashmir, a chartered accountant and a merchant banker associated with more than a hundred IPOs.
+              Our senior advisors spent their careers at State Bank of India, Bank of Baroda and Vijaya Bank.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
+              <ArrowLink href="/leadership">Leadership &amp; Governance</ArrowLink>
+              <ArrowLink href="/life-at-cfm">Life at CFM</ArrowLink>
+            </div>
+          </div>
         </div>
+        <figure className="mt-14 md:mt-18" data-reveal>
+          <div className="relative aspect-[16/10] overflow-hidden md:aspect-[21/9]">
+            <Image
+              src={imagery.team.src}
+              alt={imagery.team.alt}
+              fill
+              sizes="(min-width: 1440px) 1320px, 100vw"
+              quality={75}
+              className="object-cover object-[50%_55%]"
+            />
+          </div>
+          <figcaption className="mt-3 text-[13px] text-grey">Team Synergy Retreat, 2024</figcaption>
+        </figure>
       </Section>
 
       <CtaBand />
