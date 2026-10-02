@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CtaBand } from "@/components/CtaBand";
 import { DisclaimerGate } from "@/components/DisclaimerGate";
 import { DocumentList } from "@/components/DocumentList";
 import { PageHero } from "@/components/PageHero";
@@ -18,9 +17,9 @@ export default function PublicIssuesTrackRecordPage() {
   return (
     <>
       <PageHero
-        eyebrow="Track Record of Public Issues"
-        lines={["The Post-Listing", "Record, as Required."]}
-        lede="Not a recommendation, not an advertisement, and not an indicator of future performance. Published pursuant to SEBI Circular CIR/MIRSD/1/2012."
+        eyebrow="Regulatory Information"
+        title="Track Record of Public Issues"
+        lede="Published under SEBI Circular CIR/MIRSD/1/2012. This information is not a recommendation or an advertisement, and past performance is no indication of future performance."
       />
 
       <Section tone="light">
@@ -43,7 +42,6 @@ export default function PublicIssuesTrackRecordPage() {
         </DisclaimerGate>
       </Section>
 
-      <CtaBand />
     </>
   );
 }

@@ -141,6 +141,7 @@ export function Hero({ lines, lede }: { lines: readonly string[]; lede: string }
             {lines.map((l, i) => (
               <span key={i} className="block lg:whitespace-nowrap">
                 {l}
+                {i < lines.length - 1 ? " " : ""}
               </span>
             ))}
           </h1>

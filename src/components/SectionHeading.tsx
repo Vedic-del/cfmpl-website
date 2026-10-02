@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 
 /**
- * The house section grammar: eyebrow → display heading broken across lines → lede.
- * `lines` are rendered on separate lines at md and up, and flow naturally on mobile.
+ * Section heading: optional short label, a plain descriptive heading, and an
+ * optional lede. Headings are deliberately simple ("Our Services", "Selected
+ * Transactions") — see internal/voice.md.
  */
 export function SectionHeading({
   eyebrow,
-  lines,
+  title,
   lede,
   dark = false,
   as: Tag = "h2",
@@ -14,8 +15,8 @@ export function SectionHeading({
   className = "",
   children,
 }: {
-  eyebrow: string;
-  lines: readonly string[];
+  eyebrow?: string;
+  title: string;
   lede?: ReactNode;
   dark?: boolean;
   as?: "h1" | "h2";
@@ -25,17 +26,12 @@ export function SectionHeading({
 }) {
   return (
     <div className={className} data-reveal>
-      <p className={`eyebrow ${dark ? "text-brand-light" : "text-brand"}`}>{eyebrow}</p>
-      <Tag id={id} className={`display mt-5 ${dark ? "text-brand-light" : "text-ink"}`}>
-        {lines.map((line, i) => (
-          <span key={i} className="md:block">
-            {line}
-            {i < lines.length - 1 ? " " : ""}
-          </span>
-        ))}
+      {eyebrow ? <p className={`eyebrow mb-5 ${dark ? "text-brand-light" : "text-brand"}`}>{eyebrow}</p> : null}
+      <Tag id={id} className={`display max-w-[24ch] ${dark ? "text-brand-light" : "text-ink"}`}>
+        {title}
       </Tag>
       {lede ? (
-        <div className={`lede mt-6 max-w-[58ch] ${dark ? "text-warm/70" : "text-grey"}`}>{lede}</div>
+        <div className={`lede mt-6 max-w-[60ch] ${dark ? "text-warm/75" : "text-grey"}`}>{lede}</div>
       ) : null}
       {children}
     </div>

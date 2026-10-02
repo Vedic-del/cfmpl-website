@@ -1,6 +1,9 @@
 /**
- * Selected transactions and case studies, from the "Past Work" section of cfml.in.
- * Client names are withheld on the current site; they stay withheld here.
+ * Selected transactions, from the "Past Work" case studies on cfml.in.
+ * Client names are not disclosed on the current site; they stay undisclosed.
+ *
+ * The two case studies cover three financings. Each transaction is described
+ * once: tiles on the home page, full write-ups on the Services page.
  */
 
 export type Tombstone = {
@@ -8,89 +11,97 @@ export type Tombstone = {
   client: string;
   value: string;
   instrument: string;
-  // FLAG: transaction dates are not stated on the current site.
-  date: string | null;
+  /** Which service page this transaction belongs on. */
+  practice: string;
+  /** Anchor of the full write-up on the Services page. */
+  caseSlug: string;
 };
 
 export const tombstones: readonly Tombstone[] = [
   {
     role: "Debt Syndication",
-    client: "Road EPC and HAM developer — Delhi–Mumbai Expressway corridor",
-    value: "₹710 cr",
-    instrument: "Hybrid Annuity Model project financing",
-    date: null,
+    client: "Road construction company — Delhi–Mumbai Expressway corridor",
+    value: "₹710 crore",
+    instrument: "Project finance for a Hybrid Annuity Model highway project",
+    practice: "corporate-advisory",
+    caseSlug: "highway-projects",
   },
   {
     role: "Debt Syndication",
-    client: "Road EPC and HAM developer — second NHAI award",
-    value: "₹480 cr",
-    instrument: "Hybrid Annuity Model project financing",
-    date: null,
+    client: "Road construction company — second NHAI project",
+    value: "₹480 crore",
+    instrument: "Project finance for a Hybrid Annuity Model highway project",
+    practice: "corporate-advisory",
+    caseSlug: "highway-projects",
   },
   {
     role: "Debt Capital Markets",
-    client: "Indian private-sector bank, infrastructure finance focus",
-    value: "₹1,000 cr",
+    client: "Indian private-sector bank focused on infrastructure finance",
+    value: "₹1,000 crore",
     instrument: "Basel III-compliant Tier II bonds",
-    date: null,
+    practice: "corporate-advisory",
+    caseSlug: "tier-ii-bonds",
   },
 ] as const;
 
 export type CaseStudy = {
   slug: string;
-  eyebrow: string;
-  headline: readonly string[];
+  type: string;
+  title: string;
   value: string;
   valueNote: string;
   client: string;
-  obstacles: readonly string[];
-  actions: readonly string[];
-  outcome: string;
+  /** Plain explanation of a specialist term, where the case needs one. */
+  explainer?: string;
+  challenges: readonly string[];
+  role: readonly string[];
+  result: string;
 };
 
 export const caseStudies: readonly CaseStudy[] = [
   {
-    slug: "expressway-ham",
-    eyebrow: "Roads · Hybrid Annuity Model",
-    headline: ["Two Expressway Projects,", "Financed Against", "Every Objection."],
-    value: "₹1,190 cr",
-    valueNote: "₹480 crore and ₹710 crore, across two newly awarded HAM projects",
+    slug: "highway-projects",
+    type: "Debt syndication · Roads",
+    title: "Funding for Two Highway Projects",
+    value: "₹1,190 crore",
+    valueNote: "₹710 crore and ₹480 crore, for two newly awarded projects",
     client:
-      "A road-construction business operating since 2005, with a regional EPC record on state road projects for the PWD and MSRDC in Gujarat and Maharashtra, then moving into National Highway construction under NHAI's Hybrid Annuity Model.",
-    obstacles: [
-      "Project sizes and costs well beyond anything the company had delivered before",
-      "A limited track record with NHAI",
-      "A credit rating below the A category",
-      "Bankers reluctant to lend, and wider concern about the roads sector",
-      "A slowdown brought on by COVID-19",
+      "A road construction company operating since 2005. It had built state road projects for the PWD and MSRDC in Gujarat and Maharashtra, and had then won its first National Highway projects from NHAI, on the Delhi–Mumbai Expressway corridor.",
+    explainer:
+      "Under the Hybrid Annuity Model (HAM), NHAI pays part of a highway's construction cost during building and the rest, with interest, as annual payments after completion. The contractor must raise debt for its share.",
+    challenges: [
+      "The projects were much larger than any the company had built before.",
+      "It had a limited track record with NHAI.",
+      "Its credit rating was below the A category.",
+      "Banks were cautious about lending to the roads sector.",
+      "The economic slowdown caused by COVID-19.",
     ],
-    actions: [
-      "Structured funding of ₹480 crore and ₹710 crore for two newly awarded HAM projects on the Delhi–Mumbai Expressway corridor",
-      "Built the case around the company's genuine strengths rather than around its gaps",
-      "Answered each banker's concern with a specific mitigant in the deal structure",
-      "Arranged the funding tie-ups",
-      "Guided the company's CRISIL rating presentation, and helped build the case for an upgrade on its improved credit profile and demonstrated execution",
+    role: [
+      "Structured funding of ₹710 crore and ₹480 crore for the two projects.",
+      "Presented the company's strengths to lenders.",
+      "Addressed each lender's concerns through specific features of the deal structure.",
+      "Arranged the funding tie-ups with lenders.",
+      "Advised the company on its presentation to CRISIL, and helped it make the case for a rating upgrade based on its improved credit profile and execution record.",
     ],
-    outcome:
-      "Both projects were funded. The company entered the National Highway segment with its financing in place, and with a stronger case for its credit rating than it began with.",
+    result: "Funding tie-ups were arranged for both projects.",
   },
   {
     slug: "tier-ii-bonds",
-    eyebrow: "Banking · Basel III Capital",
-    headline: ["A ₹1,000 Crore", "Tier II Raise for a", "Young Bank."],
-    value: "₹1,000 cr",
+    type: "Debt capital markets · Banking",
+    title: "Tier II Bonds for a Private-Sector Bank",
+    value: "₹1,000 crore",
     valueNote: "Basel III-compliant Tier II bonds",
-    client:
-      "An Indian private-sector bank operating since 2014, focused on infrastructure finance under RBI guidelines.",
-    obstacles: ["Capital to be raised through the post-COVID recovery period"],
-    actions: [
-      "Structured the ₹1,000 crore raise through Basel III-compliant Tier II bonds",
-      "Assisted with the required documentation",
-      "Referred eligible investors",
-      "Coordinated with the bank throughout, tracking progress and clearing bottlenecks",
-      "Advised the bank on stressed-asset resolution alongside the raise",
+    client: "An Indian private-sector bank, operating since 2014, focused on infrastructure finance under RBI guidelines.",
+    explainer:
+      "Tier II bonds are a form of long-term borrowing that banks can count towards their regulatory capital under the Basel III rules, which set how much capital banks must hold.",
+    challenges: ["The funding was raised during the recovery period after COVID-19."],
+    role: [
+      "Structured ₹1,000 crore of funding through Basel III-compliant Tier II bonds.",
+      "Assisted with the required documentation.",
+      "Introduced eligible investors.",
+      "Worked closely with the bank throughout, tracking progress and resolving bottlenecks.",
+      "Also advised the bank on stressed-asset resolution.",
     ],
-    outcome:
-      "The Tier II capital was raised, and the relationship continued into advisory work on stressed-asset resolution through the recovery period.",
+    result: "CFM continued to work with the bank through the post-COVID recovery period, including on stressed-asset resolution.",
   },
 ] as const;

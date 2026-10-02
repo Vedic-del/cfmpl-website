@@ -8,7 +8,7 @@ cfmarc.in — same type system, same section grammar, same voice, one different 
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm run build   # static site written to ./out — 21 routes
+npm run build   # static site written to ./out — 20 routes
 npm run lint
 npm run typecheck
 ```
@@ -32,15 +32,15 @@ people on webmail.
 
 - `src/content/` — **all copy and every fact.** Pages never hard-code text. If a number, name or
   address is wrong, it is wrong in exactly one file here.
-- `src/components/` — one job each. `Section` + `SectionHeading` enforce the house grammar
-  (eyebrow → display heading broken across lines → light body → arrow link).
+- `src/components/` — one job each. `Section` + `SectionHeading` give every section the same shape:
+  a plain heading that names the section, an optional short lede, then the content.
 - `src/app/` — one folder per route, all pre-rendered at build time.
 
 ## The rules this build follows
 
 - **Type:** Figtree (display) over Spline Sans 300 (body). No serif.
 - **Colour:** one hue, `#636555`, sampled from the wordmark, plus tints and shades. Nothing else.
-- **Mandala:** the logo, the home hero, the process diagram, the favicon, the 404. Nowhere else.
+- **Mandala:** the logo, the home hero, the process diagram and the favicon. Nowhere else.
 - **Numbers:** always carry their basis and period.
 - **CFMPL advises** on stressed-asset resolution. CFM ARC resolves. Never collapse the two.
 

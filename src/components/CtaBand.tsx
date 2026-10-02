@@ -2,28 +2,19 @@ import Link from "next/link";
 import { firm } from "@/content/firm";
 import { primaryAction } from "@/content/navigation";
 
-/** Closing band on every page — the one place contact is invited outright. */
+/** Closing band on most pages. States how to get in touch — no promises about terms or timing. */
 export function CtaBand({
-  eyebrow = "Discuss a Mandate",
-  lines = ["Tell Us Where the", "Business Stands."],
-  body = "A short conversation is usually enough to tell whether we can help, and what kind of capital would suit. There is no obligation, and nothing is billed for it.",
+  title = "Talk to Us",
+  body = "Write to us or call our Mumbai office, and tell us a little about your company and what it needs.",
 }: {
-  eyebrow?: string;
-  lines?: readonly string[];
+  title?: string;
   body?: string;
 }) {
   return (
     <section className="bg-brand text-warm">
       <div className="container-house grid gap-10 py-18 md:grid-cols-[1.3fr_1fr] md:items-end md:py-22">
         <div data-reveal>
-          <p className="eyebrow text-warm/90">{eyebrow}</p>
-          <h2 className="display mt-5 text-warm">
-            {lines.map((l, i) => (
-              <span key={i} className="md:block">
-                {l}{" "}
-              </span>
-            ))}
-          </h2>
+          <h2 className="display text-warm">{title}</h2>
           <p className="lede mt-6 max-w-[52ch] text-warm/95">{body}</p>
         </div>
         <div className="flex flex-col items-start gap-4 md:items-end" data-reveal>

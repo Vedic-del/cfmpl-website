@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function DisclaimerPage() {
   return (
     <>
-      <PageHero eyebrow="Legal" lines={["Disclaimer"]} />
+      <PageHero eyebrow="Legal" title="Disclaimer" />
 
       <Section tone="light">
         <div className="prose-house max-w-[72ch] text-grey">

@@ -1,63 +1,61 @@
 import type { CaseStudy as CaseStudyT } from "@/content/transactions";
 
+/** One transaction, written up in a consistent format: client, challenge, our role, result. */
 export function CaseStudy({ study, dark = false }: { study: CaseStudyT; dark?: boolean }) {
-  const muted = dark ? "text-warm/70" : "text-grey";
+  const muted = dark ? "text-warm/75" : "text-grey";
   const rule = dark ? "border-line-dark" : "border-line";
   const accent = dark ? "text-brand-light" : "text-brand";
 
   return (
-    <article id={study.slug} className="scroll-mt-28">
-      <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+    <article id={study.slug} className="scroll-mt-28" aria-labelledby={`${study.slug}-h`}>
+      <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <div data-reveal>
-          <p className={`eyebrow ${accent}`}>{study.eyebrow}</p>
-          <h2 className={`display mt-5 ${dark ? "text-brand-light" : ""}`}>
-            {study.headline.map((l, i) => (
-              <span key={i} className="md:block">
-                {l}{" "}
-              </span>
-            ))}
-          </h2>
+          <p className={`eyebrow ${accent}`}>{study.type}</p>
+          <h3 id={`${study.slug}-h`} className={`display mt-5 ${dark ? "text-brand-light" : ""}`}>
+            {study.title}
+          </h3>
           <p className={`lede mt-6 ${muted}`}>{study.client}</p>
+          {study.explainer ? (
+            <p className={`mt-5 border-l-2 pl-5 text-[14.5px] leading-[1.75] ${muted} ${dark ? "border-brand-light/50" : "border-brand/40"}`}>
+              {study.explainer}
+            </p>
+          ) : null}
         </div>
         <div className={`self-end border-t pt-6 ${rule}`} data-reveal>
-          <p className="num font-display text-[3.2rem] leading-none tracking-[-0.02em]">{study.value}</p>
+          <p className="num font-display text-[3rem] leading-none tracking-[-0.02em]">{study.value}</p>
           <p className={`mt-3 text-[14px] ${muted}`}>{study.valueNote}</p>
         </div>
       </div>
 
-      <div className="mt-14 grid gap-12 md:grid-cols-2 md:gap-16">
+      <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
         <div data-reveal>
-          <h3 className={`eyebrow ${accent}`}>What stood in the way</h3>
+          <h4 className={`eyebrow ${accent}`}>The challenge</h4>
           <ul className={`mt-5 border-t ${rule}`}>
-            {study.obstacles.map((o) => (
-              <li key={o} className={`border-b py-4 text-[15px] leading-relaxed ${rule} ${muted}`}>
-                {o}
+            {study.challenges.map((c) => (
+              <li key={c} className={`border-b py-4 text-[15px] leading-relaxed ${rule} ${muted}`}>
+                {c}
               </li>
             ))}
           </ul>
         </div>
         <div data-reveal>
-          <h3 className={`eyebrow ${accent}`}>What we did</h3>
+          <h4 className={`eyebrow ${accent}`}>Our role</h4>
           <ul className={`mt-5 border-t ${rule}`}>
-            {study.actions.map((a) => (
-              <li key={a} className={`flex gap-4 border-b py-4 text-[15px] leading-relaxed ${rule}`}>
+            {study.role.map((r) => (
+              <li key={r} className={`flex gap-4 border-b py-4 text-[15px] leading-relaxed ${rule}`}>
                 <span aria-hidden="true" className={`mt-0.5 ${accent}`}>
                   →
                 </span>
-                <span className={dark ? "text-warm/85" : "text-ink"}>{a}</span>
+                <span className={dark ? "text-warm/90" : "text-ink"}>{r}</span>
               </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <p
-        className={`mt-10 max-w-[70ch] border-l-2 pl-6 font-display text-[1.15rem] leading-relaxed ${
-          dark ? "border-brand-light text-warm" : "border-brand text-ink"
-        }`}
-        data-reveal
-      >
-        {study.outcome}
+      <p className={`mt-10 max-w-[70ch] text-[15.5px] leading-relaxed ${dark ? "text-warm/90" : "text-ink"}`} data-reveal>
+        <strong className={`font-display font-medium ${accent}`}>Result: </strong>
+        {study.result}
       </p>
     </article>
   );

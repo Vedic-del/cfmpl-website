@@ -1,15 +1,13 @@
-/** Life at CFM and careers, from the event gallery / careers page of cfml.in. */
+/** Careers, from the event gallery and careers sections of cfml.in. */
 
 export const culture = {
-  eyebrow: "Life at CFM",
-  headline: ["A Firm Small Enough", "to Learn In."],
-  lede:
-    "A small firm on transactions of a few hundred crore, which means no layer between you and the work. People here sit in the room when a credit is argued, and are expected to ask why. The firm is close-knit by design, with one ambition: to be the best at financial advisory in India.",
+  intro:
+    "We are a close-knit team working on corporate finance transactions across India, from offices in Mumbai, New Delhi, Chennai and Ahmedabad. We value learning, asking questions and working together, and we want people who will take responsibility for their work.",
   values: [
-    { title: "Learning", body: "Every mandate teaches something. We make time to pass it on." },
-    { title: "Asking questions", body: "The obvious structure is rarely the right one. Asking why is part of the job." },
-    { title: "Mutual support", body: "A small firm working on large transactions only works if everyone backs everyone." },
-    { title: "Developing talent", body: "We invest in the people who join us, and in what they can become." },
+    { title: "Learning", body: "Every transaction teaches something new, and we make time to pass that knowledge on." },
+    { title: "Asking questions", body: "We expect people to ask why, and to look for a better way of structuring a deal." },
+    { title: "Working together", body: "Transactions involve the whole team, so we rely on one another." },
+    { title: "Developing people", body: "We invest in the people who join us and help them build their careers." },
   ],
 } as const;
 
@@ -19,24 +17,24 @@ export const events = [
   "International Women's Day",
   "Christmas and New Year 2023",
   "Children's Day",
-  "Ahmedabad Office Inauguration",
+  "Ahmedabad office opening",
   "First Town Hall, 5 March 2022",
 ] as const;
 
 export const qualities = [
   "Drive and ambition",
   "Integrity and commitment",
-  "Focus and attention to detail",
-  "Creativity and independent thinking",
+  "Attention to detail",
+  "Independent thinking",
   "Teamwork",
   "Strong domain knowledge",
-  "A client-first approach",
-  "Orientation to results",
+  "A focus on the client",
+  "A focus on results",
 ] as const;
 
 export type Role = { title: string; location: string; practice: string };
 
-// FLAG: roles carried from the current careers page. Confirm they are still open before launch.
+// Open positions. An empty list shows a "no open positions" message.
 export const openRoles: readonly Role[] = [
   { title: "AVP / VP — Debt Syndication", location: "Mumbai — Ballard Estate", practice: "Corporate Advisory" },
   { title: "Accounts Manager", location: "Mumbai — Fort", practice: "Finance" },
@@ -48,6 +46,6 @@ export const howToApply = {
     "Your CV",
     "Your academic qualifications",
     "Your work experience",
-    "A short note on why you would be the right fit",
+    "A short note on why you would be a good fit",
   ],
 } as const;

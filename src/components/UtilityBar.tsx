@@ -8,10 +8,13 @@ export function UtilityBar() {
           {firm.legalName}
           <span className="mx-2 text-warm/55">·</span>
           SEBI {firm.sebiCategory}
-          <span className="mx-2 text-warm/55">·</span>
-          Registration No.{" "}
-          {/* FLAG: registration number to be supplied */}
-          <span className="text-brand-light">{firm.sebiRegistrationNo ?? "to be confirmed"}</span>
+          {/* The registration number is shown only once it has been supplied — never a placeholder. */}
+          {firm.sebiRegistrationNo ? (
+            <>
+              <span className="mx-2 text-warm/55">·</span>
+              Registration No. {firm.sebiRegistrationNo}
+            </>
+          ) : null}
         </p>
         <p className="hidden lg:block">Mumbai · New Delhi · Chennai · Ahmedabad</p>
       </div>

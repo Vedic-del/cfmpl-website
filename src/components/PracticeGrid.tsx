@@ -13,22 +13,23 @@ export function PracticeGrid({ practices }: { practices: readonly Practice[] }) 
             i === 0 ? "md:pl-0" : ""
           } ${i === practices.length - 1 ? "md:pr-0" : ""}`}
         >
-          <p className="eyebrow text-brand">{p.index}</p>
-          <h3 className="mt-4 text-[1.45rem] font-medium leading-tight">
-            <Link href={`/what-we-do/${p.slug}`} className="transition-colors duration-200 hover:text-brand">
+          <h3 className="text-[1.45rem] font-medium leading-tight">
+            <Link href={`/services/${p.slug}`} className="transition-colors duration-200 hover:text-brand">
               {p.name}
             </Link>
           </h3>
-          <p className="mt-4 text-[14.5px] leading-[1.75] text-grey">{p.short}</p>
+          <p className="mt-4 text-[15px] leading-[1.75] text-grey">{p.summary}</p>
           <ul className="mt-auto pt-6">
-            {p.summaryLinks.map((label) => (
+            {p.cardLinks.map((label) => (
               <li key={label}>
                 <Link
-                  href={`/what-we-do/${p.slug}`}
-                  className="group flex items-center justify-between border-t border-line py-3 font-display text-[13.5px] transition-colors duration-200 hover:text-brand"
+                  href={`/services/${p.slug}`}
+                  className="group flex items-center justify-between border-t border-line py-3 font-display text-[14px] transition-colors duration-200 hover:text-brand"
                 >
                   {label}
-                  <span aria-hidden="true" className="text-brand transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  <span aria-hidden="true" className="text-brand transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
                 </Link>
               </li>
             ))}

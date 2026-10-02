@@ -9,7 +9,7 @@ export type Person = {
   role: string;
   summary: string;
   bio: readonly string[];
-  // FLAG: portraits not supplied. Cards render a monogram until they are.
+  // Optional. Without a portrait, cards show the person's initials.
   photo: string | null;
 };
 
@@ -17,10 +17,10 @@ export const board: readonly Person[] = [
   {
     slug: "om-porwal",
     name: "Om Porwal",
-    role: "Director",
-    summary: "Member of the ICAI since 1985. Financial structuring for large corporates and government undertakings.",
+    role: "Founder and Director",
+    summary: "Founded CFM in 1991. Chartered accountant since 1985, specialising in financial structuring.",
     bio: [
-      "Om Porwal has been a member of the Institute of Chartered Accountants of India since 1985. His expertise is financial structuring, and he has advised large corporates and government undertakings on innovative financial modelling.",
+      "Om Porwal founded CFM in 1991. He has been a member of the Institute of Chartered Accountants of India since 1985. His expertise is financial structuring, and he has advised large corporates and government undertakings on financial modelling.",
       "He has served as a director of Yashraj Biotechnology Limited and of the OTC Exchange of India.",
     ],
     photo: null,
@@ -28,7 +28,7 @@ export const board: readonly Person[] = [
   {
     slug: "malay-mukherjee",
     name: "Malay Mukherjee",
-    role: "Board Director",
+    role: "Director",
     summary: "Former CEO and Managing Director, IFCI Limited. Former Executive Director, Central Bank of India.",
     bio: [
       "Malay Mukherjee brings more than forty years of experience across banking, NBFCs, venture funding, factoring and broking. He was Chief Executive Officer and Managing Director of IFCI Limited, chaired several IFCI group companies, and served as Executive Director of Central Bank of India.",
@@ -40,7 +40,7 @@ export const board: readonly Person[] = [
   {
     slug: "haseeb-drabu",
     name: "Dr. Haseeb Drabu",
-    role: "Board Director",
+    role: "Director",
     summary: "Economist. Former Finance Minister of Jammu & Kashmir. Former bank chairman and chief executive.",
     bio: [
       "Dr. Haseeb Drabu is a professional economist whose career spans lawmaking, policy planning, banking and economic commentary. He has worked in national economic policymaking with the Planning Commission, the Finance Commission and the Economic Advisory Council to the Prime Minister.",
@@ -53,7 +53,7 @@ export const board: readonly Person[] = [
   {
     slug: "arvind-bhandari",
     name: "Arvind Bhandari",
-    role: "Board Director",
+    role: "Director",
     summary: "Fellow of the ICAI. Thirty years across manufacturing, international trade, finance and enterprise.",
     bio: [
       "Arvind Bhandari is a Fellow member of the Institute of Chartered Accountants of India with more than thirty years of experience.",
@@ -64,7 +64,7 @@ export const board: readonly Person[] = [
   {
     slug: "ss-sudanthiram",
     name: "S. S. Sudanthiram",
-    role: "Board Director",
+    role: "Director",
     summary: "Former merchant banker, associated with more than a hundred IPOs.",
     bio: [
       "S. S. Sudanthiram is a former merchant banker with experience across credit, merchant banking, treasury and the capital markets, and has been associated with more than a hundred initial public offerings.",
@@ -107,11 +107,11 @@ export const advisors: readonly Person[] = [
     slug: "murali-ramaswami",
     name: "Murali Ramaswami",
     role: "Advisor",
-    summary: "Former Executive Director, Bank of Baroda and Vijaya Bank. Leads South India operations.",
+    summary: "Former Executive Director of Bank of Baroda and of Vijaya Bank. Over thirty years in banking.",
     bio: [
       "Murali Ramaswami has more than thirty years in banking, beginning in 1985. He joined Vijaya Bank and rose to Executive Director, holding credit, operations and CFO responsibilities along the way, and was Executive Director of Bank of Baroda from 2019 to 2020. Before banking he was an Accounts Officer at Indian Oil Blending Limited.",
       "His experience covers credit, treasury, international operations, cash management, integration management, digital banking and IT. He holds a B.Com and an MBA in corporate finance, foreign trade and market research from the University of Madras, is a CAIIB and an AICWA, and holds a DBF from the Institute of Chartered Financial Analysts of India.",
-      "At CFM he leads business development for debt syndication, resolution advisory and South India operations.",
+      "At CFM, he works on business development for debt syndication and resolution, and on the firm's South India operations.",
     ],
     photo: null,
   },

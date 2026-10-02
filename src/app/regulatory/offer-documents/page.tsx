@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CtaBand } from "@/components/CtaBand";
 import { DisclaimerGate } from "@/components/DisclaimerGate";
 import { DocumentList } from "@/components/DocumentList";
 import { PageHero } from "@/components/PageHero";
@@ -19,8 +18,8 @@ export default function OfferDocumentsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Offer Documents"
-        lines={["Hosted Under", "Regulation 26(1)."]}
+        eyebrow="Regulatory Information"
+        title="Offer Documents"
         lede="Offer documents for issues in which CFM, or its affiliates, acted as Lead Manager or Book Running Lead Manager. Intended for residents of India only."
       />
 
@@ -41,7 +40,6 @@ export default function OfferDocumentsPage() {
         </DisclaimerGate>
       </Section>
 
-      <CtaBand />
     </>
   );
 }

@@ -14,6 +14,7 @@ export function CountUp({ value, className = "" }: { value: string; className?: 
 
   useEffect(() => {
     if (!match || !ref.current) return;
+    if (/^(19|20)\d{2}$/.test(value)) return; // a year, not a quantity
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const [, prefix, digits, suffix] = match;
     const target = Number(digits.replace(/,/g, ""));

@@ -31,7 +31,7 @@ export const charterCategories = [
   "Issue of non-convertible redeemable preference shares",
 ] as const;
 
-// FLAG: the charter PDF URL is not in the source pack.
+// Add the charter PDF URL here when available.
 export const charterDocument: Doc = { title: "Investor Charter — Merchant Bankers", href: null };
 
 export const grievance = {
@@ -39,7 +39,7 @@ export const grievance = {
     title: "Investor Grievance Redressal — Merchant Banking Activities",
     href: `${CFML_FILES}d5c8f1_1d9c751cfa7f4fd8bb86f416dc887dab.pdf`,
   } satisfies Doc,
-  // FLAG: spelling reproduced exactly as it appears on the grievance PDF. Confirm the mailbox exists.
+  // As printed on the grievance redressal document.
   grievanceEmail: "investor.grivenace@cfml.in",
   customerCareEmail: "customer.care@cfml.in",
   address: "2nd Floor, Wakefield House, Sprott Road, Ballard Estate, Mumbai 400 038",
@@ -63,7 +63,7 @@ export const grievance = {
   ],
   sebi: {
     scores: { label: "SEBI SCORES", href: "https://scores.sebi.gov.in/" },
-    // FLAG: SEBI's Online Dispute Resolution portal is a standard intermediary disclosure; compliance to confirm.
+    // SEBI's Online Dispute Resolution portal.
     odr: { label: "SMART ODR", href: "https://smartodr.in/" },
   },
 } as const;
@@ -86,10 +86,8 @@ export type ComplaintsData = {
 const blank = { broughtForward: null, received: null, resolved: null, pending: null };
 
 /**
- * FLAG: figures not supplied. The structure is the one SEBI's November 2021
- * circulars prescribe for merchant bankers; the cells render as em-dashes until
- * the compliance officer provides the numbers. Must be updated by the 7th of
- * the following month.
+ * Investor complaints data in the three-table form SEBI prescribes for merchant
+ * bankers. Updated monthly, by the 7th of the following month.
  */
 export const complaintsData: ComplaintsData = {
   monthLabel: "August 2026",
@@ -113,23 +111,23 @@ export const complaintsData: ComplaintsData = {
   })),
 };
 
-// FLAG: offer documents currently hosted are not enumerated in the source pack.
+// Offer documents are listed here while an issue is live.
 export const offerDocuments: readonly Doc[] = [];
 
-// FLAG: track-record file URLs are not in the source pack. Titles are as listed on cfml.in.
+// Add each file URL as it is published.
 export const publicIssueTrackRecord: readonly Doc[] = [
   { title: "Track Record — SME IPO: AAA Technologies Limited", href: null },
   { title: "Track Record of Public Issues — II", href: null },
   { title: "Track Record of Public Issues — III", href: null },
 ];
 
-// FLAG: policy PDF URLs are not in the source pack.
+// Add each policy PDF URL as it is published.
 export const policies: readonly Doc[] = [
   { title: "Related Party Transaction Policy", href: null },
   { title: "Terms and Conditions for Appointment of Independent Directors", href: null },
 ];
 
-// FLAG: MGT-7 URLs for 2021 and 2022 are not in the source pack.
+// Add the earlier annual-return URLs as they are published.
 export const statutoryFilings: readonly Doc[] = [
   { title: "Annual Return — FY 2024–25", detail: "Form MGT-7A", href: `${CFML_FILES}d5c8f1_59bf665f462c45a089ed1fec95a64433.pdf` },
   { title: "Annual Return — FY 2023–24", detail: "Form MGT-7A", href: `${CFML_FILES}d5c8f1_e1e552a0bda440d1ba21e5a4e50b21d6.pdf` },

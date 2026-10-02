@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ComplaintsTables } from "@/components/ComplaintsTables";
-import { CtaBand } from "@/components/CtaBand";
 import { DocumentList } from "@/components/DocumentList";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -22,7 +21,7 @@ import {
 export const metadata: Metadata = {
   title: "Regulatory Information",
   description:
-    "Investor charter, complaints data, grievance redressal, offer documents, policies and statutory filings for Chartered Finance Management, a SEBI Category I Merchant Banker.",
+    "Investor charter, complaints data, grievance redressal, offer documents, policies and annual returns of CFM, a SEBI Category I Merchant Banker.",
   alternates: { canonical: "/regulatory/" },
 };
 
@@ -30,9 +29,8 @@ export default function RegulatoryPage() {
   return (
     <>
       <PageHero
-        eyebrow="Regulatory Information"
-        lines={["Our Disclosures,", "in One Place."]}
-        lede="CFMPL is a SEBI-registered Category I Merchant Banker. Everything that registration requires us to publish is collected here: the investor charter, complaints data, the grievance route, offer documents, policies and statutory filings."
+        title="Regulatory Information"
+        lede="CFMPL is a SEBI-registered Category I Merchant Banker. This page sets out what that registration requires us to publish: our investor charter, complaints data, grievance process, offer documents, policies and annual returns."
         photo={imagery.regulatory}
       />
 
@@ -54,9 +52,8 @@ export default function RegulatoryPage() {
       <Section tone="light" labelledBy="charter">
         <SectionHeading
           id="charter"
-          eyebrow="Investor Charter"
-          lines={["What We Do, and What", "You Can Expect of Us."]}
-          lede="The charter sets out the merchant banking activities CFM undertakes and the service an investor is entitled to expect in each. It covers eleven categories of activity."
+          title="Investor Charter"
+          lede="The charter sets out the merchant banking activities CFM undertakes and the standard of service investors can expect in each. It covers eleven categories of activity."
         />
         <ol className="mt-10 grid gap-px bg-line md:grid-cols-2">
           {charterCategories.map((c, i) => (
@@ -77,8 +74,7 @@ export default function RegulatoryPage() {
       <Section tone="paper" labelledBy="complaints">
         <SectionHeading
           id="complaints"
-          eyebrow="Investor Complaints Data"
-          lines={["Complaints Received,", "and How They", "Were Resolved."]}
+          title="Investor Complaints Data"
           lede="Disclosed in the format SEBI prescribes for merchant bankers, and updated by the seventh of the following month."
         />
         <ComplaintsTables data={complaintsData} />
@@ -87,8 +83,7 @@ export default function RegulatoryPage() {
       <Section tone="light" labelledBy="grievances">
         <SectionHeading
           id="grievances"
-          eyebrow="Grievance Redressal"
-          lines={["How to Raise a", "Grievance With Us."]}
+          title="Grievance Redressal"
           lede={investorCareNote}
         />
         <ol className="mt-10 border-t border-line">
@@ -167,9 +162,8 @@ export default function RegulatoryPage() {
         <SectionHeading
           id="documents"
           dark
-          eyebrow="Offer Documents & Track Record"
-          lines={["Held Behind a", "Confirmation, as the", "Regulations Require."]}
-          lede="Offer documents are hosted under Regulation 26(1) of the SEBI ICDR Regulations, 2018. The post-listing record of public issues is published under SEBI Circular CIR/MIRSD/1/2012. Both are intended for residents of India and sit behind the confirmations those rules require."
+          title="Offer Documents and Track Record"
+          lede="Offer documents are hosted under Regulation 26(1) of the SEBI ICDR Regulations, 2018. The track record of public issues is published under SEBI Circular CIR/MIRSD/1/2012. Both are intended for residents of India, and you will be asked to confirm this before viewing them."
         />
         <div className="mt-10 grid gap-px bg-line-dark md:grid-cols-2" data-reveal>
           <Link href="/regulatory/offer-documents" className="group bg-deep px-7 py-8 md:px-9">
@@ -195,15 +189,14 @@ export default function RegulatoryPage() {
       </Section>
 
       <Section tone="light" labelledBy="policies">
-        <SectionHeading id="policies" eyebrow="Policies" lines={["The Rules We Set", "for Ourselves."]} />
+        <SectionHeading id="policies" title="Policies" />
         <DocumentList docs={policies} emptyText="Policy documents are available from our compliance officer on request." />
       </Section>
 
       <Section tone="paper" labelledBy="filings">
         <SectionHeading
           id="filings"
-          eyebrow="Statutory Filings"
-          lines={["Annual Returns,", "As Filed."]}
+          title="Annual Returns"
           lede="Published under Section 92(3) of the Companies Act, 2013, as amended by the Companies (Amendment) Act, 2017."
         />
         <DocumentList docs={statutoryFilings} />
@@ -223,7 +216,6 @@ export default function RegulatoryPage() {
         </dl>
       </Section>
 
-      <CtaBand />
     </>
   );
 }

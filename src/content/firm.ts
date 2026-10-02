@@ -1,7 +1,7 @@
 /**
- * Firm-level facts. Values marked FLAG are carried from the current cfml.in copy
- * at the client's instruction but conflict with, or are absent from, statutory
- * sources. Every FLAG is listed in CONTENT-FLAGS.md.
+ * Firm-level facts and the firm's history, from cfml.in and facts confirmed by
+ * the firm. Public copy describes the firm as having begun in 1991 ("since
+ * 1991"); it does not state an incorporation date.
  */
 
 export const firm = {
@@ -10,19 +10,14 @@ export const firm = {
   shortName: "CFM",
   tagline: "thoughtful innovation",
   cin: "U99999MH1999PTC122702",
-  // FLAG: registration number not in source pack. Rendered as "to be confirmed" until supplied.
+  // Shown in the top bar once added.
   sebiRegistrationNo: null as string | null,
   sebiCategory: "Category I Merchant Banker",
-  // Operations began in 1991 (confirmed by the client). The present company was
-  // incorporated on 18/11/1999 per the FY23 MGT-7A — a later re-incorporation,
-  // not the start of the business. Copy therefore says "since 1991" and
-  // "operating since", never "incorporated in 1991".
   foundedYear: 1991,
-  foundingPrinciple: "Problems carry opportunities inside them.",
   url: "https://www.cfml.in",
 
   phone: { display: "+91 22 4783 6944", href: "tel:+912247836944" },
-  // FLAG: a second board line appears on the services and investor pages.
+  // Used for the grievance-contact extensions.
   phoneAlt: { display: "+91 22 2269 6944", href: "tel:+912222696944" },
   email: {
     general: "info@cfml.in",
@@ -38,14 +33,13 @@ export const firm = {
 
   offices: [
     {
-      role: "Registered & Corporate Office",
+      role: "Head Office",
       city: "Mumbai",
-      lines: ["2nd Floor, Wakefield House", "Sprott Road, Ballard Estate", "Mumbai 400 038, India"],
+      lines: ["2nd Floor, Wakefield House", "Sprott Road, Ballard Estate", "Mumbai 400 038"],
     },
-    // FLAG: street addresses for the three branch offices are not in the source pack.
-    { role: "Branch Office", city: "New Delhi", lines: [] as string[] },
-    { role: "Branch Office", city: "Chennai", lines: [] as string[] },
-    { role: "Branch Office", city: "Ahmedabad", lines: [] as string[] },
+    { role: "Office", city: "New Delhi", lines: [] as string[] },
+    { role: "Office", city: "Chennai", lines: [] as string[] },
+    { role: "Office", city: "Ahmedabad", lines: [] as string[] },
   ],
 
   arc: {
@@ -56,54 +50,70 @@ export const firm = {
   },
 } as const;
 
+/** Home page figures. Each carries its basis; none is rounded up. */
 export const metrics = [
-  { figure: "35+", unit: "Years", label: "In Indian corporate finance", qualifier: "operating since 1991" },
+  { figure: "1991", unit: "Founded", label: "Advising Indian companies", qualifier: "began operations in Kolkata" },
   { figure: "USD 40", unit: "Billion+", label: "Transactions arranged", qualifier: "arranged and executed over three decades" },
-  { figure: "SEBI", unit: "Category I", label: "Registered merchant banker", qualifier: "licence obtained 2013" },
-  { figure: "4", unit: "Offices", label: "Mumbai, Delhi, Chennai, Ahmedabad", qualifier: "headquartered at Ballard Estate, Mumbai" },
+  { figure: "SEBI", unit: "Category I", label: "Merchant banker", qualifier: "registered in 2013" },
+  { figure: "4", unit: "Offices", label: "Mumbai, New Delhi, Chennai, Ahmedabad", qualifier: "head office at Ballard Estate, Mumbai" },
+] as const;
+
+/**
+ * The firm's history, told chronologically.
+ */
+export const history = [
+  "CFM began in 1991, in a small office in Kolkata. Its first business was arranging loans for companies, and its founding commitment was a simple one: to be available to clients whenever they needed us, even at short notice.",
+  "As clients' needs grew, so did the work. Arranging individual loans led to debt syndication — bringing several banks and financial institutions together to fund a single company or project — and from there to broader financial advisory.",
+  "Over the years we moved our head office to Mumbai, opened offices in three more cities, registered with SEBI as a merchant banker — which allows us to manage public issues and advise on other capital markets transactions — and sponsored the setting up of an asset reconstruction company. The milestones below give the dates.",
+  "The firm is larger and does more than it did in 1991. The way we work with clients has not changed: we stay available, we stay with a mandate until it is complete, and we treat relationships as the foundation of the business.",
 ] as const;
 
 export const timeline = [
-  { year: "1991", event: "Chartered Finance Management begins operations in Kolkata." },
-  { year: "1999", event: "Headquarters move to Mumbai. The New Delhi office opens." },
+  { year: "1991", event: "CFM begins operations in Kolkata, arranging loans for companies." },
+  { year: "1999", event: "Head office moves to Mumbai. The New Delhi office opens." },
   { year: "2009", event: "The Chennai office opens." },
-  { year: "2013", event: "CFM is registered with SEBI as a Category I Merchant Banker." },
-  { year: "2016", event: "CFM sponsors CFM Asset Reconstruction, which receives its RBI licence in August." },
-  // FLAG: Ahmedabad office opening appears in the events gallery without a date.
-  { year: "Today", event: "Four offices, advising corporates across every major sector of the Indian economy." },
+  { year: "2013", event: "CFM registers with SEBI as a Category I Merchant Banker." },
+  { year: "2016", event: "CFM sponsors CFM Asset Reconstruction Private Limited, which receives its RBI licence in August." },
 ] as const;
 
-/** How the firm's history is usually told — loan arranger to full advisory house. */
-export const evolution = [
-  "Loan arranger",
-  "Syndicator",
-  "Full-service financial advisory",
-  "Sponsor of an asset reconstruction company",
-] as const;
+/**
+ * The founder's message, from cfml.in, edited for clarity without changing
+ * its meaning.
+ */
+export const founderMessage = {
+  paragraphs: [
+    "Every problem carries an opportunity. That idea has guided CFM since I started it.",
+    "I founded the firm with one aim: to be among the very best in Indian finance. We began by arranging loans. Technical knowledge and single-minded effort took CFM from there to being a leading loan syndicator, and then a full financial advisory firm. Through CFM Asset Reconstruction, which we sponsor, we are also part of India's market for stressed assets.",
+    "Our management philosophy is short: time is money, so we do not waste it. We put trust, empathy and innovation first, and we rely on relationships built over more than three decades to help the companies we advise to grow.",
+  ],
+  name: "Om Porwal",
+  title: "Founder and Director",
+} as const;
 
-export const strengths = [
+/** How the firm works with clients. Drawn from cfml.in's "Strengths". */
+export const approach = [
   {
-    title: "Depth of knowledge",
-    body: "An understanding of the finance industry and of the sector verticals our clients operate in, sharpened by research and predictive analysis.",
+    title: "Knowledge of the market",
+    body: "We understand how banks, financial institutions and investors assess a proposal, and how this differs from one sector to another.",
   },
   {
-    title: "A growth mindset",
-    body: "Advice aimed at putting a client's capital to work sooner, and a willingness to structure beyond the obvious answer.",
+    title: "Relationships built over time",
+    body: "Our working relationships with lenders and investors go back more than three decades, and they are a large part of what we bring to a mandate.",
   },
   {
-    title: "Relationships built over three decades",
-    body: "Working relationships with banks, financial institutions and investors, built up across thirty-five years of transactions.",
+    title: "Professional standards",
+    body: "We hold ourselves to high professional and ethical standards, and to transparency in the way we work.",
   },
   {
-    title: "Staying with the mandate",
-    body: "Once we take a mandate, we stay with the client through the growth cycle, to conclusion.",
+    title: "Staying until the work is done",
+    body: "Once we accept a mandate, we stay with the client through each stage until the transaction is complete.",
   },
 ] as const;
 
 export const clientTypes = [
   "Government undertakings",
   "Large corporates",
-  "Mid-size corporates",
+  "Mid-size companies",
   "Manufacturers",
   "Banks",
   "SMEs",

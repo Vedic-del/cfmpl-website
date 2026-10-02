@@ -50,12 +50,12 @@ const csp = [
 ].join("; ");
 
 const description =
-  "Chartered Finance Management is a SEBI-registered Category I Merchant Banker advising Indian growth corporates on investment banking, corporate advisory and stressed-asset resolution advisory since 1991.";
+  "Mumbai-based financial advisory firm and SEBI Category I Merchant Banker, advising Indian companies on equity, debt, restructuring and stressed assets since 1991.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.url),
   title: {
-    default: `${firm.legalName} | SEBI Category I Merchant Banker`,
+    default: `${firm.legalName} | Financial Advisory & Merchant Banking`,
     template: `%s | ${firm.shortName}`,
   },
   description,

@@ -2,17 +2,18 @@ import Image from "next/image";
 import type { Photo } from "@/content/imagery";
 
 /**
- * Interior page hero. Dark band in the house register, optionally over a
- * photograph toned to the brand hue.
+ * Interior page hero: an optional parent label (for wayfinding on sub-pages),
+ * the page's H1, and a short lede. Optionally over a photograph toned to the
+ * brand hue.
  */
 export function PageHero({
   eyebrow,
-  lines,
+  title,
   lede,
   photo,
 }: {
-  eyebrow: string;
-  lines: readonly string[];
+  eyebrow?: string;
+  title: string;
   lede?: string;
   photo?: Photo;
 }) {
@@ -26,15 +27,9 @@ export function PageHero({
         </>
       ) : null}
       <div className="container-house py-20 md:py-28">
-        <p className="eyebrow text-brand-light">{eyebrow}</p>
-        <h1 className="display mt-5 max-w-[20ch] text-warm md:text-[3.25rem]">
-          {lines.map((l, i) => (
-            <span key={i} className="md:block">
-              {l}{" "}
-            </span>
-          ))}
-        </h1>
-        {lede ? <p className="lede mt-7 max-w-[60ch] text-warm/75">{lede}</p> : null}
+        {eyebrow ? <p className="eyebrow mb-5 text-brand-light">{eyebrow}</p> : null}
+        <h1 className="display max-w-[22ch] text-warm md:text-[3.25rem]">{title}</h1>
+        {lede ? <p className="lede mt-7 max-w-[60ch] text-warm/80">{lede}</p> : null}
       </div>
     </section>
   );
