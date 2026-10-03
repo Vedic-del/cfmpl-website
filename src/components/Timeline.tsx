@@ -3,13 +3,17 @@ type Entry = { year: string; event: string };
 /** Milestones. A vertical list on small screens; a single line across the page on wide ones. */
 export function Timeline({ entries }: { entries: readonly Entry[] }) {
   return (
-    <ol className="mt-14 border-t border-line-dark lg:grid lg:border-t-0" style={{ gridTemplateColumns: `repeat(${entries.length}, minmax(0, 1fr))` }}>
+    <ol
+      data-reveal="rail"
+      className="relative mt-14 border-t border-line-dark lg:grid lg:border-t-0 lg:before:absolute lg:before:inset-x-0 lg:before:top-0 lg:before:h-px lg:before:origin-left lg:before:bg-warm/25 lg:before:content-['']"
+      style={{ gridTemplateColumns: `repeat(${entries.length}, minmax(0, 1fr))` }}
+    >
       {entries.map((e, i) => (
         <li
           key={e.year}
           data-reveal
-          style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
-          className="group grid gap-2 border-b border-line-dark py-7 md:grid-cols-[160px_1fr] md:gap-10 lg:relative lg:block lg:border-b-0 lg:border-t lg:pt-10 lg:pr-8 lg:pb-0"
+          style={{ ["--reveal-delay" as string]: `${300 + i * 160}ms` }}
+          className="group grid gap-2 border-b border-line-dark py-7 md:grid-cols-[160px_1fr] md:gap-10 lg:relative lg:block lg:border-b-0 lg:pt-10 lg:pr-8 lg:pb-0"
         >
           <span
             aria-hidden="true"

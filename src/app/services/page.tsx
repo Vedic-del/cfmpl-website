@@ -137,7 +137,7 @@ export default function ServicesPage() {
               aria-labelledby="transactions-h"
               className="scroll-mt-36 border-t border-line py-18 md:py-24 lg:scroll-mt-20"
             >
-              <Plate photo={imagery.transactions} sizes="(min-width: 1024px) 75vw, 100vw" className="aspect-[21/9] w-full" />
+              <Plate photo={imagery.transactions} parallax={0.12} sizes="(min-width: 1024px) 75vw, 100vw" className="aspect-[21/9] w-full" />
               <div className="mt-12 flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
                 <div>
                   <p className="eyebrow text-brand">Selected Transactions</p>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Tombstone } from "@/content/transactions";
+import { CountUp } from "./CountUp";
 
 /** Transaction tiles. Each links to its full write-up on the Services page. */
 export function TombstoneGrid({ items, dark = false }: { items: readonly Tombstone[]; dark?: boolean }) {
@@ -18,7 +19,7 @@ export function TombstoneGrid({ items, dark = false }: { items: readonly Tombsto
             <span className={`eyebrow ${dark ? "text-brand-light" : "text-brand"}`}>{t.role}</span>
             <span className={`mt-4 font-display text-[18px] leading-snug ${dark ? "text-warm" : ""}`}>{t.client}</span>
             <span className={`num mt-auto pt-8 font-display text-[2.4rem] leading-none tracking-[-0.02em] ${dark ? "text-warm" : ""}`}>
-              {t.value}
+              <CountUp value={t.value} />
             </span>
             <span className={`mt-3 border-t pt-3 text-[13px] ${dark ? "border-line-dark text-warm/70" : "border-line text-grey"}`}>
               {t.instrument}

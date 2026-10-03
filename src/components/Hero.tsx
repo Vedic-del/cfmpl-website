@@ -139,13 +139,22 @@ export function Hero({ lines, lede }: { lines: readonly string[]; lede: string }
             className="mx-auto max-w-[26ch] font-display text-[2rem] font-semibold leading-[1.18] text-warm sm:text-[2.5rem] lg:max-w-none lg:text-[3.1rem]"
           >
             {lines.map((l, i) => (
-              <span key={i} className="block lg:whitespace-nowrap">
+              <span
+                key={i}
+                className="intro-mask block lg:whitespace-nowrap"
+                style={{ ["--intro-delay" as string]: `${200 + i * 140}ms` }}
+              >
                 {l}
                 {i < lines.length - 1 ? " " : ""}
               </span>
             ))}
           </h1>
-          <p className="mx-auto mt-7 max-w-[60ch] text-[16px] font-light leading-[1.7] text-warm md:text-[17px]">{lede}</p>
+          <p
+            className="intro mx-auto mt-7 max-w-[60ch] text-[16px] font-light leading-[1.7] text-warm md:text-[17px]"
+            style={{ ["--intro-delay" as string]: "560ms" }}
+          >
+            {lede}
+          </p>
         </div>
 
         {/* The mark assembling, then the tagline */}

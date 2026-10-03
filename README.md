@@ -51,5 +51,17 @@ people on webmail.
 
 ## Motion
 
-Scroll reveals, metric count-ups, the hero sequence and the process diagram run on
-`transform`/`opacity` only, and every one of them is disabled under `prefers-reduced-motion`.
+One rhythm across the site (a slow, decelerating ease), animating only `transform`, `opacity` and
+`clip-path`:
+
+- **Page heroes** load in with CSS keyframes: the heading rises from behind a mask and the photograph
+  opens like a curtain. No JavaScript is needed, and the end state is the normal page.
+- **Scroll reveals** (`MotionProvider`): blocks rise in, headings unmask, photographs unveil upward,
+  the milestone rail draws across, and figures count up.
+- **Parallax** on the large photographs (`<Plate parallax={0.1}>`).
+- **Ticker** of the firm's services on the home page; it pauses on hover.
+- **Hover:** symbolic photographs take their colour back.
+- **Reading progress** line under the header (CSS scroll timeline, where the browser supports it).
+- **Page transitions** between routes (React `ViewTransition`, in `app/template.tsx`).
+
+Everything is visible without JavaScript and all of it switches off under `prefers-reduced-motion`.

@@ -165,19 +165,186 @@
   }
 }
 
-/* Scroll reveal. Content is visible by default; motion only applies when JS
-   has marked the document ready and the visitor has not asked for reduced motion. */
+/* ------------------------------------------------------------------------
+   Motion. One rhythm for the whole site: a slow, decelerating ease
+   (--ease-house), transform/opacity/clip-path only, and nothing at all under
+   prefers-reduced-motion. Content is visible without JavaScript: scroll
+   reveals only hide things once MotionProvider has marked the document ready,
+   and load-in animations are CSS keyframes that end in the visible state.
+   ------------------------------------------------------------------------ */
+
 @media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveal: rise and fade. */
   html[data-motion="ready"] [data-reveal] {
     opacity: 0;
-    transform: translate3d(0, 16px, 0);
+    transform: translate3d(0, 18px, 0);
     transition:
-      opacity 700ms var(--ease-house),
-      transform 700ms var(--ease-house);
+      opacity 800ms var(--ease-house),
+      transform 900ms var(--ease-house);
     transition-delay: var(--reveal-delay, 0ms);
   }
   html[data-motion="ready"] [data-reveal][data-revealed="true"] {
     opacity: 1;
     transform: none;
   }
+
+  /* Headings rise from behind a mask as their block reveals. */
+  html[data-motion="ready"] [data-reveal] :is(.display, .display-lg, .reveal-mask) {
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 0.4em, 0);
+    transition:
+      clip-path 1000ms var(--ease-house),
+      transform 1000ms var(--ease-house);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 80ms);
+  }
+  html[data-motion="ready"] [data-reveal][data-revealed="true"] :is(.display, .display-lg, .reveal-mask) {
+    clip-path: inset(0 0 -0.3em 0);
+    transform: none;
+  }
+
+  /* Photographs unveil upward while the image settles from a slight zoom. */
+  html[data-motion="ready"] [data-reveal="plate"] {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 1300ms var(--ease-house);
+  }
+  html[data-motion="ready"] [data-reveal="plate"] img {
+    transform: scale(1.18);
+    transition: transform 1800ms var(--ease-house);
+  }
+  html[data-motion="ready"] [data-reveal="plate"][data-revealed="true"] {
+    clip-path: inset(0 0 0 0);
+  }
+  html[data-motion="ready"] [data-reveal="plate"][data-revealed="true"] img {
+    transform: scale(1);
+  }
+
+  /* Milestone rail draws across, left to right. */
+  html[data-motion="ready"] [data-reveal="rail"] {
+    opacity: 1;
+    transform: none;
+  }
+  html[data-motion="ready"] [data-reveal="rail"]::before {
+    transform: scaleX(0);
+    transition: transform 1600ms var(--ease-house);
+  }
+  html[data-motion="ready"] [data-reveal="rail"][data-revealed="true"]::before {
+    transform: scaleX(1);
+  }
+
+  /* Load-in for page heroes: plays from first paint, no JavaScript needed. */
+  .intro {
+    animation: intro-rise 1000ms var(--ease-house) both;
+    animation-delay: var(--intro-delay, 0ms);
+  }
+  .intro-mask {
+    animation: intro-mask 1100ms var(--ease-house) both;
+    animation-delay: var(--intro-delay, 0ms);
+  }
+  .intro-curtain {
+    animation: intro-curtain 1400ms var(--ease-house) both;
+    animation-delay: var(--intro-delay, 150ms);
+  }
+  .intro-curtain img {
+    animation: intro-settle 2000ms var(--ease-house) both;
+    animation-delay: var(--intro-delay, 150ms);
+  }
+
+  /* Exchange-style ticker. */
+  .ticker-track {
+    animation: ticker 55s linear infinite;
+  }
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  /* Page-to-page transition (React ViewTransition, see app/template.tsx). */
+  ::view-transition-old(.page-exit) {
+    animation: 220ms ease-in both page-out;
+  }
+  ::view-transition-new(.page-enter) {
+    animation: 520ms var(--ease-house) 120ms both page-in;
+  }
+  ::view-transition-group(site-header) {
+    animation: none;
+  }
+}
+
+/* Reading progress along the bottom of the header, driven by scroll alone. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-progress {
+      display: block;
+      transform-origin: 0 50%;
+      animation: progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+/* Symbolic photographs take their colour back on hover. */
+.group .plate img,
+.group .plate::after {
+  transition:
+    filter 700ms var(--ease-house),
+    opacity 700ms var(--ease-house),
+    transform 900ms var(--ease-house);
+}
+@media (hover: hover) {
+  .group:hover .plate img {
+    filter: grayscale(0.1) contrast(1.02);
+  }
+  .group:hover .plate::after {
+    opacity: 0.2;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .group .plate-inner {
+    transition: transform 1100ms var(--ease-house);
+  }
+  .group:hover .plate-inner {
+    transform: scale(1.045);
+  }
+}
+
+/* Parallax layer inside a plate: oversized so its edges never show. */
+.plate-inner {
+  position: absolute;
+  inset: 0;
+}
+[data-parallax] .plate-inner {
+  inset: -9% 0;
+  will-change: transform;
+}
+
+@keyframes intro-rise {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes intro-mask {
+  from { clip-path: inset(0 0 100% 0); transform: translate3d(0, 0.35em, 0); }
+  to { clip-path: inset(0 0 -0.3em 0); transform: none; }
+}
+@keyframes intro-curtain {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes intro-settle {
+  from { transform: scale(1.15); }
+  to { transform: scale(1); }
+}
+@keyframes ticker {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes page-out {
+  to { opacity: 0; transform: translate3d(0, -10px, 0); }
+}
+@keyframes page-in {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+}
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }

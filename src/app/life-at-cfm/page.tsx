@@ -90,7 +90,7 @@ export default function LifeAtCfmPage() {
                 style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
                 className="group grid gap-3 border-b border-line-dark py-9 md:grid-cols-[1.4fr_1fr] md:items-baseline md:gap-12"
               >
-                <h3 className="font-display text-[clamp(1.9rem,1.2rem+2.4vw,3.2rem)] leading-[1.05] tracking-[-0.02em] text-warm transition-colors duration-300 group-hover:text-brand-light">
+                <h3 className="reveal-mask font-display text-[clamp(1.9rem,1.2rem+2.4vw,3.2rem)] leading-[1.05] tracking-[-0.02em] text-warm transition-colors duration-300 group-hover:text-brand-light">
                   {v.title}
                 </h3>
                 <p className="text-[16px] leading-[1.7] text-warm/70">{v.body}</p>

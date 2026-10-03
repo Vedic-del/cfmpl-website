@@ -44,10 +44,13 @@ export function SiteHeader() {
 
   return (
     <header
+      style={{ viewTransitionName: "site-header" }}
       className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
         scrolled || open ? "border-line bg-warm/95 backdrop-blur-md" : "border-transparent bg-warm/90 backdrop-blur-sm"
       }`}
     >
+      {/* Reading progress, driven by CSS scroll timelines where supported. */}
+      <span aria-hidden="true" className="scroll-progress absolute inset-x-0 -bottom-px hidden h-[2px] bg-brand" />
       <div className="container-house flex h-18 items-center justify-between gap-6 md:h-20">
         <Logo className="h-10 w-auto md:h-12" />
 

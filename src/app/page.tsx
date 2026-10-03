@@ -7,6 +7,7 @@ import { Plate } from "@/components/Plate";
 import { PracticeGrid } from "@/components/PracticeGrid";
 import { Section } from "@/components/Section";
 import { Muted, SectionHeading } from "@/components/SectionHeading";
+import { Ticker } from "@/components/Ticker";
 import { TombstoneGrid } from "@/components/TombstoneGrid";
 import { metrics } from "@/content/firm";
 import { imagery } from "@/content/imagery";
@@ -29,6 +30,20 @@ export default function HomePage() {
 
       <MetricsBand metrics={metrics} />
 
+      <Ticker
+        items={[
+          "Debt raising",
+          "Debt syndication",
+          "Debt restructuring",
+          "IPO advisory",
+          "SME IPOs",
+          "Rights issues",
+          "Qualified institutional placements",
+          "Private equity",
+          "Stressed asset advisory",
+        ]}
+      />
+
       <Section tone="light" labelledBy="services-h">
         <SectionHeading
           id="services-h"
@@ -45,7 +60,7 @@ export default function HomePage() {
       </Section>
 
       <section aria-labelledby="transactions-h" className="relative isolate overflow-hidden bg-deep text-warm">
-        <Plate photo={imagery.transactions} decorative sizes="100vw" className="absolute inset-0 -z-10" />
+        <Plate photo={imagery.transactions} decorative parallax={0.14} sizes="100vw" className="absolute inset-0 -z-10" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-deep/80 via-deep/70 to-deep/90" />
         <div className="container-house py-22 md:py-32">
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
@@ -74,6 +89,7 @@ export default function HomePage() {
       <section aria-labelledby="history-h" className="bg-paper lg:grid lg:grid-cols-2">
         <Plate
           photo={imagery.kolkata}
+          parallax={0.1}
           sizes="(min-width: 1024px) 50vw, 100vw"
           className="aspect-[4/3] lg:aspect-auto lg:min-h-[680px]"
         />

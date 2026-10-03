@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowLink } from "@/components/ArrowLink";
+import { CountUp } from "@/components/CountUp";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -104,7 +105,7 @@ export default function AboutPage() {
               style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               className="flex flex-col border-b border-line py-10 sm:px-7 sm:max-lg:[&:nth-child(odd)]:pl-0 lg:border-b-0 lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0"
             >
-              <p className="font-display text-[2.4rem] leading-none tracking-[-0.02em] text-brand-deep">{a.figure}</p>
+              <CountUp value={a.figure} className="block font-display text-[2.4rem] leading-none tracking-[-0.02em] text-brand-deep" />
               <p className="mt-2 h-5 font-display text-[14px] text-brand">{a.unit}</p>
               <h3 className="mt-8 text-[1.25rem] font-medium leading-snug">{a.title}</h3>
               <p className="mt-3 text-[15px] leading-[1.7] text-grey">{a.body}</p>
