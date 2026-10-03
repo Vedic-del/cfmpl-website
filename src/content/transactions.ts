@@ -61,7 +61,7 @@ export const caseStudies: readonly CaseStudy[] = [
     value: "₹1,190 crore",
     valueNote: "₹710 crore and ₹480 crore, for two newly awarded projects",
     client:
-      "A road construction company operating since 2005. It had built state road projects for the PWD and MSRDC in Gujarat and Maharashtra, and had then won its first National Highway projects from NHAI, on the Delhi–Mumbai Expressway corridor.",
+      "A road construction company operating since 2005. It had built state road projects for the PWD and MSRDC in Gujarat and Maharashtra before winning its first National Highway projects from NHAI, on the Delhi–Mumbai Expressway corridor.",
     explainer:
       "Under NHAI's Hybrid Annuity Model (HAM), the contractor raises debt for its share of the construction cost and is repaid in annuities after completion.",
     challenges: [
@@ -76,7 +76,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Presented the company's strengths to lenders.",
       "Addressed each lender's concerns through specific features of the deal structure.",
       "Arranged the funding tie-ups with lenders.",
-      "Advised the company on its presentation to CRISIL, and helped it make the case for a rating upgrade based on its improved credit profile and execution record.",
+      "Advised the company on its presentation to CRISIL and helped it make the case for a rating upgrade based on its improved credit profile and execution record.",
     ],
     result: "Funding tie-ups were arranged for both projects.",
   },

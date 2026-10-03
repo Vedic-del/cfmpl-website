@@ -28,10 +28,10 @@ export default function AboutPage() {
         eyebrow="About Us"
         title={
           <>
-            From one office in Kolkata <Muted dark>to four cities.</Muted>
+            Thirty-five years of finding capital <Muted dark>for Indian companies.</Muted>
           </>
         }
-        lede="A Mumbai-based financial advisory firm and SEBI Category I Merchant Banker, advising Indian companies since 1991."
+        lede="CFM is a Mumbai-based financial advisory firm and SEBI Category I Merchant Banker, with offices in New Delhi, Chennai and Ahmedabad."
         photo={imagery.history}
       />
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
           size="lg"
           title={
             <>
-              Thirty-five years, <Muted>one way of working.</Muted>
+              Started in Kolkata. <Muted>Built in Mumbai.</Muted>
             </>
           }
         />
@@ -87,18 +87,27 @@ export default function AboutPage() {
       </Section>
 
       <Section tone="light" labelledBy="approach-h">
-        <SectionHeading id="approach-h" eyebrow="How We Work" title="What clients can count on." />
-        <div className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading
+          id="approach-h"
+          eyebrow="How We Work"
+          title={
+            <>
+              What we bring <Muted>to every mandate.</Muted>
+            </>
+          }
+        />
+        <div className="mt-14 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-4">
           {approach.map((a, i) => (
             <article
               key={a.title}
               data-reveal
               style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
-              className="bg-white py-9 sm:px-7 lg:px-8 lg:first:pl-0"
+              className="flex flex-col border-b border-line py-10 sm:px-7 sm:max-lg:[&:nth-child(odd)]:pl-0 lg:border-b-0 lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0"
             >
-              <span aria-hidden="true" className="block h-2 w-2 rotate-45 bg-brand" />
-              <h3 className="mt-6 text-[1.3rem] font-medium leading-snug">{a.title}</h3>
-              <p className="mt-3 text-[15px] leading-[1.75] text-grey">{a.body}</p>
+              <p className="font-display text-[2.4rem] leading-none tracking-[-0.02em] text-brand-deep">{a.figure}</p>
+              <p className="mt-2 h-5 font-display text-[14px] text-brand">{a.unit}</p>
+              <h3 className="mt-8 text-[1.25rem] font-medium leading-snug">{a.title}</h3>
+              <p className="mt-3 text-[15px] leading-[1.7] text-grey">{a.body}</p>
             </article>
           ))}
         </div>

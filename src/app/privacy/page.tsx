@@ -25,14 +25,14 @@ export default function PrivacyPage() {
           <h2 className="mt-10 font-display text-[1.35rem] text-ink">What this website collects</h2>
           <p>
             Nothing. The enquiry form does not send or store anything itself: it prepares your message and opens your
-            own email application, and the enquiry reaches us only if you choose to send it. We do not run advertising
-            or analytics trackers on this website, and we do not set cookies for marketing or measurement.
+            own email application and the enquiry reaches us only if you choose to send it. We do not run advertising
+            or analytics trackers on this website and we do not set cookies for marketing or measurement.
           </p>
 
           <h2 className="mt-10 font-display text-[1.35rem] text-ink">What we hold when you write to us</h2>
           <p>
             The contents of your email — typically your name, organisation, contact details and message. We use it to
-            read and reply to your enquiry and to keep a record of correspondence. We do not sell it, and we do not
+            read and reply to your enquiry and to keep a record of correspondence. We do not sell it and we do not
             share it with anyone outside the firm.
           </p>
 

@@ -30,7 +30,7 @@ export function PageHero({
       >
         <div className={photo ? "lg:py-24 lg:pr-16" : ""}>
           {eyebrow ? <p className="eyebrow mb-6 text-brand-light">{eyebrow}</p> : null}
-          <h1 className="display-lg max-w-[18ch] text-warm">{title}</h1>
+          <h1 className={`display-lg text-warm ${photo ? "max-w-[18ch]" : "max-w-[24ch]"}`}>{title}</h1>
           {lede ? <div className="lede mt-8 max-w-[52ch] text-warm/80">{lede}</div> : null}
           {children}
         </div>

@@ -62,9 +62,9 @@ export const metrics = [
  * The firm's history, told chronologically.
  */
 export const history = [
-  "CFM began in 1991 in a small office in Kolkata, arranging loans for companies. Its founding commitment was simple: be available to clients whenever they need us, even at short notice.",
-  "Arranging single loans led to syndicating them across banks and institutions, and from there to wider financial advisory. The head office moved to Mumbai, offices opened in three more cities, the firm registered with SEBI as a Category I Merchant Banker, and it sponsored an asset reconstruction company.",
-  "The firm is larger than it was in 1991. The way it works has not changed: we stay available, we stay with a mandate until it is done, and we treat relationships as the foundation of the business.",
+  "CFM began in 1991 in a small office in Kolkata, arranging loans for companies. Its working rule came from its founder: time is money, so never waste the client's.",
+  "Arranging single loans led to syndicating them across banks and institutions and from there to wider financial advisory. The head office moved to Mumbai, offices opened in three more cities, the firm registered with SEBI as a Category I Merchant Banker and it sponsored an asset reconstruction company.",
+  "The firm is larger than it was in 1991. The way it works has not changed: we move quickly, we stay with a mandate until it is done and we treat relationships as the foundation of the business.",
 ] as const;
 
 export const timeline = [
@@ -82,30 +82,38 @@ export const timeline = [
 export const founderMessage = {
   paragraphs: [
     "Every problem carries an opportunity. That idea has guided CFM since I started it.",
-    "I founded the firm with one aim: to be among the very best in Indian finance. We began by arranging loans. Technical knowledge and single-minded effort took CFM from there to being a leading loan syndicator, and then a full financial advisory firm. Through CFM Asset Reconstruction, which we sponsor, we are also part of India's market for stressed assets.",
-    "Our management philosophy is short: time is money, so we do not waste it. We put trust, empathy and innovation first, and we rely on relationships built over more than three decades to help the companies we advise to grow.",
+    "I founded the firm with one aim: to be among the very best in Indian finance. We began by arranging loans. Technical knowledge and single-minded effort took CFM from there to being a leading loan syndicator and then a full financial advisory firm. Through CFM Asset Reconstruction, which we sponsor, we are also part of India's market for stressed assets.",
+    "Our management philosophy is short: time is money, so we do not waste it. We put trust, empathy and innovation first and rely on relationships built over more than three decades to help the companies we advise to grow.",
   ],
   name: "Om Porwal",
   title: "Founder and Director",
 } as const;
 
-/** How the firm works with clients. Drawn from cfml.in's "Strengths". */
+/** What the firm brings to a mandate, each with the fact behind it. Drawn from cfml.in's "Strengths". */
 export const approach = [
   {
-    title: "Knowledge of the market",
-    body: "We understand how banks, financial institutions and investors assess a proposal, and how this differs from one sector to another.",
-  },
-  {
+    figure: "35",
+    unit: "years",
     title: "Relationships built over time",
-    body: "Our working relationships with lenders and investors go back more than three decades, and they are a large part of what we bring to a mandate.",
+    body: "Our relationships with banks, institutions and investors go back to 1991. They are a large part of what we bring to a mandate.",
   },
   {
+    figure: "USD 40 bn+",
+    unit: "arranged",
+    title: "Knowledge of the market",
+    body: "Three decades of transactions have taught us how lenders and investors assess a proposal, sector by sector.",
+  },
+  {
+    figure: "SEBI",
+    unit: "Category I",
     title: "Professional standards",
-    body: "We hold ourselves to high professional and ethical standards, and to transparency in the way we work.",
+    body: "A registered merchant banker since 2013, held to SEBI's code of conduct and to transparency in how we work.",
   },
   {
+    figure: "Start to close",
+    unit: "",
     title: "Staying until the work is done",
-    body: "Once we accept a mandate, we stay with the client through each stage until the transaction is complete.",
+    body: "Once we accept a mandate we stay with the client through every stage, from the first meeting to disbursal.",
   },
 ] as const;
 

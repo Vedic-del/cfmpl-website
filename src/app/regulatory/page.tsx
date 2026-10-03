@@ -67,7 +67,7 @@ export default function RegulatoryPage() {
         </ol>
         <DocumentList
           docs={charterDocument.href ? [charterDocument] : []}
-          emptyText="The signed charter is available from our compliance officer on request, and will be published here once migrated from the current site."
+          emptyText="The signed charter is available from our compliance officer on request and will be published here once migrated from the current site."
         />
       </Section>
 
@@ -75,7 +75,7 @@ export default function RegulatoryPage() {
         <SectionHeading
           id="complaints"
           title="Investor Complaints Data"
-          lede="Disclosed in the format SEBI prescribes for merchant bankers, and updated by the seventh of the following month."
+          lede="Disclosed in the format SEBI prescribes for merchant bankers and updated by the seventh of the following month."
         />
         <ComplaintsTables data={complaintsData} />
       </Section>
@@ -163,7 +163,7 @@ export default function RegulatoryPage() {
           id="documents"
           dark
           title="Offer Documents and Track Record"
-          lede="Offer documents are hosted under Regulation 26(1) of the SEBI ICDR Regulations, 2018. The track record of public issues is published under SEBI Circular CIR/MIRSD/1/2012. Both are intended for residents of India, and you will be asked to confirm this before viewing them."
+          lede="Offer documents are hosted under Regulation 26(1) of the SEBI ICDR Regulations, 2018. The track record of public issues is published under SEBI Circular CIR/MIRSD/1/2012. Both are intended for residents of India and you will be asked to confirm this before viewing them."
         />
         <div className="mt-10 grid gap-px bg-line-dark md:grid-cols-2" data-reveal>
           <Link href="/regulatory/offer-documents" className="group bg-deep px-7 py-8 md:px-9">
@@ -180,7 +180,7 @@ export default function RegulatoryPage() {
               Track Record of Public Issues
             </h3>
             <p className="mt-3 max-w-[44ch] text-[14.5px] leading-relaxed text-warm/70">
-              Post-listing performance of issues we have managed. Not a recommendation, and not an indicator of future
+              Post-listing performance of issues we have managed. Not a recommendation and not an indicator of future
               performance.
             </p>
             <span aria-hidden="true" className="mt-6 block text-brand-light transition-transform group-hover:translate-x-1">→</span>

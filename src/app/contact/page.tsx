@@ -9,7 +9,7 @@ import { firm } from "@/content/firm";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact CFM: head office at Ballard Estate, Mumbai, and offices in New Delhi, Chennai and Ahmedabad. +91 22 4783 6944, info@cfml.in.",
+    "Contact CFM: head office at Ballard Estate in Mumbai and offices in New Delhi, Chennai and Ahmedabad. +91 22 4783 6944, info@cfml.in.",
   alternates: { canonical: "/contact/" },
 };
 
@@ -21,7 +21,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact Us"
         title="Talk to us."
-        lede="Call our Mumbai office or write to us, and we will put you in touch with the right person."
+        lede="Call our Mumbai office or write to us and we will put you in touch with the right person."
       />
 
       <Section tone="light" labelledBy="direct-h">

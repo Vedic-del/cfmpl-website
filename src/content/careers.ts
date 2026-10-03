@@ -4,10 +4,10 @@ export const culture = {
   intro:
     "A close-knit team working on corporate finance transactions across India, from Mumbai, New Delhi, Chennai and Ahmedabad.",
   values: [
-    { title: "Learning", body: "Every transaction teaches something new, and we make time to pass that knowledge on." },
-    { title: "Asking questions", body: "We expect people to ask why, and to look for a better way of structuring a deal." },
-    { title: "Working together", body: "Transactions involve the whole team, so we rely on one another." },
-    { title: "Developing people", body: "We invest in the people who join us and help them build their careers." },
+    { title: "Every deal teaches something.", body: "We make time to pass on what each transaction teaches." },
+    { title: "Ask why.", body: "We expect people to question a structure and look for a better one." },
+    { title: "No one closes a deal alone.", body: "Transactions involve the whole team, so we rely on one another." },
+    { title: "Careers are built here.", body: "We invest in the people who join us and help them grow." },
   ],
 } as const;
 
@@ -26,7 +26,7 @@ export type Role = { title: string; location: string; practice: string };
 
 // Open positions. An empty list shows a "no open positions" message.
 export const openRoles: readonly Role[] = [
-  { title: "AVP / VP — Debt Syndication", location: "Mumbai — Ballard Estate", practice: "Corporate Advisory" },
+  { title: "AVP / VP — Debt Syndication", location: "Mumbai — Ballard Estate", practice: "Transaction Advisory" },
   { title: "Accounts Manager", location: "Mumbai — Fort", practice: "Finance" },
 ];
 

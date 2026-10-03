@@ -8,10 +8,11 @@
  * - Symbolic plates, one per idea, printed in the house hue (see `.plate` in
  *   globals.css). All are public domain / CC0, from the WordPress Photo
  *   Directory (wordpress.org/photos) and rawpixel's public-domain collection:
- *     spiral staircase — raising capital, one step on another
- *     cable-stayed pylon — many lenders carrying one load
+ *     a contract being signed — a transaction brought to close
+ *     an exchange board — the public markets
  *     kintsugi bowl — a break repaired so the object is whole again
  *     banyan tree, Pune — a firm that put down roots and kept spreading
+ *     Howrah Bridge, Kolkata — the city where the firm began
  *     expressway at night — the highway financings in Selected Transactions
  *     compass rose — direction, which is what a board sets
  * - The firm's own photographs of its people, from the event gallery on
@@ -43,16 +44,14 @@ export const imagery = {
     alt: "An aerial view of Mumbai and its coastline",
   },
 
-  investmentBanking: { src: "/images/ib.webp", alt: "A spiral staircase seen from above, turning upward floor by floor" },
-  corporateAdvisory: {
-    src: "/images/debt.webp",
-    alt: "The pylon of a cable-stayed bridge, its cables fanning out against the sky",
-  },
+  transactionAdvisory: { src: "/images/transaction-advisory.webp", alt: "A hand signing a contract on the signature line" },
+  equityCapitalMarkets: { src: "/images/ecm.webp", alt: "A stock exchange board showing share prices" },
   stressedAssets: {
     src: "/images/stressed.webp",
     alt: "A ceramic bowl repaired with gold along its cracks, in the Japanese kintsugi tradition",
   },
   history: { src: "/images/history.webp", alt: "A banyan tree in Pune, its aerial roots grown into new trunks" },
+  kolkata: { src: "/images/kolkata.webp", alt: "Howrah Bridge over the Hooghly in Kolkata, lit at night" },
   transactions: { src: "/images/transactions.webp", alt: "An expressway and interchange seen from above at night" },
   governance: { src: "/images/governance.webp", alt: "A compass rose set into a wooden deck" },
 

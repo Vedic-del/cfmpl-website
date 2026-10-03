@@ -188,7 +188,7 @@ export function ContactForm() {
           Tell us where the business stands <span aria-hidden="true" className="text-brand">*</span>
         </label>
         <p id="h-message" className="mt-1 text-[13px] text-grey">
-          What the company does, what it needs, and roughly how much. A few lines is enough.
+          What the company does, what it needs and roughly how much. A few lines is enough.
         </p>
         <textarea
           {...field("message")}

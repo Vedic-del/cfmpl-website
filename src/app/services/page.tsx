@@ -15,13 +15,13 @@ import { caseStudies } from "@/content/transactions";
 export const metadata: Metadata = {
   title: "Our Services",
   description:
-    "Merchant banking, equity capital markets, private equity advisory, debt syndication, debt restructuring and stressed asset resolution advisory for Indian companies.",
+    "Transaction advisory (debt raising, syndication and restructuring), equity capital markets (IPO and SME IPO advisory, private equity) and stressed asset resolution advisory for Indian companies.",
   alternates: { canonical: "/services/" },
 };
 
 const plates: Record<string, Photo> = {
-  "investment-banking": imagery.investmentBanking,
-  "corporate-advisory": imagery.corporateAdvisory,
+  "transaction-advisory": imagery.transactionAdvisory,
+  "equity-capital-markets": imagery.equityCapitalMarkets,
   "stressed-asset-resolution-advisory": imagery.stressedAssets,
 };
 
@@ -117,7 +117,7 @@ export default function ServicesPage() {
         eyebrow="Our Services"
         title={
           <>
-            Equity, debt and <Muted dark>stressed-asset advice.</Muted>
+            Transaction advisory, equity capital markets <Muted dark>and stressed asset advisory.</Muted>
           </>
         }
         lede="For Indian companies and the institutions that lend to them, since 1991."

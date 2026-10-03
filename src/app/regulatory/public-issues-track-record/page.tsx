@@ -19,7 +19,7 @@ export default function PublicIssuesTrackRecordPage() {
       <PageHero
         eyebrow="Regulatory Information"
         title="Track Record of Public Issues"
-        lede="Published under SEBI Circular CIR/MIRSD/1/2012. This information is not a recommendation or an advertisement, and past performance is no indication of future performance."
+        lede="Published under SEBI Circular CIR/MIRSD/1/2012. This information is not a recommendation or an advertisement and past performance is no indication of future performance."
       />
 
       <Section tone="light">

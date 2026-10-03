@@ -20,20 +20,20 @@ export default function DisclaimerPage() {
           <h2 className="font-display text-[1.35rem] text-ink">Information only</h2>
           <p>
             Information on this website is provided for general information only. It does not constitute financial,
-            legal, accounting, tax or investment advice, and it is neither an offer to sell nor a solicitation of an
+            legal, accounting, tax or investment advice and it is neither an offer to sell nor a solicitation of an
             offer to buy any security or service. Nothing here should be relied upon as the basis for any investment or
             financing decision.
           </p>
 
           <h2 className="mt-10 font-display text-[1.35rem] text-ink">Regulated and non-regulated activity</h2>
           <p>{regulatoryNote}</p>
-          <p>{sponsorNote} Statements on this website concern CFMPL only, and should not be read as statements by or about that company.</p>
+          <p>{sponsorNote} Statements on this website concern CFMPL only and should not be read as statements by or about that company.</p>
 
           <h2 className="mt-10 font-display text-[1.35rem] text-ink">Accuracy</h2>
           <p>
             We take care over what is published here, but {firm.legalName} does not warrant that the content is
-            complete, accurate or current, and accepts no liability for any loss arising from reliance on it, nor for
-            any interruption to this website. Documents transmitted electronically may be altered in transmission, and
+            complete, accurate or current and accepts no liability for any loss arising from reliance on it, nor for
+            any interruption to this website. Documents transmitted electronically may be altered in transmission and
             we accept no liability for any such alteration.
           </p>
 
@@ -41,7 +41,7 @@ export default function DisclaimerPage() {
           <p>
             Certain sections of this website, including offer documents and the track record of public issues, are
             intended only for residents of India and are subject to their own confirmations. Access to that material
-            may be restricted by law in other jurisdictions, and it is not directed at any person in the United States.
+            may be restricted by law in other jurisdictions and it is not directed at any person in the United States.
           </p>
 
           <h2 className="mt-10 font-display text-[1.35rem] text-ink">External links</h2>

@@ -50,12 +50,12 @@ const csp = [
 ].join("; ");
 
 const description =
-  "Mumbai-based financial advisory firm and SEBI Category I Merchant Banker, advising Indian companies on equity, debt, restructuring and stressed assets since 1991.";
+  "Finding the right capital for Indian businesses since 1991: debt raising, syndication and restructuring, IPO and SME IPO advisory and stressed asset advisory. SEBI Category I Merchant Banker, Mumbai.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.url),
   title: {
-    default: `${firm.legalName} | Financial Advisory & Merchant Banking`,
+    default: `${firm.legalName} | Transaction Advisory & Equity Capital Markets, Mumbai`,
     template: `%s | ${firm.shortName}`,
   },
   description,

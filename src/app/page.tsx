@@ -14,8 +14,8 @@ import { practices } from "@/content/services";
 import { tombstones } from "@/content/transactions";
 
 const plates = {
-  "investment-banking": imagery.investmentBanking,
-  "corporate-advisory": imagery.corporateAdvisory,
+  "transaction-advisory": imagery.transactionAdvisory,
+  "equity-capital-markets": imagery.equityCapitalMarkets,
   "stressed-asset-resolution-advisory": imagery.stressedAssets,
 };
 
@@ -23,8 +23,8 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        lines={["Merchant bankers to", "Indian companies, since 1991."]}
-        lede="Equity, debt, restructuring and stressed-asset advice, from a SEBI Category I Merchant Banker headquartered in Mumbai."
+        lines={["Finding the right capital", "for your business, since 1991."]}
+        lede="Transaction advisory, equity capital markets and stressed asset advisory from a SEBI Category I Merchant Banker headquartered in Mumbai."
       />
 
       <MetricsBand metrics={metrics} />
@@ -73,7 +73,7 @@ export default function HomePage() {
 
       <section aria-labelledby="history-h" className="bg-paper lg:grid lg:grid-cols-2">
         <Plate
-          photo={imagery.history}
+          photo={imagery.kolkata}
           sizes="(min-width: 1024px) 50vw, 100vw"
           className="aspect-[4/3] lg:aspect-auto lg:min-h-[680px]"
         />
@@ -83,13 +83,13 @@ export default function HomePage() {
             eyebrow="Our History"
             title={
               <>
-                Founded in 1991 on one promise: <Muted>be there when the client calls.</Muted>
+                Founded in 1991, <Muted>the year India opened its economy.</Muted>
               </>
             }
           />
           <p className="lede mt-8 max-w-[52ch] text-grey" data-reveal>
-            CFM began in a small office in Kolkata, arranging loans. Debt syndication followed, then merchant banking and
-            wider advisory, and offices in four cities.
+            CFM began in a small office in Kolkata, arranging loans for companies. Three and a half decades on, we advise
+            on debt, equity and stressed assets from Mumbai, New Delhi, Chennai and Ahmedabad.
           </p>
           <ArrowLink href="/about" className="mt-10 self-start">
             Our history
@@ -111,9 +111,10 @@ export default function HomePage() {
           />
           <div data-reveal>
             <p className="lede text-grey">
-              Our board brings together the firm&apos;s founder, a former chief executive of IFCI, a former Finance Minister of
-              Jammu &amp; Kashmir, a chartered accountant and a merchant banker associated with more than a hundred IPOs.
-              Our senior advisors spent their careers at State Bank of India, Bank of Baroda and Vijaya Bank.
+              Our board brings together a former Finance Minister of Jammu &amp; Kashmir, a former chief executive of
+              IFCI, a chartered accountant, a merchant banker associated with more than a hundred IPOs and the
+              firm&apos;s founder. Our senior advisors spent their careers at State Bank of India, Bank of Baroda and
+              Vijaya Bank.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
               <ArrowLink href="/leadership">Leadership &amp; Governance</ArrowLink>

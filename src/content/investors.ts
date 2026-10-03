@@ -138,9 +138,9 @@ export const statutoryFilings: readonly Doc[] = [
 
 export const offerDocumentsDisclaimer = [
   "This section hosts offer documents of companies for whose issues CFM, or its affiliates, act or have acted as Lead Manager or Book Running Lead Manager. They are hosted to comply with Regulation 26(1) of the SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018, as amended.",
-  "The material is for information only. It may not be copied, redistributed or forwarded, and in particular may not be forwarded to any person in the United States or to any US address. It is not an offer to sell, or a solicitation of an offer to buy, any securities.",
+  "The material is for information only. It may not be copied, redistributed or forwarded and in particular may not be forwarded to any person in the United States or to any US address. It is not an offer to sell, or a solicitation of an offer to buy, any securities.",
   "This section is intended only for residents of India. Access may be restricted by law in other jurisdictions. The securities have not been and will not be registered under the US Securities Act of 1933 and may not be offered or sold in the United States absent registration or an applicable exemption.",
-  "CFM does not represent that the material is complete or current. Potential investors should read the prospectus or red herring prospectus, including its risk factors, before making an investment decision, and should not rely on any draft red herring prospectus for that purpose.",
+  "CFM does not represent that the material is complete or current. Potential investors should read the prospectus or red herring prospectus, including its risk factors, before making an investment decision and should not rely on any draft red herring prospectus for that purpose.",
   "Documents transmitted electronically may be altered in transmission. CFM accepts no liability for any such alteration, for the accuracy, timeliness or completeness of the material, or for any disruption to this website. Applications made contrary to this disclaimer may be rejected.",
 ] as const;
 
@@ -151,9 +151,9 @@ export const offerDocumentsConfirmation = [
 ] as const;
 
 export const trackRecordDisclaimer = [
-  "This information is published pursuant to SEBI Circular No. CIR/MIRSD/1/2012 dated 10 January 2012. It is not a recommendation, an offer or a solicitation, and is not legal, regulatory, accounting or tax advice. It is not an advertisement and is not an indicator of future performance.",
-  "The data is drawn from several sources, including BSE, NSE, issuer websites, annual reports and databases such as Capital Market. CFM has not independently verified it, and users should verify its adequacy, accuracy and completeness for themselves. CFM does not undertake to update it except where required by law or regulation.",
+  "This information is published pursuant to SEBI Circular No. CIR/MIRSD/1/2012 dated 10 January 2012. It is not a recommendation, an offer or a solicitation and is not legal, regulatory, accounting or tax advice. It is not an advertisement and is not an indicator of future performance.",
+  "The data is drawn from several sources, including BSE, NSE, issuer websites, annual reports and databases such as Capital Market. CFM has not independently verified it and users should verify its adequacy, accuracy and completeness for themselves. CFM does not undertake to update it except where required by law or regulation.",
 ] as const;
 
 export const investorCareNote =
-  "The interests of investors are paramount to us. Any complaint can be sent to customer.care@cfml.in, and we will work to resolve it.";
+  "The interests of investors are paramount to us. Any complaint can be sent to customer.care@cfml.in and we will work to resolve it.";

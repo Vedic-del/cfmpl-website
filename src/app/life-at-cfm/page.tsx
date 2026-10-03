@@ -9,7 +9,7 @@ import { imagery, moments } from "@/content/imagery";
 export const metadata: Metadata = {
   title: "Life at CFM",
   description:
-    "Life at Chartered Finance Management: the team, the occasions we mark together, and open positions in corporate finance and debt syndication.",
+    "Life at Chartered Finance Management: the team, the occasions we mark together and open positions in corporate finance and debt syndication.",
   alternates: { canonical: "/life-at-cfm/" },
 };
 
@@ -74,21 +74,29 @@ export default function LifeAtCfmPage() {
         </ul>
       </Section>
 
-      <Section tone="paper" labelledBy="values-h">
-        <SectionHeading id="values-h" eyebrow="What We Value" title="How we work together." />
-        <div className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {culture.values.map((v, i) => (
-            <article
-              key={v.title}
-              data-reveal
-              style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
-              className="bg-paper py-9 sm:px-7 lg:px-8 lg:first:pl-0"
-            >
-              <span aria-hidden="true" className="block h-2 w-2 rotate-45 bg-brand" />
-              <h3 className="mt-6 text-[1.3rem] font-medium">{v.title}</h3>
-              <p className="mt-3 text-[15px] leading-[1.75] text-grey">{v.body}</p>
-            </article>
-          ))}
+      <Section tone="dark" labelledBy="values-h">
+        <div className="grid gap-12 lg:grid-cols-[0.7fr_2fr] lg:gap-20">
+          <div>
+            <p className="eyebrow text-brand-light">What We Value</p>
+            <h2 id="values-h" className="mt-6 font-display text-[1.6rem] leading-snug text-warm/90">
+              Four things we expect of each other.
+            </h2>
+          </div>
+          <ul className="border-t border-line-dark">
+            {culture.values.map((v, i) => (
+              <li
+                key={v.title}
+                data-reveal
+                style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
+                className="group grid gap-3 border-b border-line-dark py-9 md:grid-cols-[1.4fr_1fr] md:items-baseline md:gap-12"
+              >
+                <h3 className="font-display text-[clamp(1.9rem,1.2rem+2.4vw,3.2rem)] leading-[1.05] tracking-[-0.02em] text-warm transition-colors duration-300 group-hover:text-brand-light">
+                  {v.title}
+                </h3>
+                <p className="text-[16px] leading-[1.7] text-warm/70">{v.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 
