@@ -26,8 +26,8 @@ export function SiteFooter() {
   return (
     <footer className="bg-deep text-warm/70">
       <div className="container-house pb-8 pt-18 md:pt-22">
-        <div className="grid gap-12 border-b border-line-dark pb-12 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 border-b border-line-dark pb-12 lg:grid-cols-[1.6fr_1fr_1fr]">
+          <div className="col-span-2 lg:col-span-1">
             <Logo light className="h-11 w-auto" />
             <address className="mt-6 text-[14px] not-italic leading-7 text-warm/60">
               {hq.lines.join(", ")}

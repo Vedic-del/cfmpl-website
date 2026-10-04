@@ -90,7 +90,7 @@ export function Hero({ lines, lede }: { lines: readonly string[]; lede: string }
     <section
       ref={ref}
       aria-labelledby="hero-heading"
-      className="relative h-[220svh] bg-deep md:h-[260svh] motion-reduce:h-auto"
+      className="relative h-[160svh] bg-deep md:h-[260svh] motion-reduce:h-auto"
       style={{ ["--p" as string]: 0, ["--photo" as string]: 0, ["--copy" as string]: 1, ["--mark" as string]: 0, ["--tag" as string]: 0 }}
     >
       <div className="sticky top-18 flex h-[calc(100svh-4.5rem)] min-h-[560px] items-center justify-center overflow-hidden md:top-20 md:h-[calc(100svh-5rem)] motion-reduce:relative motion-reduce:top-0">

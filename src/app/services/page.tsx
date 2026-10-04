@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowLink } from "@/components/ArrowLink";
 import { CaseStudy } from "@/components/CaseStudy";
+import { Clamp } from "@/components/Clamp";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Plate } from "@/components/Plate";
@@ -74,14 +75,16 @@ function PracticeSection({ practice }: { practice: Practice }) {
               </p>
             </div>
             {o.points ? (
-              <ul className="grid content-start gap-x-8 sm:grid-cols-2">
-                {o.points.map((pt) => (
-                  <li key={pt} className="flex gap-3 border-b border-line py-3 text-[14.5px] leading-snug">
-                    <span aria-hidden="true" className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rotate-45 bg-brand" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
+              <Clamp count={o.points.length}>
+                <ul className="grid content-start gap-x-8 sm:grid-cols-2">
+                  {o.points.map((pt) => (
+                    <li key={pt} className="flex gap-3 border-b border-line py-3 text-[14.5px] leading-snug">
+                      <span aria-hidden="true" className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rotate-45 bg-brand" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </Clamp>
             ) : null}
           </article>
         ))}

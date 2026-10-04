@@ -97,16 +97,16 @@ export default function ContactPage() {
 
       <Section tone="dark" labelledBy="offices-h">
         <SectionHeading id="offices-h" dark title="Our Offices" />
-        <div className="mt-12 grid gap-px bg-line-dark md:grid-cols-2 lg:grid-cols-4">
-          <div className="bg-deep px-7 py-9 first:pl-0">
+        <div className="mt-10 grid grid-cols-3 gap-px bg-line-dark md:mt-12 lg:grid-cols-4">
+          <div className="col-span-3 bg-deep py-7 md:py-9 lg:col-span-1 lg:pr-7">
             <p className="font-display text-[13px] text-brand-light">{hq.role}</p>
             <h3 className="mt-3 font-display text-[1.4rem]">{hq.city}</h3>
             <p className="mt-4 text-[14.5px] leading-7 text-warm/70">{hq.lines.slice(0, 2).join(", ")}</p>
           </div>
           {branches.map((b) => (
-            <div key={b.city} className="bg-deep px-7 py-9">
+            <div key={b.city} className="bg-deep py-6 pr-3 max-lg:[&:not(:nth-child(2))]:pl-4 md:py-9 lg:px-7">
               <p className="font-display text-[13px] text-brand-light">{b.role}</p>
-              <h3 className="mt-3 font-display text-[1.4rem]">{b.city}</h3>
+              <h3 className="mt-3 font-display text-[1.1rem] sm:text-[1.4rem]">{b.city}</h3>
             </div>
           ))}
         </div>

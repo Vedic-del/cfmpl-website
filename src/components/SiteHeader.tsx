@@ -43,6 +43,7 @@ export function SiteHeader() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
+    <>
     <header
       style={{ viewTransitionName: "site-header" }}
       className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
@@ -98,10 +99,14 @@ export function SiteHeader() {
         </div>
       </div>
 
+    </header>
+
+      {/* Outside the header on purpose: the header's backdrop blur would otherwise
+          become the containing block for this fixed panel and collapse it. */}
       <div
         id="mobile-nav"
         hidden={!open}
-        className="fixed inset-x-0 bottom-0 top-18 overflow-y-auto border-t border-line bg-warm md:top-20 xl:hidden"
+        className="fixed inset-x-0 bottom-0 top-18 z-[35] overflow-y-auto border-t border-line bg-warm md:top-20 xl:hidden"
       >
         <nav aria-label="Mobile" className="container-house py-8">
           <ul className="divide-y divide-line border-y border-line">
@@ -126,6 +131,6 @@ export function SiteHeader() {
           </Link>
         </nav>
       </div>
-    </header>
+    </>
   );
 }

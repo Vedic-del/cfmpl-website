@@ -48,7 +48,8 @@ export function MotionProvider() {
         io.observe(node);
       });
 
-    const layers = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"))
+    // Parallax only where there is room for it to read; on phones it is just movement.
+    const layers = (window.innerWidth >= 768 ? Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]")) : [])
       .map((el) => ({ el, inner: el.querySelector<HTMLElement>(".plate-inner"), factor: Number(el.dataset.parallax) || 0.1 }))
       .filter((l): l is { el: HTMLElement; inner: HTMLElement; factor: number } => !!l.inner);
 

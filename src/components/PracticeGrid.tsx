@@ -22,7 +22,7 @@ export function PracticeGrid({
                 decorative
                 tone={p.slug === "stressed-asset-resolution-advisory" ? "soft" : "full"}
                 sizes="(min-width: 768px) 32vw, 100vw"
-                className="aspect-[4/5] w-full"
+                className="aspect-[3/2] w-full md:aspect-[4/5]"
               />
             </div>
             <p className="eyebrow mt-6 text-brand">{p.tag}</p>

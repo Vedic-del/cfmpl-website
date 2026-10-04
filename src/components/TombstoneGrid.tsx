@@ -10,7 +10,7 @@ export function TombstoneGrid({ items, dark = false }: { items: readonly Tombsto
         <li key={t.client} data-reveal style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}>
           <Link
             href={`/services#${t.caseSlug}`}
-            className={`group flex h-full min-h-[270px] flex-col border p-7 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-0.5 md:p-8 ${
+            className={`group flex h-full flex-col border p-6 md:min-h-[270px] md:p-7 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-0.5 md:p-8 ${
               dark
                 ? "border-line-dark bg-deep/55 backdrop-blur-sm hover:border-brand-light/60 hover:bg-deep/75"
                 : "border-line bg-white hover:border-brand/40"
@@ -18,7 +18,7 @@ export function TombstoneGrid({ items, dark = false }: { items: readonly Tombsto
           >
             <span className={`eyebrow ${dark ? "text-brand-light" : "text-brand"}`}>{t.role}</span>
             <span className={`mt-4 font-display text-[18px] leading-snug ${dark ? "text-warm" : ""}`}>{t.client}</span>
-            <span className={`num mt-auto pt-8 font-display text-[2.4rem] leading-none tracking-[-0.02em] ${dark ? "text-warm" : ""}`}>
+            <span className={`num mt-auto pt-6 font-display text-[2rem] md:pt-8 md:text-[2.4rem] leading-none tracking-[-0.02em] ${dark ? "text-warm" : ""}`}>
               <CountUp value={t.value} />
             </span>
             <span className={`mt-3 border-t pt-3 text-[13px] ${dark ? "border-line-dark text-warm/70" : "border-line text-grey"}`}>
