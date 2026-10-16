@@ -8,6 +8,8 @@
 
 export type Offering = {
   title: string;
+  /** Whether SEBI regulates this activity; shown beside it on the Services page. */
+  sebi: boolean;
   body: string;
   role: string;
   points?: readonly string[];
@@ -41,6 +43,7 @@ export const practices: readonly Practice[] = [
     offerings: [
       {
         title: "Debt Raising and Syndication",
+        sebi: false,
         body: "We work out the right type and structure of debt, then take it to the lenders most likely to provide it.",
         role: "We structure the financing, prepare the lender materials, approach lenders and stay with the company to sanction and disbursal.",
         points: [
@@ -55,6 +58,7 @@ export const practices: readonly Practice[] = [
       },
       {
         title: "Debt Restructuring",
+        sebi: false,
         body: "When debt no longer fits a company's cash flows, the answer is often to change its terms or the balance sheet rather than to borrow more.",
         role: "Adviser to the company on restructuring its debt and balance sheet and on related transactions.",
         points: ["Business advisory", "Corporate debt restructuring", "Balance-sheet restructuring", "Related corporate finance transactions"],
@@ -73,6 +77,7 @@ export const practices: readonly Practice[] = [
     offerings: [
       {
         title: "IPO Advisory and Merchant Banking",
+        sebi: true,
         body: "We advise on public issues and other capital markets transactions and manage them through the regulatory process.",
         role: "Lead manager or book running lead manager on public issues; adviser on other transactions.",
         points: [
@@ -91,6 +96,7 @@ export const practices: readonly Practice[] = [
       },
       {
         title: "Private Equity Advisory",
+        sebi: false,
         body: "We bring together companies, large, mid-size and SME, with institutional and individual investors.",
         role: "Adviser across the whole investment: sourcing, assessment, completion and exit.",
         points: ["Sourcing opportunities", "Assessment", "Completing the investment", "Planning and completing the exit"],
@@ -109,6 +115,7 @@ export const practices: readonly Practice[] = [
     offerings: [
       {
         title: "Resolution Advisory",
+        sebi: false,
         body: "We assess the loan and the business behind it, test whether the business can recover and advise on the resolution.",
         role: "Adviser only. CFMPL does not buy stressed loans; acquiring and resolving them is the business of CFM Asset Reconstruction, a separate company.",
         points: ["Assessment of the stressed loan", "Review of the business and its prospects", "Resolution options", "Structuring the resolution"],
@@ -126,7 +133,7 @@ export const movedPracticeSlugs: Record<string, string> = {
 
 /** Disclosure of which activities are, and are not, regulated by SEBI. */
 export const regulatoryNote =
-  "CFMPL's merchant banking and equity capital markets activities are carried out under its SEBI Category I registration. Its debt raising, debt syndication, debt restructuring and stressed-asset resolution advisory activities are not regulated by SEBI and SEBI's investor protection mechanisms do not apply to them.";
+  "CFMPL's merchant banking activities (public issues and other capital markets transactions) are carried out under its SEBI Category I registration. Its debt raising and syndication, debt restructuring, private equity advisory and stressed asset resolution advisory activities are not regulated by SEBI or by any other financial sector regulator. SEBI's investor protection mechanisms, including SCORES and SMART ODR, do not apply to disputes arising from them.";
 
 export const sponsorNote =
   "CFMPL is the sponsor of CFM Asset Reconstruction Private Limited, a separate company registered with the Reserve Bank of India as an asset reconstruction company under the SARFAESI Act, 2002. CFM ARC acquires and resolves stressed financial assets; CFMPL does not.";

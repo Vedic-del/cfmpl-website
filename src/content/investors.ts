@@ -4,6 +4,8 @@
  * Where a document URL is not known it is null, and the page says so plainly.
  */
 
+import { sebiPortals } from "./legal";
+
 export type Doc = { title: string; detail?: string; href: string | null };
 
 const CFML_FILES = "https://www.cfml.in/_files/ugd/";
@@ -12,6 +14,7 @@ export const regulatorySections = [
   { id: "charter", title: "Investor Charter" },
   { id: "complaints", title: "Investor Complaints Data" },
   { id: "grievances", title: "Grievance Redressal" },
+  { id: "non-sebi", title: "Activities Not Regulated by SEBI" },
   { id: "documents", title: "Offer Documents & Track Record" },
   { id: "policies", title: "Policies" },
   { id: "filings", title: "Statutory Filings" },
@@ -39,8 +42,9 @@ export const grievance = {
     title: "Investor Grievance Redressal — Merchant Banking Activities",
     href: `${CFML_FILES}d5c8f1_1d9c751cfa7f4fd8bb86f416dc887dab.pdf`,
   } satisfies Doc,
-  // As printed on the grievance redressal document.
-  grievanceEmail: "investor.grivenace@cfml.in",
+  // As shown in the cfml.in site footer. The grievance PDF prints it as
+  // "investor.grivenace@cfml.in"; the firm is to confirm which mailbox is live.
+  grievanceEmail: "investor.grievance@cfml.in",
   customerCareEmail: "customer.care@cfml.in",
   address: "2nd Floor, Wakefield House, Sprott Road, Ballard Estate, Mumbai 400 038",
   contacts: [
@@ -61,11 +65,7 @@ export const grievance = {
       ext: "221",
     },
   ],
-  sebi: {
-    scores: { label: "SEBI SCORES", href: "https://scores.sebi.gov.in/" },
-    // SEBI's Online Dispute Resolution portal.
-    odr: { label: "SMART ODR", href: "https://smartodr.in/" },
-  },
+  sebi: sebiPortals,
 } as const;
 
 export type ComplaintRow = {

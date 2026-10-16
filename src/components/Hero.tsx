@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { firm } from "@/content/firm";
 import { imagery } from "@/content/imagery";
+import { MARK_HEX, MARK_LINES } from "@/lib/mark";
 
 /**
  * Home hero, scrubbed by scroll while the section is pinned.
@@ -22,26 +23,8 @@ import { imagery } from "@/content/imagery";
  * Under reduced motion the section does not pin and shows the finished state.
  */
 
-const R = 118; // half-length of each line
-const D = 22; // offset from centre = apothem of the hexagon
-const C = 150;
-
-const LINES = [0, 60, 120].flatMap((deg) => {
-  const t = (deg * Math.PI) / 180;
-  const ux = Math.cos(t);
-  const uy = Math.sin(t);
-  return [1, -1].map((s) => {
-    const ox = C + s * D * -uy;
-    const oy = C + s * D * ux;
-    return { x1: ox - R * ux, y1: oy - R * uy, x2: ox + R * ux, y2: oy + R * uy };
-  });
-});
-
-const HEX = Array.from({ length: 6 }, (_, k) => {
-  const a = ((30 + 60 * k) * Math.PI) / 180;
-  const r = (2 * D) / Math.sqrt(3);
-  return `${(C + r * Math.cos(a)).toFixed(2)},${(C + r * Math.sin(a)).toFixed(2)}`;
-}).join(" ");
+const LINES = MARK_LINES;
+const HEX = MARK_HEX;
 
 export function Hero({ lines, lede }: { lines: readonly string[]; lede: string }) {
   const ref = useRef<HTMLElement>(null);
@@ -122,7 +105,7 @@ export function Hero({ lines, lede }: { lines: readonly string[]; lede: string }
 
         {/* Tone to the brand hue, then darken enough for white type to sit on it */}
         <div aria-hidden="true" className="absolute inset-0 bg-brand mix-blend-color opacity-50" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/60 to-deep/80" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-deep/55 via-deep/45 to-deep/75" />
         <div
           aria-hidden="true"
           className="absolute inset-0"

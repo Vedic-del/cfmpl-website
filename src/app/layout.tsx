@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Figtree, Spline_Sans } from "next/font/google";
 import "./globals.css";
 import { MotionProvider } from "@/components/MotionProvider";
+import { RegulatoryNotice } from "@/components/RegulatoryNotice";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { UtilityBar } from "@/components/UtilityBar";
@@ -31,7 +32,7 @@ const spline = Spline_Sans({
  * - scripts and styles: this origin only. 'unsafe-inline' is required because a
  *   static Next.js export bootstraps with inline scripts and the design uses
  *   inline style variables; no third-party script origin is permitted.
- * - images: this origin plus Unsplash's CDN, which serves the photography.
+ * - images: this origin only; every photograph is served from the site itself.
  * - no plugins, no frames, no form posts off-site, no foreign <base>.
  * frame-ancestors cannot be set from a meta tag (browsers ignore it there).
  */
@@ -39,7 +40,7 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' https://images.unsplash.com data:",
+  "img-src 'self' data:",
   "font-src 'self'",
   "connect-src 'self'",
   "object-src 'none'",
@@ -121,6 +122,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        <RegulatoryNotice />
         <MotionProvider />
         <script
           type="application/ld+json"

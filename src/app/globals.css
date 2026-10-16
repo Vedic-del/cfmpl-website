@@ -348,3 +348,47 @@
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+
+/* First-visit regulatory notice (components/RegulatoryNotice.tsx). */
+.reg-notice::backdrop {
+  background: rgb(20 21 15 / 0.72);
+  backdrop-filter: blur(6px);
+}
+html:has(.reg-notice[open]) {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .reg-notice[open] {
+    animation: notice-in 700ms var(--ease-house) both;
+  }
+  .reg-notice[open]::backdrop {
+    animation: notice-fade 500ms ease-out both;
+  }
+  .reg-notice[open] .reg-notice-number {
+    animation: notice-track 1400ms var(--ease-house) 250ms both;
+  }
+  .reg-notice-mark {
+    animation: notice-spin 90s linear infinite;
+  }
+  @media (max-width: 767px) {
+    .reg-notice[open] {
+      animation-name: notice-sheet;
+    }
+  }
+}
+@keyframes notice-in {
+  from { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.98); }
+}
+@keyframes notice-sheet {
+  from { transform: translate3d(0, 100%, 0); }
+}
+@keyframes notice-fade {
+  from { opacity: 0; }
+}
+@keyframes notice-track {
+  from { opacity: 0; letter-spacing: 0.5em; }
+}
+@keyframes notice-spin {
+  to { transform: rotate(360deg); }
+}
+

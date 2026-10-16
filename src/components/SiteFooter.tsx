@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { firm } from "@/content/firm";
+import { grievanceOfficer, sebiPortals } from "@/content/legal";
 import { footerNav } from "@/content/navigation";
 import { regulatoryNote } from "@/content/services";
 
@@ -43,6 +44,22 @@ export function SiteFooter() {
               <br />
               Mumbai · New Delhi · Chennai · Ahmedabad
             </p>
+            {/* Required on the home page: a named contact for queries and grievances
+                (Companies Act s.12 with rule 26 of the Incorporation Rules) and a link
+                to SEBI's online dispute resolution portal. The footer carries both on every page. */}
+            <p className="mt-5 max-w-[46ch] text-[13.5px] leading-6 text-warm/60">
+              Queries and grievances: {grievanceOfficer.name}, Compliance Officer,{" "}
+              <a href={`mailto:${grievanceOfficer.email}`} className="text-warm/80 hover:text-warm">
+                {grievanceOfficer.email}
+              </a>
+            </p>
+            <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-[13.5px]">
+              {[sebiPortals.scores, sebiPortals.odr].map((l) => (
+                <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-brand-light hover:text-warm">
+                  {l.label} ↗<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              ))}
+            </p>
           </div>
           <FooterList title="Firm" items={footerNav.firm} />
           <FooterList title="Regulatory" items={footerNav.regulatory} />
@@ -51,7 +68,7 @@ export function SiteFooter() {
         <div className="pt-7 text-[12px] leading-6 text-warm/60">
           <p className="max-w-[118ch]">
             © {new Date().getFullYear()} {firm.legalName}, formerly {firm.formerName}. CIN {firm.cin}. SEBI{" "}
-            {firm.sebiCategory}. {regulatoryNote} CFMPL is the sponsor of {firm.arc.name}, a separate RBI-registered
+            {firm.sebiCategory}, Registration No. {firm.sebiRegistrationNo}. {regulatoryNote} CFMPL is the sponsor of {firm.arc.name}, a separate RBI-registered
             asset reconstruction company —{" "}
             <a
               href={firm.arc.url}

@@ -10,8 +10,8 @@ export const firm = {
   shortName: "CFM",
   tagline: "thoughtful innovation",
   cin: "U99999MH1999PTC122702",
-  // Shown in the top bar once added.
-  sebiRegistrationNo: null as string | null,
+  // From the firm's regulatory notice on cfml.in.
+  sebiRegistrationNo: "INM000012052" as string | null,
   sebiCategory: "Category I Merchant Banker",
   foundedYear: 1991,
   url: "https://www.cfml.in",
@@ -82,7 +82,7 @@ export const timeline = [
 export const founderMessage = {
   paragraphs: [
     "Every problem carries an opportunity. That idea has guided CFM since I started it.",
-    "I founded the firm with one aim: to be among the very best in Indian finance. We began by arranging loans. Technical knowledge and single-minded effort took CFM from there to being a leading loan syndicator and then a full financial advisory firm. Through CFM Asset Reconstruction, which we sponsor, we are also part of India's market for stressed assets.",
+    "I founded the firm with one aim: to be among the very best in Indian finance. We began by arranging loans. Technical knowledge and single-minded effort took CFM from there into loan syndication and then into full financial advisory. Through CFM Asset Reconstruction, which we sponsor, we are also part of India's market for stressed assets.",
     "Our management philosophy is short: time is money, so we do not waste it. We put trust, empathy and innovation first and rely on relationships built over more than three decades to help the companies we advise to grow.",
   ],
   name: "Om Porwal",

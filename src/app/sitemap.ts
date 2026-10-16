@@ -12,8 +12,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/life-at-cfm", priority: 0.6 },
     { path: "/regulatory", priority: 0.6 },
     { path: "/contact", priority: 0.9 },
+    { path: "/terms", priority: 0.3 },
     { path: "/disclaimer", priority: 0.3 },
     { path: "/privacy", priority: 0.3 },
+    { path: "/accessibility", priority: 0.3 },
   ];
 
   const lastModified = new Date();

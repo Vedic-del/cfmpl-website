@@ -7,6 +7,7 @@ import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { firm } from "@/content/firm";
 import { imagery } from "@/content/imagery";
+import { nonSebiActivities, nonSebiGrievanceEmail, nonSebiNotice } from "@/content/legal";
 import {
   charterCategories,
   charterDocument,
@@ -30,7 +31,7 @@ export default function RegulatoryPage() {
     <>
       <PageHero
         title="Regulatory Information"
-        lede="CFMPL is a SEBI-registered Category I Merchant Banker. This page sets out what that registration requires us to publish: our investor charter, complaints data, grievance process, offer documents, policies and annual returns."
+        lede={`CFMPL is registered with SEBI as a Category I Merchant Banker, Registration No. ${firm.sebiRegistrationNo}. This page sets out what that registration and company law require us to publish.`}
         photo={imagery.regulatory}
       />
 
@@ -117,9 +118,10 @@ export default function RegulatoryPage() {
             </div>
             <div>
               <p className="font-display text-[1.2rem] font-medium">SEBI</p>
-              <p className="mt-1.5 max-w-[42ch] text-[14px] text-grey">
-                If you are not satisfied with our response, you may lodge the grievance with SEBI, or approach a SEBI
-                office directly.
+              <p className="mt-1.5 max-w-[46ch] text-[14px] text-grey">
+                If you are not satisfied with our response, lodge the complaint on SEBI SCORES. SEBI&apos;s timeline for
+                resolution is 21 calendar days. If it remains unresolved, you may start online conciliation or
+                arbitration through SMART ODR.
               </p>
             </div>
             <div className="text-[14.5px] leading-7">
@@ -156,6 +158,38 @@ export default function RegulatoryPage() {
           </div>
         </dl>
         <DocumentList docs={[grievance.document]} />
+      </Section>
+
+      <Section tone="paper" labelledBy="non-sebi">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <SectionHeading
+            id="non-sebi"
+            title="Activities Not Regulated by SEBI"
+            lede="Investor grievances for these activities are handled separately from merchant banking."
+          />
+          <div data-reveal>
+            <ul className="border-t border-line">
+              {nonSebiActivities.map((a) => (
+                <li key={a} className="flex gap-3 border-b border-line py-3.5 text-[15.5px]">
+                  <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rotate-45 bg-brand" />
+                  {a}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-[15px] leading-[1.75] text-grey">{nonSebiNotice.statement}</p>
+            <p className="mt-5 border-l-2 border-brand bg-white py-3 pr-4 pl-4 text-[15px] leading-[1.7] text-ink">
+              <strong className="font-display font-semibold">Note:</strong> {nonSebiNotice.note}
+            </p>
+            <p className="mt-5 text-[13px] leading-[1.7] text-grey">{nonSebiNotice.basis}</p>
+            <p className="mt-4 text-[15px] leading-[1.75] text-grey">
+              Complaints about these activities are handled separately from merchant banking complaints. Write to{" "}
+              <a href={`mailto:${nonSebiGrievanceEmail}`} className="text-brand-deep underline underline-offset-4">
+                {nonSebiGrievanceEmail}
+              </a>
+              .
+            </p>
+          </div>
+        </div>
       </Section>
 
       <Section tone="dark" labelledBy="documents">

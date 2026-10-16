@@ -202,7 +202,8 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-[46ch] text-[12.5px] leading-relaxed text-grey">
-          Your enquiry goes from your own email to ours — this website stores nothing. See our{" "}
+          Your enquiry goes from your own email to ours; this website stores nothing. We use your details only to reply
+          and keep a record of the correspondence. See our{" "}
           <Link href="/privacy" className="underline underline-offset-4">
             privacy policy
           </Link>

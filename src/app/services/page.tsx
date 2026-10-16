@@ -67,7 +67,10 @@ function PracticeSection({ practice }: { practice: Practice }) {
             data-reveal
           >
             <div>
-              <h3 className="font-display text-[1.6rem] leading-tight font-medium">{o.title}</h3>
+              <p className={`text-[12px] font-display font-medium tracking-[0.06em] uppercase ${o.sebi ? "text-brand" : "text-grey"}`}>
+                {o.sebi ? "Regulated by SEBI" : "Not regulated by SEBI"}
+              </p>
+              <h3 className="mt-2 font-display text-[1.6rem] leading-tight font-medium">{o.title}</h3>
               <p className="mt-4 text-[16px] leading-[1.75] text-grey">{o.body}</p>
               <p className="mt-5 text-[15px] leading-[1.7] text-ink">
                 <span className="font-display font-medium text-brand-deep">Our role: </span>

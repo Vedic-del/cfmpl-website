@@ -28,7 +28,9 @@ export const footerNav = {
     { href: "/regulatory", label: "Regulatory Information" },
     { href: "/regulatory/offer-documents", label: "Offer Documents" },
     { href: "/regulatory/public-issues-track-record", label: "Track Record of Public Issues" },
+    { href: "/terms", label: "Terms of Use" },
     { href: "/disclaimer", label: "Disclaimer" },
     { href: "/privacy", label: "Privacy Policy" },
+    { href: "/accessibility", label: "Accessibility" },
   ],
 } as const;

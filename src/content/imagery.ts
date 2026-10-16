@@ -4,7 +4,9 @@
  * Three kinds, each with its own rule:
  *
  * - The home hero: Mumbai's coastal road under construction and complete
- *   (Unsplash licence). Something unfinished becomes whole.
+ *   (Unsplash licence, downloaded and served from this site so the page
+ *   never depends on, or sends visitors to, a third-party image server).
+ *   Something unfinished becomes whole.
  * - Symbolic plates, one per idea, printed in the house hue (see `.plate` in
  *   globals.css). All are public domain / CC0, from the WordPress Photo
  *   Directory (wordpress.org/photos) and rawpixel's public-domain collection:
@@ -22,27 +24,18 @@
  * here as /images/name.webp and the image loader picks the size.
  */
 
-const u = (id: string) => `https://images.unsplash.com/photo-${id}`;
-
 export type Photo = { src: string; alt: string };
 
 export const imagery = {
   heroBefore: {
-    src: u("1710582309002-3a677a2cbded"),
+    src: "/images/hero-before.webp",
     alt: "Mumbai's coastal road under construction along the shoreline, the city skyline behind it",
   },
   heroAfter: {
-    src: u("1708357997379-e55c1636e0d7"),
+    src: "/images/hero-after.webp",
     alt: "A completed interchange curving along the Mumbai coast, with the city skyline beyond",
   },
-  contact: {
-    src: u("1710582308944-95126b0558ed"),
-    alt: "An aerial view of Mumbai and the Arabian Sea",
-  },
-  regulatory: {
-    src: u("1710582307610-089a2bd505ef"),
-    alt: "An aerial view of Mumbai and its coastline",
-  },
+  regulatory: { src: "/images/regulatory.webp", alt: "An aerial view of Mumbai and its coastline" },
 
   transactionAdvisory: { src: "/images/transaction-advisory.webp", alt: "A hand signing a contract on the signature line" },
   equityCapitalMarkets: { src: "/images/ecm.webp", alt: "A stock exchange board showing share prices" },
