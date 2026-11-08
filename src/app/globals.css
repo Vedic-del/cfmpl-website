@@ -15,7 +15,7 @@
   --color-paper: #f5f3ed;
   --color-ink: #202020;
   --color-deep: #14150f;
-  --color-grey: #666666;
+  --color-grey: #4d4d4d;
   --color-grey-light: #767676;
   --color-line: rgb(32 32 32 / 0.12);
   --color-line-dark: rgb(249 248 246 / 0.16);
@@ -76,46 +76,37 @@
   }
   @media (min-width: 1280px) {
     .container-house {
-      padding-inline: 3.75rem;
+      padding-inline: 5rem;
     }
   }
 
 
-  /* Paper grain. A faint tooth on the dark grounds so large fields of near-black
-     read as printed stock rather than flat ink. Static, decorative, ~3% opacity. */
-  .grain::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.045;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 160px 160px;
-  }
-
-  .eyebrow {
+  /* A small sentence-case label in the display face. Never uppercase: the
+     taste skill allows one or two labels a page and none set in capitals. */
+  .eyebrow,
+  .label {
     font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0;
   }
 
+  /* One heading scale: the page's h1 (.display-lg) is the largest thing on it,
+     every h2 is .display, card and step titles sit below that. */
   .display {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+    font-size: clamp(1.875rem, 1.2rem + 2vw, 3rem);
     line-height: 1.08;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
   }
 
-  /* Statement headings: the one place the type is allowed to be loud. */
   .display-lg {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(2.35rem, 1.2rem + 4vw, 4.6rem);
+    font-size: clamp(2.375rem, 1.3rem + 3.4vw, 4.5rem);
     line-height: 1.02;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
   }
 
   /* Photographs printed in the house hue. Symbolic images only; photographs of
@@ -166,187 +157,156 @@
 }
 
 /* ------------------------------------------------------------------------
-   Motion. One rhythm for the whole site: a slow, decelerating ease
-   (--ease-house), transform/opacity/clip-path only, and nothing at all under
-   prefers-reduced-motion. Content is visible without JavaScript: scroll
-   reveals only hide things once MotionProvider has marked the document ready,
-   and load-in animations are CSS keyframes that end in the visible state.
+   Motion, in three layers and nothing else (taste skill, motion.md):
+   1. each page's hero enters once on load (CSS keyframes, so the page is whole
+      without script and stands still under reduced motion);
+   2. one dealt moment per page, run by the kit's moment files in
+      public/assets/moments, inside its own section;
+   3. the hover and press layer below.
+   Scrolling moves nothing but the moment.
    ------------------------------------------------------------------------ */
 
-@media (prefers-reduced-motion: no-preference) {
-  /* Scroll reveal: rise and fade. */
-  html[data-motion="ready"] [data-reveal] {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-    transition:
-      opacity 800ms var(--ease-house),
-      transform 900ms var(--ease-house);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  html[data-motion="ready"] [data-reveal][data-revealed="true"] {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Headings rise from behind a mask as their block reveals. */
-  html[data-motion="ready"] [data-reveal] :is(.display, .display-lg, .reveal-mask) {
-    clip-path: inset(0 0 100% 0);
-    transform: translate3d(0, 0.4em, 0);
-    transition:
-      clip-path 1000ms var(--ease-house),
-      transform 1000ms var(--ease-house);
-    transition-delay: calc(var(--reveal-delay, 0ms) + 80ms);
-  }
-  html[data-motion="ready"] [data-reveal][data-revealed="true"] :is(.display, .display-lg, .reveal-mask) {
-    clip-path: inset(0 0 -0.3em 0);
-    transform: none;
-  }
-
-  /* Photographs unveil upward while the image settles from a slight zoom. */
-  html[data-motion="ready"] [data-reveal="plate"] {
-    opacity: 1;
-    transform: none;
-    clip-path: inset(100% 0 0 0);
-    transition: clip-path 1300ms var(--ease-house);
-  }
-  html[data-motion="ready"] [data-reveal="plate"] img {
-    transform: scale(1.18);
-    transition: transform 1800ms var(--ease-house);
-  }
-  html[data-motion="ready"] [data-reveal="plate"][data-revealed="true"] {
-    clip-path: inset(0 0 0 0);
-  }
-  html[data-motion="ready"] [data-reveal="plate"][data-revealed="true"] img {
-    transform: scale(1);
-  }
-
-  /* Milestone rail draws across, left to right. */
-  html[data-motion="ready"] [data-reveal="rail"] {
-    opacity: 1;
-    transform: none;
-  }
-  html[data-motion="ready"] [data-reveal="rail"]::before {
-    transform: scaleX(0);
-    transition: transform 1600ms var(--ease-house);
-  }
-  html[data-motion="ready"] [data-reveal="rail"][data-revealed="true"]::before {
-    transform: scaleX(1);
-  }
-
-  /* Load-in for page heroes: plays from first paint, no JavaScript needed. */
-  .intro {
-    animation: intro-rise 1000ms var(--ease-house) both;
-    animation-delay: var(--intro-delay, 0ms);
-  }
-  .intro-mask {
-    animation: intro-mask 1100ms var(--ease-house) both;
-    animation-delay: var(--intro-delay, 0ms);
-  }
-  .intro-curtain {
-    animation: intro-curtain 1400ms var(--ease-house) both;
-    animation-delay: var(--intro-delay, 150ms);
-  }
-  .intro-curtain img {
-    animation: intro-settle 2000ms var(--ease-house) both;
-    animation-delay: var(--intro-delay, 150ms);
-  }
-
-  /* Exchange-style ticker. */
-  .ticker-track {
-    animation: ticker 55s linear infinite;
-  }
-  .ticker:hover .ticker-track {
-    animation-play-state: paused;
-  }
-
-  /* Page-to-page transition (React ViewTransition, see app/template.tsx). */
-  ::view-transition-old(.page-exit) {
-    animation: 220ms ease-in both page-out;
-  }
-  ::view-transition-new(.page-enter) {
-    animation: 520ms var(--ease-house) 120ms both page-in;
-  }
-  ::view-transition-group(site-header) {
-    animation: none;
-  }
+/* Tokens the kit's moments read, mapped onto the house palette and type. */
+:root {
+  --bg: var(--color-white);
+  --surface: var(--color-paper);
+  --ink: var(--color-ink);
+  --muted: var(--color-grey);
+  --accent: var(--color-brand-deep);
+  --line: var(--color-line);
+  --font-text: var(--font-body);
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --t-small: 14px;
+  --t-lead: 20px;
+  --t-h3: 28px;
+  --t-h2: clamp(30px, 1.72vw + 23.3px, 48px);
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+  --r-md: 0px;
+  --r-lg: 0px;
+  --gutter: 24px;
+  --nav: 72px;
+  --m-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --m-ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (min-width: 768px) {
+  :root { --nav: 80px; }
 }
 
-/* Reading progress along the bottom of the header, driven by scroll alone. */
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .scroll-progress {
-      display: block;
-      transform-origin: 0 50%;
-      animation: progress linear both;
-      animation-timeline: scroll(root block);
-    }
+/* 1. The hero's entrance: the h1 rises line by line out of its mask, then the
+   lead, buttons and facts fade up 12px; the photograph is never hidden, it
+   settles from 1.05. About 1.1 s, once. */
+@media (prefers-reduced-motion: no-preference) {
+  .intro-mask {
+    animation: intro-mask 700ms var(--m-ease-enter) both;
+    animation-delay: var(--intro-delay, 0ms);
   }
+  .intro {
+    animation: intro-rise 520ms var(--m-ease-enter) both;
+    animation-delay: var(--intro-delay, 380ms);
+  }
+  .intro-settle img {
+    animation: intro-settle 1100ms var(--m-ease-enter) both;
+  }
+}
+@keyframes intro-mask {
+  from { clip-path: inset(0 0 100% 0); transform: translate3d(0, 0.4em, 0); }
+  to { clip-path: inset(0 0 -0.3em 0); transform: none; }
+}
+@keyframes intro-rise {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes intro-settle {
+  from { transform: scale(1.05); }
+  to { transform: scale(1); }
+}
+
+/* 3. Hover and press. Fine pointers only; keyboard focus shows the ring. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding-inline: 1.75rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  transition:
+    background-color 150ms var(--m-ease),
+    border-color 150ms var(--m-ease),
+    color 150ms var(--m-ease),
+    transform 150ms var(--m-ease);
+}
+.btn--primary { background: var(--color-brand); color: var(--color-warm); }
+.btn--light { background: var(--color-warm); color: var(--color-brand-deep); }
+.btn--ghost { border: 1px solid currentColor; }
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover { background: color-mix(in oklab, var(--color-brand) 86%, var(--color-ink)); transform: translateY(-1px); }
+  .btn--light:hover { background: var(--color-white); transform: translateY(-1px); }
+  .btn--ghost:hover { background: color-mix(in oklab, currentColor 10%, transparent); transform: translateY(-1px); }
+}
+.btn:active { transform: translateY(1px) scale(0.985); transition-duration: 90ms; }
+
+/* Links: an ink line draws left to right; the arrow moves 3px. */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 150ms var(--m-ease), color 150ms var(--m-ease);
+}
+.link-draw:hover,
+.link-draw:focus-visible { background-size: 100% 1px; }
+.m-arrow { display: inline-block; transition: transform 150ms var(--m-ease); }
+@media (hover: hover) and (pointer: fine) {
+  :is(a, button):hover .m-arrow { transform: translateX(3px); }
+}
+
+/* Linked cards lift 2px; their photographs zoom 1.03 inside the frame. */
+.m-card { transition: transform 180ms var(--m-ease), border-color 180ms var(--m-ease), background-color 180ms var(--m-ease); }
+.m-zoom { overflow: hidden; }
+.m-zoom img { transition: transform 600ms var(--m-ease-enter); }
+@media (hover: hover) and (pointer: fine) {
+  .m-card:hover { transform: translateY(-2px); }
+  :is(.m-card, a):hover .m-zoom img,
+  .m-zoom:hover img { transform: scale(1.03); }
 }
 
 /* Symbolic photographs take their colour back on hover. */
 .group .plate img,
 .group .plate::after {
-  transition:
-    filter 700ms var(--ease-house),
-    opacity 700ms var(--ease-house),
-    transform 900ms var(--ease-house);
+  transition: filter 600ms var(--m-ease-enter), opacity 600ms var(--m-ease-enter), transform 600ms var(--m-ease-enter);
 }
-@media (hover: hover) {
-  .group:hover .plate img {
-    filter: grayscale(0.1) contrast(1.02);
-  }
-  .group:hover .plate::after {
-    opacity: 0.2;
-  }
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .plate img { filter: grayscale(0.1) contrast(1.02); }
+  .group:hover .plate::after { opacity: 0.2; }
 }
 
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .group .plate-inner {
-    transition: transform 1100ms var(--ease-house);
-  }
-  .group:hover .plate-inner {
-    transform: scale(1.045);
-  }
+/* Kit moments (photo-chapters, pinned-chapters): symbolic photographs printed
+   in the house hue like a .plate. :where() keeps the kit's own positioning. */
+img.tone-house { filter: grayscale(1) contrast(1.06); }
+:where(figure:has(> img.tone-house)) { position: relative; }
+figure:has(> img.tone-house)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--color-brand);
+  mix-blend-mode: color;
+  opacity: 0.85;
 }
 
-/* Parallax layer inside a plate: oversized so its edges never show. */
 .plate-inner {
   position: absolute;
   inset: 0;
 }
-[data-parallax] .plate-inner {
-  inset: -9% 0;
-  will-change: transform;
-}
 
-@keyframes intro-rise {
-  from { opacity: 0; transform: translate3d(0, 22px, 0); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes intro-mask {
-  from { clip-path: inset(0 0 100% 0); transform: translate3d(0, 0.35em, 0); }
-  to { clip-path: inset(0 0 -0.3em 0); transform: none; }
-}
-@keyframes intro-curtain {
-  from { clip-path: inset(0 0 0 100%); }
-  to { clip-path: inset(0 0 0 0); }
-}
-@keyframes intro-settle {
-  from { transform: scale(1.15); }
-  to { transform: scale(1); }
-}
-@keyframes ticker {
-  to { transform: translate3d(-50%, 0, 0); }
-}
-@keyframes page-out {
-  to { opacity: 0; transform: translate3d(0, -10px, 0); }
-}
-@keyframes page-in {
-  from { opacity: 0; transform: translate3d(0, 18px, 0); }
-}
-@keyframes progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .btn, .m-card, .m-zoom img, .m-arrow, .link-draw { transition-property: color, background-color, border-color, background-size; transform: none !important; }
 }
 
 /* First-visit regulatory notice (components/RegulatoryNotice.tsx). */
@@ -367,9 +327,6 @@ html:has(.reg-notice[open]) {
   .reg-notice[open] .reg-notice-number {
     animation: notice-track 1400ms var(--ease-house) 250ms both;
   }
-  .reg-notice-mark {
-    animation: notice-spin 90s linear infinite;
-  }
   @media (max-width: 767px) {
     .reg-notice[open] {
       animation-name: notice-sheet;
@@ -387,8 +344,5 @@ html:has(.reg-notice[open]) {
 }
 @keyframes notice-track {
   from { opacity: 0; letter-spacing: 0.5em; }
-}
-@keyframes notice-spin {
-  to { transform: rotate(360deg); }
 }
 

@@ -116,7 +116,7 @@ export function PeopleRail({ people, groupId, label }: { people: readonly Person
                 <Portrait person={p} className="w-full max-w-[180px]" />
                 <div className="min-w-0">
                   <h3 className="font-display text-[1.5rem] font-medium leading-tight">{p.name}</h3>
-                  <p className="eyebrow mt-2 text-brand">{p.role}</p>
+                  <p className="label mt-2 text-brand">{p.role}</p>
                   <div className="prose-house mt-5 text-grey">
                     {p.bio.map((para, j) => (
                       <p key={j}>{para}</p>

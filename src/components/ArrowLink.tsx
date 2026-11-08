@@ -14,13 +14,11 @@ export function ArrowLink({
   external?: boolean;
   className?: string;
 }) {
-  const cls = `group inline-flex items-center gap-2 border-b pb-1 text-[15px] font-light transition-colors duration-200 ${
-    dark
-      ? "border-brand-light/40 text-brand-light hover:border-brand-light hover:text-warm"
-      : "border-brand-deep/35 text-brand-deep hover:border-brand-deep"
+  const cls = `link-draw inline-flex min-h-11 items-center gap-2 text-[15px] transition-colors duration-200 ${
+    dark ? "text-brand-light hover:text-warm" : "text-brand-deep"
   } ${className}`;
   const arrow = (
-    <span aria-hidden="true" className="transition-transform duration-200 ease-out group-hover:translate-x-1">
+    <span aria-hidden="true" className="m-arrow">
       {external ? "↗" : "→"}
     </span>
   );

@@ -89,7 +89,7 @@ export default function RegulatoryPage() {
         />
         <ol className="mt-10 border-t border-line">
           {grievance.contacts.map((c, i) => (
-            <li key={c.email} className="grid gap-4 border-b border-line py-8 md:grid-cols-[110px_1fr_1fr] md:gap-10" data-reveal>
+            <li key={c.email} className="grid gap-4 border-b border-line py-8 md:grid-cols-[110px_1fr_1fr] md:gap-10">
               <div>
                 <span className="num font-display text-[1.9rem] leading-none text-brand">
                   {String(i + 1).padStart(2, "0")}
@@ -111,7 +111,7 @@ export default function RegulatoryPage() {
               </div>
             </li>
           ))}
-          <li className="grid gap-4 border-b border-line py-8 md:grid-cols-[110px_1fr_1fr] md:gap-10" data-reveal>
+          <li className="grid gap-4 border-b border-line py-8 md:grid-cols-[110px_1fr_1fr] md:gap-10">
             <div>
               <span className="num font-display text-[1.9rem] leading-none text-brand">03</span>
               <p className="mt-2 text-[12.5px] text-grey">Escalation to the regulator</p>
@@ -135,9 +135,9 @@ export default function RegulatoryPage() {
             </div>
           </li>
         </ol>
-        <dl className="mt-10 grid gap-px bg-line sm:grid-cols-3" data-reveal>
+        <dl className="mt-10 grid gap-px bg-line sm:grid-cols-3">
           <div className="bg-white px-6 py-6">
-            <dt className="eyebrow text-brand">Investor grievances</dt>
+            <dt className="label text-brand">Investor grievances</dt>
             <dd className="mt-3 text-[15px]">
               <a href={`mailto:${grievance.grievanceEmail}`} className="text-brand-deep underline underline-offset-4">
                 {grievance.grievanceEmail}
@@ -145,7 +145,7 @@ export default function RegulatoryPage() {
             </dd>
           </div>
           <div className="bg-white px-6 py-6">
-            <dt className="eyebrow text-brand">Customer care</dt>
+            <dt className="label text-brand">Customer care</dt>
             <dd className="mt-3 text-[15px]">
               <a href={`mailto:${grievance.customerCareEmail}`} className="text-brand-deep underline underline-offset-4">
                 {grievance.customerCareEmail}
@@ -153,7 +153,7 @@ export default function RegulatoryPage() {
             </dd>
           </div>
           <div className="bg-white px-6 py-6">
-            <dt className="eyebrow text-brand">By post</dt>
+            <dt className="label text-brand">By post</dt>
             <dd className="mt-3 text-[14px] leading-6">{grievance.address}</dd>
           </div>
         </dl>
@@ -167,7 +167,7 @@ export default function RegulatoryPage() {
             title="Activities Not Regulated by SEBI"
             lede="Investor grievances for these activities are handled separately from merchant banking."
           />
-          <div data-reveal>
+          <div>
             <ul className="border-t border-line">
               {nonSebiActivities.map((a) => (
                 <li key={a} className="flex gap-3 border-b border-line py-3.5 text-[15.5px]">
@@ -199,7 +199,7 @@ export default function RegulatoryPage() {
           title="Offer Documents and Track Record"
           lede="Offer documents are hosted under Regulation 26(1) of the SEBI ICDR Regulations, 2018. The track record of public issues is published under SEBI Circular CIR/MIRSD/1/2012. Both are intended for residents of India and you will be asked to confirm this before viewing them."
         />
-        <div className="mt-10 grid gap-px bg-line-dark md:grid-cols-2" data-reveal>
+        <div className="mt-10 grid gap-px bg-line-dark md:grid-cols-2">
           <Link href="/regulatory/offer-documents" className="group bg-deep px-7 py-8 md:px-9">
             <h3 className="font-display text-[1.25rem] font-medium text-warm transition-colors group-hover:text-brand-light">
               Offer Documents
@@ -234,17 +234,17 @@ export default function RegulatoryPage() {
           lede="Published under Section 92(3) of the Companies Act, 2013, as amended by the Companies (Amendment) Act, 2017."
         />
         <DocumentList docs={statutoryFilings} />
-        <dl className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-3" data-reveal>
+        <dl className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-3">
           <div className="bg-paper px-6 py-6">
-            <dt className="eyebrow text-brand">Legal name</dt>
+            <dt className="label text-brand">Legal name</dt>
             <dd className="mt-3 text-[15px] leading-snug">{firm.legalName}</dd>
           </div>
           <div className="bg-paper px-6 py-6">
-            <dt className="eyebrow text-brand">CIN</dt>
+            <dt className="label text-brand">CIN</dt>
             <dd className="num mt-3 text-[15px]">{firm.cin}</dd>
           </div>
           <div className="bg-paper px-6 py-6">
-            <dt className="eyebrow text-brand">Registered office</dt>
+            <dt className="label text-brand">Registered office</dt>
             <dd className="mt-3 text-[15px] leading-snug">{firm.offices[0].lines.join(", ")}</dd>
           </div>
         </dl>

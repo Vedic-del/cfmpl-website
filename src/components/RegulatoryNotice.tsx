@@ -53,7 +53,7 @@ export function RegulatoryNotice() {
     >
       <div className="lg:grid lg:grid-cols-[300px_minmax(0,1fr)]">
       {/* Header: who we are and the registration number. */}
-      <div className="grain relative isolate overflow-hidden bg-deep px-6 pt-8 pb-7 text-warm md:px-10 md:pt-10 md:pb-9 lg:flex lg:flex-col lg:justify-between lg:px-9 lg:py-10">
+      <div className="relative isolate overflow-hidden bg-deep px-6 pt-8 pb-7 text-warm md:px-10 md:pt-10 md:pb-9 lg:flex lg:flex-col lg:justify-between lg:px-9 lg:py-10">
         <svg aria-hidden="true" viewBox="0 0 300 300" className="reg-notice-mark absolute -top-16 -right-16 -z-10 w-64 text-warm/10 md:w-80">
           {MARK_LINES.map((l, k) => (
             <g key={k}>

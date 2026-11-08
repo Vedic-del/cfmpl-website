@@ -26,8 +26,8 @@ export type Role = { title: string; location: string; practice: string };
 
 // Open positions. An empty list shows a "no open positions" message.
 export const openRoles: readonly Role[] = [
-  { title: "AVP / VP — Debt Syndication", location: "Mumbai — Ballard Estate", practice: "Transaction Advisory" },
-  { title: "Accounts Manager", location: "Mumbai — Fort", practice: "Finance" },
+  { title: "AVP / VP, Debt Syndication", location: "Mumbai, Ballard Estate", practice: "Transaction Advisory" },
+  { title: "Accounts Manager", location: "Mumbai, Fort", practice: "Finance" },
 ];
 
 export const howToApply = {

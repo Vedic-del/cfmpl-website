@@ -67,7 +67,7 @@ export default function ContactPage() {
               </div>
             </dl>
 
-            <h3 className="eyebrow mt-10 text-brand">Office hours</h3>
+            <h3 className="label mt-10 text-brand">Office hours</h3>
             <dl className="mt-4 border-t border-line text-[15px]">
               {firm.hours.map((h) => (
                 <div key={h.days} className="flex justify-between gap-6 border-b border-line py-3">

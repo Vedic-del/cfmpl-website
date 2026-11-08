@@ -9,8 +9,8 @@ export function CaseStudy({ study, dark = false }: { study: CaseStudyT; dark?: b
   return (
     <article id={study.slug} className="scroll-mt-28" aria-labelledby={`${study.slug}-h`}>
       <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-        <div data-reveal>
-          <p className={`eyebrow ${accent}`}>{study.type}</p>
+        <div>
+          <p className={`label ${accent}`}>{study.type}</p>
           <h3 id={`${study.slug}-h`} className={`display mt-5 ${dark ? "text-brand-light" : ""}`}>
             {study.title}
           </h3>
@@ -21,15 +21,15 @@ export function CaseStudy({ study, dark = false }: { study: CaseStudyT; dark?: b
             </p>
           ) : null}
         </div>
-        <div className={`self-end border-t pt-6 ${rule}`} data-reveal>
+        <div className={`self-end border-t pt-6 ${rule}`}>
           <p className="num font-display text-[3rem] leading-none tracking-[-0.02em]">{study.value}</p>
           <p className={`mt-3 text-[14px] ${muted}`}>{study.valueNote}</p>
         </div>
       </div>
 
       <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
-        <div data-reveal>
-          <h4 className={`eyebrow ${accent}`}>The challenge</h4>
+        <div>
+          <h4 className={`label ${accent}`}>The challenge</h4>
           <ul className={`mt-5 border-t ${rule}`}>
             {study.challenges.map((c) => (
               <li key={c} className={`border-b py-4 text-[15px] leading-relaxed ${rule} ${muted}`}>
@@ -38,8 +38,8 @@ export function CaseStudy({ study, dark = false }: { study: CaseStudyT; dark?: b
             ))}
           </ul>
         </div>
-        <div data-reveal>
-          <h4 className={`eyebrow ${accent}`}>Our role</h4>
+        <div>
+          <h4 className={`label ${accent}`}>Our role</h4>
           <ul className={`mt-5 border-t ${rule}`}>
             {study.role.map((r) => (
               <li key={r} className={`flex gap-4 border-b py-4 text-[15px] leading-relaxed ${rule}`}>
@@ -53,7 +53,7 @@ export function CaseStudy({ study, dark = false }: { study: CaseStudyT; dark?: b
         </div>
       </div>
 
-      <p className={`mt-10 max-w-[70ch] text-[15.5px] leading-relaxed ${dark ? "text-warm/90" : "text-ink"}`} data-reveal>
+      <p className={`mt-10 max-w-[70ch] text-[15.5px] leading-relaxed ${dark ? "text-warm/90" : "text-ink"}`}>
         <strong className={`font-display font-medium ${accent}`}>Result: </strong>
         {study.result}
       </p>

@@ -3,10 +3,9 @@
  *
  * Three kinds, each with its own rule:
  *
- * - The home hero: Mumbai's coastal road under construction and complete
- *   (Unsplash licence, downloaded and served from this site so the page
- *   never depends on, or sends visitors to, a third-party image server).
- *   Something unfinished becomes whole.
+ * - The home hero: Mumbai's completed coastal road (Unsplash licence,
+ *   downloaded and served from this site so the page never depends on, or
+ *   sends visitors to, a third-party image server).
  * - Symbolic plates, one per idea, printed in the house hue (see `.plate` in
  *   globals.css). All are public domain / CC0, from the WordPress Photo
  *   Directory (wordpress.org/photos) and rawpixel's public-domain collection:
@@ -27,10 +26,6 @@
 export type Photo = { src: string; alt: string };
 
 export const imagery = {
-  heroBefore: {
-    src: "/images/hero-before.webp",
-    alt: "Mumbai's coastal road under construction along the shoreline, the city skyline behind it",
-  },
   heroAfter: {
     src: "/images/hero-after.webp",
     alt: "A completed interchange curving along the Mumbai coast, with the city skyline beyond",
@@ -50,6 +45,10 @@ export const imagery = {
 
   team: { src: "/images/retreat-2024.webp", alt: "The CFM team in matching green shirts at the 2024 Team Synergy Retreat" },
   offsite: { src: "/images/offsite-2026.webp", alt: "The CFM team together at the 2026 off-site" },
+  townhall: {
+    src: "/images/townhall-2022.webp",
+    alt: "Colleagues smiling around a table at the firm's first town hall",
+  },
 } as const satisfies Record<string, Photo>;
 
 /** The firm's own photographs, from the event gallery on cfml.in. */
@@ -85,3 +84,19 @@ export const moments: readonly (Photo & { title: string; year: string })[] = [
     alt: "Colleagues at lunch together in a restaurant",
   },
 ];
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const widths = [640, 1080, 1920] as const;
+
+/**
+ * src and srcSet for a plain <img> (the taste kit's moments take a plain
+ * image as a direct child of their figure, not next/image's markup).
+ */
+export function imgAttrs(photo: Photo) {
+  const at = (w: number) => `${basePath}${photo.src.replace(/\.webp$/, `-${w}.webp`)}`;
+  return {
+    src: at(1920),
+    srcSet: widths.map((w) => `${at(w)} ${w}w`).join(", "),
+    alt: photo.alt,
+  };
+}

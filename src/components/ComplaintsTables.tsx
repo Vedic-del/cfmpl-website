@@ -39,7 +39,7 @@ function Head({ cols }: { cols: readonly string[] }) {
 export function ComplaintsTables({ data }: { data: ComplaintsData }) {
   return (
     <div className="mt-10 space-y-14">
-      <section data-reveal>
+      <section>
         <h3 className="font-display text-[1.15rem] font-medium">
           Data for the month ending {data.monthLabel}
         </h3>
@@ -70,7 +70,7 @@ export function ComplaintsTables({ data }: { data: ComplaintsData }) {
         </p>
       </section>
 
-      <section data-reveal>
+      <section>
         <h3 className="font-display text-[1.15rem] font-medium">Trend of monthly disposal of complaints</h3>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[620px] border-collapse text-[14px]">
@@ -92,7 +92,7 @@ export function ComplaintsTables({ data }: { data: ComplaintsData }) {
         </div>
       </section>
 
-      <section data-reveal>
+      <section>
         <h3 className="font-display text-[1.15rem] font-medium">Trend of annual disposal of complaints</h3>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[620px] border-collapse text-[14px]">

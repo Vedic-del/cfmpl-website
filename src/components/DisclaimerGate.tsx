@@ -72,7 +72,7 @@ export function DisclaimerGate({
       ) : null}
 
       <fieldset className="mt-8 border-t border-line pt-6">
-        <legend className="eyebrow text-brand">Please confirm</legend>
+        <legend className="label text-brand">Please confirm</legend>
         <div className="mt-4 space-y-3">
           {confirmations.map((c, i) => (
             <label key={c} className="flex cursor-pointer items-start gap-3 text-[14.5px]">

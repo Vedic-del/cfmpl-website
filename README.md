@@ -51,17 +51,21 @@ people on webmail.
 
 ## Motion
 
-One rhythm across the site (a slow, decelerating ease), animating only `transform`, `opacity` and
-`clip-path`:
+Three layers only, following the taste skill (`design-taste-frontend`):
 
-- **Page heroes** load in with CSS keyframes: the heading rises from behind a mask and the photograph
-  opens like a curtain. No JavaScript is needed, and the end state is the normal page.
-- **Scroll reveals** (`MotionProvider`): blocks rise in, headings unmask, photographs unveil upward,
-  the milestone rail draws across, and figures count up.
-- **Parallax** on the large photographs (`<Plate parallax={0.1}>`).
-- **Ticker** of the firm's services on the home page; it pauses on hover.
-- **Hover:** symbolic photographs take their colour back.
-- **Reading progress** line under the header (CSS scroll timeline, where the browser supports it).
-- **Page transitions** between routes (React `ViewTransition`, in `app/template.tsx`).
+- **Entrance, once on load.** Each hero's heading rises out of a mask, the lede and buttons fade up
+  and the photograph settles (`.intro-mask`, `.intro`, `.intro-settle` in `globals.css`). Pure CSS.
+- **One dealt moment per page**, from the kit in `public/assets/moments/` (served unchanged; do not
+  edit those files), mounted by `src/components/Moments.tsx`:
+  - Home: `photo-chapters` (the history, Kolkata 1991 to four cities today)
+  - Services: `pinned-chapters` (the three practices)
+  - About and Leadership: `word-highlight` (one statement lights up word by word)
+  - Life at CFM: `picture-develops` (the team photograph develops like a print)
 
-Everything is visible without JavaScript and all of it switches off under `prefers-reduced-motion`.
+  A moment's section must be a direct child of `<main>` and keep the kit's class names.
+- **Hover and press.** Buttons (`.btn`) lift 1px and press on click, links draw an underline
+  (`.link-draw`), arrows move 3px (`.m-arrow`), linked cards lift 2px (`.m-card`), photographs zoom
+  1.03 inside their frame (`.m-zoom`) and symbolic photographs take some colour back.
+
+No scroll fades, parallax, tickers, count-ups or progress lines. Everything is visible without
+JavaScript and all motion switches off under `prefers-reduced-motion`.

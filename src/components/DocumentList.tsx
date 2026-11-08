@@ -7,14 +7,14 @@ import type { Doc } from "@/content/investors";
 export function DocumentList({ docs, emptyText }: { docs: readonly Doc[]; emptyText?: string }) {
   if (docs.length === 0) {
     return (
-      <div className="mt-10 border border-dashed border-line bg-white px-7 py-10 text-center" data-reveal>
+      <div className="mt-10 border border-dashed border-line bg-white px-7 py-10 text-center">
         <p className="font-display text-[17px]">Nothing is hosted in this section at present.</p>
         {emptyText ? <p className="mx-auto mt-3 max-w-[56ch] text-[14px] text-grey">{emptyText}</p> : null}
       </div>
     );
   }
   return (
-    <ul className="mt-10 border-t border-line" data-reveal>
+    <ul className="mt-10 border-t border-line">
       {docs.map((d) => {
         const label = (
           <span>

@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLink } from "@/components/ArrowLink";
 import { CaseStudy } from "@/components/CaseStudy";
 import { Clamp } from "@/components/Clamp";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
-import { Plate } from "@/components/Plate";
 import { RegulatoryNote } from "@/components/RegulatoryNote";
 import { Muted } from "@/components/SectionHeading";
 import { ServiceIndex } from "@/components/ServiceIndex";
 import { firm } from "@/content/firm";
-import { imagery, type Photo } from "@/content/imagery";
+import { imagery, imgAttrs, type Photo } from "@/content/imagery";
 import { practices, type Practice } from "@/content/services";
 import { caseStudies } from "@/content/transactions";
 
@@ -39,10 +39,9 @@ function PracticeSection({ practice }: { practice: Practice }) {
       aria-labelledby={`${practice.slug}-h`}
       className="scroll-mt-36 border-t border-line py-18 first:border-t-0 first:pt-14 md:py-24 lg:scroll-mt-20"
     >
-      <div className="grid gap-10 xl:grid-cols-[1.1fr_1fr] xl:items-end xl:gap-16">
-        <div data-reveal>
-          <p className="eyebrow text-brand">{practice.tag}</p>
-          <h2 id={`${practice.slug}-h`} className="display mt-5 max-w-[16ch]">
+      <div className="max-w-[62rem]">
+        <div>
+          <h2 id={`${practice.slug}-h`} className="display max-w-[20ch]">
             {practice.name}
           </h2>
           <p className="lede mt-6 max-w-[58ch] text-grey">{practice.intro}</p>
@@ -51,12 +50,6 @@ function PracticeSection({ practice }: { practice: Practice }) {
             {practice.forWhom.charAt(0).toLowerCase() + practice.forWhom.slice(1)}
           </p>
         </div>
-        <Plate
-          photo={plates[practice.slug]}
-          tone={isResolution ? "soft" : "full"}
-          sizes="(min-width: 1280px) 34vw, (min-width: 1024px) 70vw, 100vw"
-          className="aspect-[4/3] w-full"
-        />
       </div>
 
       <div className="mt-16 space-y-14">
@@ -64,10 +57,9 @@ function PracticeSection({ practice }: { practice: Practice }) {
           <article
             key={o.title}
             className="grid gap-8 border-t border-line pt-10 md:grid-cols-[1fr_1.15fr] md:gap-14"
-            data-reveal
           >
             <div>
-              <p className={`text-[12px] font-display font-medium tracking-[0.06em] uppercase ${o.sebi ? "text-brand" : "text-grey"}`}>
+              <p className={`text-[14px] font-display font-medium ${o.sebi ? "text-brand" : "text-grey"}`}>
                 {o.sebi ? "Regulated by SEBI" : "Not regulated by SEBI"}
               </p>
               <h3 className="mt-2 font-display text-[1.6rem] leading-tight font-medium">{o.title}</h3>
@@ -96,11 +88,10 @@ function PracticeSection({ practice }: { practice: Practice }) {
       {isResolution ? (
         <aside
           aria-label="CFMPL and CFM ARC"
-          className="grain relative isolate mt-14 grid gap-6 bg-deep px-7 py-9 text-warm md:grid-cols-[1fr_auto] md:items-end md:px-10"
-          data-reveal
+          className="relative isolate mt-14 grid gap-6 bg-deep px-7 py-9 text-warm md:grid-cols-[1fr_auto] md:items-end md:px-10"
         >
           <div>
-            <p className="eyebrow text-brand-light">CFMPL and CFM ARC</p>
+            <p className="font-display text-[1.25rem] font-medium text-warm">CFMPL and CFM ARC</p>
             <p className="mt-4 max-w-[70ch] text-[15.5px] leading-[1.75] text-warm/85">
               CFMPL sponsored {firm.arc.name} in 2016. CFM ARC is a separate company, registered with the Reserve Bank
               of India under the SARFAESI Act, 2002, that acquires and resolves stressed loans. CFMPL advises; CFM ARC
@@ -126,8 +117,37 @@ export default function ServicesPage() {
             Transaction advisory, equity capital markets <Muted dark>and stressed asset advisory.</Muted>
           </>
         }
-        lede="For Indian companies and the institutions that lend to them, since 1991."
+        lede="For Indian companies and the institutions that lend to them."
+        photo={imagery.transactions}
+        actions={
+          <Link href="/contact" className="btn btn--light">
+            Discuss a mandate
+          </Link>
+        }
       />
+
+      <section data-moment="pinned-chapters" aria-labelledby="practices-h" className="bg-white py-18 text-ink md:py-24">
+        <div className="container-house mo-pc__grid">
+          <div className="mo-pc__text">
+            <h2 id="practices-h" className="display max-w-[20ch]">
+              Three practices, <Muted>one team from first meeting to close.</Muted>
+            </h2>
+            <ol className="mo-pc__steps">
+              {practices.map((p) => (
+                <li key={p.slug} className="mo-pc__step">
+                  <h3>{p.name}</h3>
+                  <p>{p.summary}</p>
+                  <figure className="mo-pc__visual">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- the kit moment takes a plain img */}
+                    <img {...imgAttrs(plates[p.slug])} alt={plates[p.slug].alt} sizes="(min-width: 1024px) 50vw, 100vw" width={1920} height={1440} loading="lazy" className="tone-house" />
+                  </figure>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="mo-pc__visuals frame" />
+        </div>
+      </section>
 
       <div className="bg-white">
         <div className="container-house lg:grid lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-16 xl:gap-24 lg:py-10">
@@ -143,11 +163,9 @@ export default function ServicesPage() {
               aria-labelledby="transactions-h"
               className="scroll-mt-36 border-t border-line py-18 md:py-24 lg:scroll-mt-20"
             >
-              <Plate photo={imagery.transactions} parallax={0.12} sizes="(min-width: 1024px) 75vw, 100vw" className="aspect-[21/9] w-full" />
-              <div className="mt-12 flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
+              <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
                 <div>
-                  <p className="eyebrow text-brand">Selected Transactions</p>
-                  <h2 id="transactions-h" className="display mt-5 max-w-[20ch]">
+                  <h2 id="transactions-h" className="display max-w-[20ch]">
                     ₹2,190 crore, <Muted>structured across three financings.</Muted>
                   </h2>
                 </div>
@@ -158,7 +176,7 @@ export default function ServicesPage() {
                   <CaseStudy key={study.slug} study={study} />
                 ))}
               </div>
-              <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:justify-between" data-reveal>
+              <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
                 <p className="text-[15px] text-grey">Public issues we have lead-managed are listed under Regulatory Information.</p>
                 <ArrowLink href="/regulatory/public-issues-track-record" className="shrink-0">
                   Track record of public issues

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { PeopleRail } from "@/components/PeopleRail";
@@ -26,7 +27,22 @@ export default function LeadershipPage() {
         }
         lede="The board sets the firm's direction and standards. Management runs its work."
         photo={imagery.governance}
+        actions={
+          <Link href="/contact" className="btn btn--light">
+            Discuss a mandate
+          </Link>
+        }
       />
+
+      <section data-moment="word-highlight" aria-label="Our board" className="bg-white py-22 text-ink md:py-32">
+        <div className="container-house">
+          <p className="mo-wh__text">
+            Our board brings together a former Finance Minister of Jammu &amp; Kashmir, a former chief executive of
+            IFCI, a chartered accountant, a merchant banker associated with <strong>more than a hundred IPOs</strong>{" "}
+            and the firm&apos;s founder.
+          </p>
+        </div>
+      </section>
 
       <Section tone="light" labelledBy="board-h">
         <SectionHeading id="board-h" title="Board of Directors" />

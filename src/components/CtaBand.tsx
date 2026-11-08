@@ -13,18 +13,15 @@ export function CtaBand({
   return (
     <section className="bg-brand text-warm">
       <div className="container-house grid gap-10 py-18 md:grid-cols-[1.3fr_1fr] md:items-end md:py-22">
-        <div data-reveal>
-          <h2 className="display-lg max-w-[16ch] text-warm">{title}</h2>
+        <div>
+          <h2 className="display max-w-[16ch] text-warm">{title}</h2>
           <p className="lede mt-5 max-w-[52ch] text-warm/90">{body}</p>
         </div>
-        <div className="flex flex-col items-start gap-4 md:items-end" data-reveal>
-          <Link
-            href={primaryAction.href}
-            className="rounded-full bg-warm px-7 py-3.5 font-display text-[15px] font-medium text-brand-deep transition-colors duration-200 hover:bg-white"
-          >
+        <div className="flex flex-col items-start gap-4 md:items-end">
+          <Link href={primaryAction.href} className="btn btn--light">
             {primaryAction.label}
           </Link>
-          <a href={firm.phone.href} className="text-[14px] text-warm/90 hover:text-warm">
+          <a href={firm.phone.href} className="link-draw inline-flex min-h-11 items-center text-[14px] text-warm">
             or call {firm.phone.display}
           </a>
         </div>

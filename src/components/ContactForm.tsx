@@ -21,7 +21,7 @@ type Values = Record<EnquiryField, string>;
 type Errors = Partial<Record<EnquiryField, string>>;
 
 const inputCls =
-  "mt-2 block w-full border border-line bg-white px-4 py-3.5 text-[15px] font-light text-ink transition-colors duration-200 placeholder:text-grey-light focus:border-brand focus:outline-none aria-[invalid=true]:border-2 aria-[invalid=true]:border-brand-deep";
+  "mt-2 block w-full border border-line bg-white px-4 py-3.5 text-[15px] font-light text-ink transition-colors duration-200 placeholder:text-grey-light focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand aria-[invalid=true]:border-2 aria-[invalid=true]:border-brand-deep";
 
 function validate(v: Values): Errors {
   const e: Errors = {};

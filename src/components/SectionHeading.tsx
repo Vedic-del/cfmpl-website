@@ -27,11 +27,11 @@ export function SectionHeading({
   children?: ReactNode;
 }) {
   return (
-    <div className={className} data-reveal>
+    <div className={className}>
       {eyebrow ? <p className={`eyebrow mb-6 ${dark ? "text-brand-light" : "text-brand"}`}>{eyebrow}</p> : null}
       <Tag
         id={id}
-        className={`${size === "lg" ? "display-lg max-w-[20ch]" : "display max-w-[24ch]"} ${dark ? "text-warm" : "text-ink"}`}
+        className={`display ${size === "lg" ? "max-w-[22ch]" : "max-w-[24ch]"} ${dark ? "text-warm" : "text-ink"}`}
       >
         {title}
       </Tag>

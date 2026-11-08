@@ -36,16 +36,16 @@ export function Portrait({ person, className = "" }: { person: Person; className
   );
 }
 
-export function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
+export function PersonCard({ person }: { person: Person; index?: number }) {
   return (
-    <article data-reveal style={{ ["--reveal-delay" as string]: `${index * 80}ms` }}>
+    <article>
       <Link href={`/leadership#${person.slug}`} className="group block">
         <Portrait person={person} className="transition-transform duration-500 ease-out group-hover:scale-[1.01]" />
         <h3 className="mt-5 text-[19px] font-medium transition-colors duration-200 group-hover:text-brand">
           {person.name}
         </h3>
       </Link>
-      <p className="eyebrow mt-2 text-brand">{person.role}</p>
+      <p className="label mt-2 text-brand">{person.role}</p>
       <p className="mt-3 text-[13.5px] leading-relaxed text-grey">{person.summary}</p>
     </article>
   );

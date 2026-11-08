@@ -6,7 +6,7 @@ const tones: Record<Tone, string> = {
   light: "bg-white text-ink",
   paper: "bg-paper text-ink",
   warm: "bg-warm text-ink",
-  dark: "bg-deep text-warm grain relative isolate",
+  dark: "bg-deep text-warm relative isolate",
 };
 
 export function Section({

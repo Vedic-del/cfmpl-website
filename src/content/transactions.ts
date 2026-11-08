@@ -18,14 +18,14 @@ export type Tombstone = {
 export const tombstones: readonly Tombstone[] = [
   {
     role: "Debt Syndication",
-    client: "Road construction company — Delhi–Mumbai Expressway corridor",
+    client: "Road construction company, Delhi–Mumbai Expressway corridor",
     value: "₹710 crore",
     instrument: "Project finance for a Hybrid Annuity Model highway project",
     caseSlug: "highway-projects",
   },
   {
     role: "Debt Syndication",
-    client: "Road construction company — second NHAI project",
+    client: "Road construction company, second NHAI project",
     value: "₹480 crore",
     instrument: "Project finance for a Hybrid Annuity Model highway project",
     caseSlug: "highway-projects",

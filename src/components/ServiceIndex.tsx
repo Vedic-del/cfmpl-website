@@ -72,7 +72,7 @@ export function ServiceIndex({ items }: { items: readonly Item[] }) {
       {/* Wide screens: sticky column with step controls. */}
       <nav aria-label="Sections on this page" className="hidden lg:block">
         <div className="sticky top-32">
-          <p className="eyebrow text-brand">On this page</p>
+          <p className="label text-brand">On this page</p>
           <ol className="mt-6 border-l border-line">
             {items.map((it) => (
               <li key={it.id}>

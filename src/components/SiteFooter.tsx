@@ -8,11 +8,11 @@ import { regulatoryNote } from "@/content/services";
 function FooterList({ title, items }: { title: string; items: readonly { href: string; label: string }[] }) {
   return (
     <div>
-      <h2 className="eyebrow text-warm/60">{title}</h2>
-      <ul className="mt-5 space-y-2.5 text-[14px]">
+      <h2 className="label text-warm/60">{title}</h2>
+      <ul className="mt-3 text-[14px]">
         {items.map((i) => (
           <li key={i.href}>
-            <Link href={i.href} className="text-warm/75 transition-colors duration-200 hover:text-warm">
+            <Link href={i.href} className="inline-flex min-h-11 items-center text-warm/75 transition-colors duration-200 hover:text-warm">
               {i.label}
             </Link>
           </li>
@@ -69,7 +69,7 @@ export function SiteFooter() {
           <p className="max-w-[118ch]">
             © {new Date().getFullYear()} {firm.legalName}, formerly {firm.formerName}. CIN {firm.cin}. SEBI{" "}
             {firm.sebiCategory}, Registration No. {firm.sebiRegistrationNo}. {regulatoryNote} CFMPL is the sponsor of {firm.arc.name}, a separate RBI-registered
-            asset reconstruction company —{" "}
+            asset reconstruction company:{" "}
             <a
               href={firm.arc.url}
               target="_blank"

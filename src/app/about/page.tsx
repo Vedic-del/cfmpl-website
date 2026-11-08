@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLink } from "@/components/ArrowLink";
-import { CountUp } from "@/components/CountUp";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -34,21 +34,33 @@ export default function AboutPage() {
         }
         lede="CFM is a Mumbai-based financial advisory firm and SEBI Category I Merchant Banker, with offices in New Delhi, Chennai and Ahmedabad."
         photo={imagery.history}
+        actions={
+          <Link href="/contact" className="btn btn--light">
+            Discuss a mandate
+          </Link>
+        }
       />
+
+      <section data-moment="word-highlight" aria-label="How CFM began" className="bg-white py-22 text-ink md:py-32">
+        <div className="container-house">
+          <p className="mo-wh__text">
+            CFM began in 1991 in a small office in Kolkata, arranging loans for companies. Its working rule came from
+            its founder: <strong>time is money</strong>, so never waste the client&apos;s.
+          </p>
+        </div>
+      </section>
 
       <Section tone="light" labelledBy="history-h">
         <SectionHeading
           id="history-h"
-          eyebrow="Our History"
-          size="lg"
           title={
             <>
               Started in Kolkata. <Muted>Built in Mumbai.</Muted>
             </>
           }
         />
-        <div className="prose-house mt-12 gap-14 text-grey md:columns-2 lg:columns-3 [&>p]:mt-0 [&>p]:mb-5 [&>p]:break-inside-avoid lg:[&>p]:text-[1.0625rem]" data-reveal>
-          {history.map((para, i) => (
+        <div className="prose-house mt-12 gap-14 text-grey md:columns-2 [&>p]:mt-0 [&>p]:mb-5 [&>p]:break-inside-avoid lg:[&>p]:text-[1.0625rem]">
+          {history.slice(1).map((para, i) => (
             <p key={i}>{para}</p>
           ))}
         </div>
@@ -60,12 +72,12 @@ export default function AboutPage() {
       </Section>
 
       <Section tone="paper" labelledBy="founder-h">
-        <h2 id="founder-h" className="eyebrow text-brand">
-          A Note from Our Founder
+        <h2 id="founder-h" className="display">
+          A note from <Muted>our founder.</Muted>
         </h2>
-        <figure className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-x-20 lg:gap-y-8" data-reveal>
+        <figure className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-x-20 lg:gap-y-8">
           <blockquote className="lg:row-span-2">
-            <p className="display-lg max-w-[14ch] text-ink">
+            <p className="max-w-[18ch] font-display text-[1.75rem] leading-[1.2] tracking-[-0.01em] text-ink md:text-[2.125rem]">
               <span aria-hidden="true" className="text-brand">
                 &ldquo;
               </span>
@@ -90,7 +102,6 @@ export default function AboutPage() {
       <Section tone="light" labelledBy="approach-h">
         <SectionHeading
           id="approach-h"
-          eyebrow="How We Work"
           title={
             <>
               What we bring <Muted>to every mandate.</Muted>
@@ -98,14 +109,12 @@ export default function AboutPage() {
           }
         />
         <div className="mt-14 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-4">
-          {approach.map((a, i) => (
+          {approach.map((a) => (
             <article
               key={a.title}
-              data-reveal
-              style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               className="flex flex-col border-b border-line py-10 sm:px-7 sm:max-lg:[&:nth-child(odd)]:pl-0 lg:border-b-0 lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0"
             >
-              <CountUp value={a.figure} className="block font-display text-[2.4rem] leading-none tracking-[-0.02em] text-brand-deep" />
+              <p className="num block font-display text-[2.4rem] leading-none tracking-[-0.02em] text-brand-deep">{a.figure}</p>
               <p className="mt-2 h-5 font-display text-[14px] text-brand">{a.unit}</p>
               <h3 className="mt-8 text-[1.25rem] font-medium leading-snug">{a.title}</h3>
               <p className="mt-3 text-[15px] leading-[1.7] text-grey">{a.body}</p>
@@ -117,21 +126,20 @@ export default function AboutPage() {
       <Section tone="paper" labelledBy="clients-h">
         <SectionHeading
           id="clients-h"
-          eyebrow="Our Clients"
           title={
             <>
               Sector agnostic, <Muted>from SMEs to government undertakings.</Muted>
             </>
           }
         />
-        <ul className="mt-12 grid grid-cols-2 gap-px bg-line md:grid-cols-3 lg:grid-cols-6" data-reveal>
+        <ul className="mt-12 grid grid-cols-2 gap-px bg-line md:grid-cols-3 lg:grid-cols-6">
           {clientTypes.map((c) => (
             <li key={c} className="bg-paper px-5 py-6 font-display text-[15.5px]">
               {c}
             </li>
           ))}
         </ul>
-        <div className="mt-14 flex flex-col gap-5 border-t border-line pt-8 md:flex-row md:items-center md:justify-between" data-reveal>
+        <div className="mt-14 flex flex-col gap-5 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
           <p className="max-w-[80ch] text-[15px] leading-[1.8] text-grey">
             CFMPL is the sponsor of {firm.arc.name}, a separate RBI-registered company that acquires and resolves
             stressed financial assets.

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Spline_Sans } from "next/font/google";
 import "./globals.css";
-import { MotionProvider } from "@/components/MotionProvider";
+import { Moments } from "@/components/Moments";
 import { RegulatoryNotice } from "@/components/RegulatoryNotice";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -72,6 +72,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   formatDetection: { telephone: false },
   referrer: "strict-origin-when-cross-origin",
+  // Read by the taste kit's moments and checkers: a firm people hire.
+  other: { "site-kind": "other", "page-type": "service" },
   // Preview builds are never indexed. See src/lib/site.ts.
   ...(isPreview ? { robots: { index: false, follow: false, nocache: true } } : {}),
 };
@@ -105,7 +107,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" data-scroll-behavior="smooth" className={`${figtree.variable} ${spline.variable}`}>
+    <html lang="en-IN" data-type="service" data-scroll-behavior="smooth" className={`${figtree.variable} ${spline.variable}`}>
       <head>
         {process.env.NODE_ENV === "production" ? <meta httpEquiv="Content-Security-Policy" content={csp} /> : null}
       </head>
@@ -123,7 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <SiteFooter />
         <RegulatoryNotice />
-        <MotionProvider />
+        <Moments />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
