@@ -120,6 +120,51 @@ export const advisors: readonly Person[] = [
     ],
     photo: null,
   },
+  // The four advisors below are from the firm's Corporate Profile (July 2026).
+  {
+    slug: "p-r-jaishankar",
+    name: "P. R. Jaishankar",
+    role: "Advisor",
+    summary: "Former Managing Director of IIFCL and Executive Director of National Housing Bank.",
+    bio: [
+      "P. R. Jaishankar has more than thirty-eight years of experience in development banking, infrastructure finance, mortgage finance and capital markets.",
+      "He was Managing Director of India Infrastructure Finance Company Limited (IIFCL) and earlier Executive Director of National Housing Bank. He holds an M.Tech from IIT Delhi, an MBA and a doctorate in management from Amity University.",
+    ],
+    photo: null,
+  },
+  {
+    slug: "rajesh-kumar-singh",
+    name: "Rajesh Kumar Singh",
+    role: "Advisor",
+    summary: "Former General Manager, Commercial Clients Group, State Bank of India.",
+    bio: [
+      "Rajesh Kumar Singh has more than thirty-six years of experience in corporate credit and the resolution of non-performing assets.",
+      "He was General Manager (OSD) in the Commercial Clients Group of State Bank of India. He holds a B.Sc (Hons) and is a CAIIB.",
+    ],
+    photo: null,
+  },
+  {
+    slug: "dinesh-chandra",
+    name: "Dinesh Chandra",
+    role: "Advisor",
+    summary: "Former General Manager, Punjab National Bank. Four decades of infrastructure and corporate credit.",
+    bio: [
+      "Dinesh Chandra has more than forty years of banking experience and was a General Manager with Punjab National Bank.",
+      "He handled large corporate credit for infrastructure projects in roads, rail, power, steel and cement and for large corporate houses. He is a CAIIB from the Indian Institute of Banking & Finance.",
+    ],
+    photo: null,
+  },
+  {
+    slug: "kingshuk-chakraborty",
+    name: "Kingshuk Chakraborty",
+    role: "Advisor",
+    summary: "Twenty-six years in corporate finance and investment banking.",
+    bio: [
+      "Kingshuk Chakraborty has more than twenty-six years of experience in corporate finance and investment banking.",
+      "He has worked with SBI Capital Markets, Yes Bank, Anarock Capital Advisors, ICICI Bank and Rabo India Finance. He holds a BE in civil engineering and an MMS in finance.",
+    ],
+    photo: null,
+  },
 ] as const;
 
 export const management: readonly Person[] = [president];

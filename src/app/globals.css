@@ -300,6 +300,10 @@ figure:has(> img.tone-house)::after {
   opacity: 0.85;
 }
 
+/* Client logos: grey on their white tiles, their own colours on hover. */
+.logo-tile img { filter: grayscale(1) contrast(1.05); opacity: 0.8; mix-blend-mode: multiply; transition: filter 300ms var(--m-ease), opacity 300ms var(--m-ease); }
+.logo-tile:hover img { filter: none; opacity: 1; }
+
 .plate-inner {
   position: absolute;
   inset: 0;

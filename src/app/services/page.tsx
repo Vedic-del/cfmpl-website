@@ -12,6 +12,9 @@ import { firm } from "@/content/firm";
 import { imagery, imgAttrs, type Photo } from "@/content/imagery";
 import { practices, type Practice } from "@/content/services";
 import { caseStudies } from "@/content/transactions";
+import { advisoryClients, merchantBankingClients, trackRecord } from "@/content/clients";
+import { LogoWall } from "@/components/LogoWall";
+import { TrackRecord } from "@/components/TrackRecord";
 
 export const metadata: Metadata = {
   title: "Our Services",
@@ -28,7 +31,8 @@ const plates: Record<string, Photo> = {
 
 const index = [
   ...practices.map((p) => ({ id: p.slug, label: p.name })),
-  { id: "transactions", label: "Selected Transactions" },
+  { id: "transactions", label: "Track record" },
+  { id: "clients", label: "Clients" },
 ];
 
 function PracticeSection({ practice }: { practice: Practice }) {
@@ -163,15 +167,22 @@ export default function ServicesPage() {
               aria-labelledby="transactions-h"
               className="scroll-mt-36 border-t border-line py-18 md:py-24 lg:scroll-mt-20"
             >
-              <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-                <div>
-                  <h2 id="transactions-h" className="display max-w-[20ch]">
-                    ₹2,190 crore, <Muted>structured across three financings.</Muted>
-                  </h2>
-                </div>
-                <p className="shrink-0 text-[13px] text-grey">Client names are not disclosed.</p>
+              <h2 id="transactions-h" className="display max-w-[22ch]">
+                {trackRecord.totalLabel} <Muted>across {trackRecord.count} key mandates.</Muted>
+              </h2>
+              <p className="lede mt-6 max-w-[60ch] text-grey">
+                Loan syndication, restructuring, securitisation and bond placements for state bodies, developers, banks
+                and finance companies.
+              </p>
+              <div className="mt-12">
+                <TrackRecord />
               </div>
-              <div className="mt-16 space-y-24">
+
+              <div className="mt-20 flex flex-col justify-between gap-4 border-t border-line pt-10 md:flex-row md:items-end">
+                <p className="font-display text-[1.25rem] font-medium">Three financings in detail</p>
+                <p className="shrink-0 text-[13px] text-grey">Client names are not disclosed in these case studies.</p>
+              </div>
+              <div className="mt-12 space-y-24">
                 {caseStudies.map((study) => (
                   <CaseStudy key={study.slug} study={study} />
                 ))}
@@ -182,6 +193,21 @@ export default function ServicesPage() {
                   Track record of public issues
                 </ArrowLink>
               </div>
+            </section>
+
+            <section
+              id="clients"
+              aria-labelledby="clients-h"
+              className="scroll-mt-36 border-t border-line py-18 md:py-24 lg:scroll-mt-20"
+            >
+              <h2 id="clients-h" className="display max-w-[22ch]">
+                Clients we have advised, <Muted>from state bodies to listed companies.</Muted>
+              </h2>
+              <h3 className="mt-12 font-display text-[1.25rem] font-medium">Transaction advisory</h3>
+              <LogoWall logos={advisoryClients} label="Transaction advisory clients" className="mt-5" />
+              <h3 className="mt-14 font-display text-[1.25rem] font-medium">Merchant banking</h3>
+              <LogoWall logos={merchantBankingClients} label="Merchant banking clients" wide={5} className="mt-5" />
+              <p className="mt-5 text-[13px] text-grey">Logos are the trademarks of their owners.</p>
             </section>
 
             <RegulatoryNote showSponsor={false} className="mb-18 md:mb-24" />

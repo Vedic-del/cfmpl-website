@@ -1,43 +1,7 @@
 /**
- * Selected transactions, from the "Past Work" case studies on cfml.in.
- * Client names are not disclosed on the current site; they stay undisclosed.
- *
- * The two case studies cover three financings: tiles on the home page, full
- * write-ups on the Services page.
+ * Case studies, from the "Past Work" page on cfml.in. Client names are not
+ * disclosed in them. The named list of key transactions is in clients.ts.
  */
-
-export type Tombstone = {
-  role: string;
-  client: string;
-  value: string;
-  instrument: string;
-  /** Anchor of the full write-up on the Services page. */
-  caseSlug: string;
-};
-
-export const tombstones: readonly Tombstone[] = [
-  {
-    role: "Debt Syndication",
-    client: "Road construction company, Delhi–Mumbai Expressway corridor",
-    value: "₹710 crore",
-    instrument: "Project finance for a Hybrid Annuity Model highway project",
-    caseSlug: "highway-projects",
-  },
-  {
-    role: "Debt Syndication",
-    client: "Road construction company, second NHAI project",
-    value: "₹480 crore",
-    instrument: "Project finance for a Hybrid Annuity Model highway project",
-    caseSlug: "highway-projects",
-  },
-  {
-    role: "Debt Capital Markets",
-    client: "Indian private-sector bank focused on infrastructure finance",
-    value: "₹1,000 crore",
-    instrument: "Basel III-compliant Tier II bonds",
-    caseSlug: "tier-ii-bonds",
-  },
-] as const;
 
 export type CaseStudy = {
   slug: string;

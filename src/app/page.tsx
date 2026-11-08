@@ -6,10 +6,10 @@ import { Plate } from "@/components/Plate";
 import { PracticeGrid } from "@/components/PracticeGrid";
 import { Section } from "@/components/Section";
 import { Muted, SectionHeading } from "@/components/SectionHeading";
-import { TombstoneGrid } from "@/components/TombstoneGrid";
+import { LogoWall } from "@/components/LogoWall";
 import { imagery, imgAttrs } from "@/content/imagery";
 import { practices } from "@/content/services";
-import { tombstones } from "@/content/transactions";
+import { advisoryClients, formatUsdMn, keyTransactions, merchantBankingClients, trackRecord } from "@/content/clients";
 
 const plates = {
   "transaction-advisory": imagery.transactionAdvisory,
@@ -33,8 +33,8 @@ const chapters = [
     tone: true,
   },
   {
-    title: "Mumbai, 1999",
-    body: "The head office moves to Mumbai and the New Delhi office opens.",
+    title: "Mumbai, 1995",
+    body: "The head office moves to Mumbai. New Delhi follows in 2006 and Chennai in 2009.",
     photo: imagery.regulatory,
     tone: true,
   },
@@ -80,20 +80,50 @@ export default function HomePage() {
               size="lg"
               title={
                 <>
-                  ₹2,190 crore, <Muted dark>structured across three financings.</Muted>
+                  {trackRecord.totalLabel} <Muted dark>across {trackRecord.count} key mandates.</Muted>
                 </>
               }
             />
             <ArrowLink href="/services#transactions" dark className="shrink-0 self-start lg:self-end">
-              Read the case studies
+              See every transaction
             </ArrowLink>
           </div>
-          <div className="mt-14">
-            <TombstoneGrid items={tombstones} dark />
-          </div>
-          <p className="mt-5 text-[13px] text-warm/70">Client names are not disclosed.</p>
+          <ul className="mt-14 grid gap-px border border-line-dark bg-line-dark sm:grid-cols-2 lg:grid-cols-3">
+            {keyTransactions.slice(0, 6).map((t) => (
+              <li key={`${t.client}-${t.nature}`} className="flex flex-col bg-deep/80 p-6 md:p-8">
+                <span className="num font-display text-[2rem] leading-none tracking-[-0.02em] text-warm md:text-[2.4rem]">
+                  {formatUsdMn(t.usdMn)}
+                </span>
+                <span className="mt-5 font-display text-[17px] leading-snug text-warm">{t.client}</span>
+                <span className="mt-2 text-[14px] text-warm/75">{t.nature}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 text-[13px] text-warm/70">{trackRecord.note}</p>
         </div>
       </section>
+
+      <Section tone="light" labelledBy="clients-h">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <SectionHeading
+            id="clients-h"
+            size="lg"
+            title={
+              <>
+                State bodies, lenders <Muted>and listed companies.</Muted>
+              </>
+            }
+          />
+          <ArrowLink href="/services#clients" className="shrink-0 self-start lg:self-end">
+            All clients
+          </ArrowLink>
+        </div>
+        <LogoWall
+          label="Selected clients"
+          className="mt-12"
+          logos={[...advisoryClients.slice(0, 9), ...merchantBankingClients.slice(0, 3)]}
+        />
+      </Section>
 
       <section data-moment="photo-chapters" aria-labelledby="history-h" className="bg-white py-18 text-ink md:py-24">
         <div className="container-house mo-ph">
@@ -144,8 +174,8 @@ export default function HomePage() {
             <p className="lede text-grey">
               Our board brings together a former Finance Minister of Jammu &amp; Kashmir, a former chief executive of
               IFCI, a chartered accountant, a merchant banker associated with more than a hundred IPOs and the
-              firm&apos;s founder. Our senior advisors spent their careers at State Bank of India, Bank of Baroda and
-              Vijaya Bank.
+              firm&apos;s founder. Our senior advisors spent their careers at State Bank of India, Bank of Baroda, Punjab
+              National Bank, IIFCL and National Housing Bank.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-10 gap-y-2">
               <ArrowLink href="/leadership">Leadership &amp; Governance</ArrowLink>

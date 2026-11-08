@@ -1,6 +1,6 @@
 /**
- * Firm-level facts and the firm's history, from cfml.in and facts confirmed by
- * the firm. Public copy describes the firm as having begun in 1991 ("since
+ * Firm-level facts and the firm's history, from cfml.in, the firm's Corporate
+ * Profile (July 2026; milestones) and facts confirmed by the firm. Public copy describes the firm as having begun in 1991 ("since
  * 1991"); it does not state an incorporation date.
  */
 
@@ -69,7 +69,8 @@ export const history = [
 
 export const timeline = [
   { year: "1991", event: "CFM begins operations in Kolkata, arranging loans for companies." },
-  { year: "1999", event: "Head office moves to Mumbai. The New Delhi office opens." },
+  { year: "1995", event: "Head office moves to Mumbai." },
+  { year: "2006", event: "The New Delhi office opens." },
   { year: "2009", event: "The Chennai office opens." },
   { year: "2013", event: "CFM registers with SEBI as a Category I Merchant Banker." },
   { year: "2016", event: "CFM sponsors CFM Asset Reconstruction Private Limited, which receives its RBI licence in August." },

@@ -11,7 +11,7 @@ export function CaseStudy({ study, dark = false }: { study: CaseStudyT; dark?: b
       <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <div>
           <p className={`label ${accent}`}>{study.type}</p>
-          <h3 id={`${study.slug}-h`} className={`display mt-5 ${dark ? "text-brand-light" : ""}`}>
+          <h3 id={`${study.slug}-h`} className={`mt-4 font-display text-[1.75rem] leading-[1.15] tracking-[-0.01em] md:text-[2rem] ${dark ? "text-brand-light" : ""}`}>
             {study.title}
           </h3>
           <p className={`lede mt-6 ${muted}`}>{study.client}</p>
