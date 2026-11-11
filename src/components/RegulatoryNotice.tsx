@@ -13,18 +13,19 @@ const STORAGE_KEY = "cfm-regulatory-notice-v1";
  * the two grievance routes and the disclosure on activities SEBI does not
  * regulate (SEBI circular of 2 January 2026). Built on the native <dialog>, so
  * focus is held inside it, Escape closes it and the page behind is inert.
- * Once acknowledged it is not shown again in that browser; the same text is
- * always available on the Regulatory Information page.
+ * Once acknowledged it stays closed for the rest of that browser session and
+ * returns on the next visit; the same text is always available on the
+ * Regulatory Information page.
  */
 export function RegulatoryNotice() {
   const ref = useRef<HTMLDialogElement>(null);
 
-  // The dialog is in the page from the start, closed; it opens only if this
-  // browser has not acknowledged the notice before.
+  // The dialog is in the page from the start, closed; it opens unless the
+  // notice has already been acknowledged in this browser session.
   useEffect(() => {
     let seen = false;
     try {
-      seen = window.localStorage.getItem(STORAGE_KEY) === "1";
+      seen = window.sessionStorage.getItem(STORAGE_KEY) === "1";
     } catch {
       // Storage unavailable (private mode): show the notice each visit.
     }
@@ -37,7 +38,7 @@ export function RegulatoryNotice() {
 
   function acknowledge() {
     try {
-      window.localStorage.setItem(STORAGE_KEY, "1");
+      window.sessionStorage.setItem(STORAGE_KEY, "1");
     } catch {
       // Nothing to do: the notice simply returns next visit.
     }

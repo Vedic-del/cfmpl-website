@@ -80,8 +80,8 @@ export default function PrivacyPage() {
           <p>
             This website does not set cookies and so asks for no cookie consent. It stores two small items in your own
             browser, neither of which identifies you or is sent to us: a note that you have read our regulatory notice,
-            so it is not shown again, and your confirmation on the offer documents and track record pages, which is
-            kept for that browser session only.
+            so it is not shown again during your visit, and your confirmation on the offer documents and track record
+            pages. Both are kept for that browser session only.
           </p>
 
           <H>Personal data we process</H>
